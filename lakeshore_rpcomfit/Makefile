@@ -12,15 +12,15 @@ INCLUDES=-I../rpcomfit/
 AR      =ar
 ARFLAGS =rc
 
-OBJS = penguin_motor.o
-TARGET	=libpenguinmotor.a
+OBJS = penguin_lakeshore.o
+TARGET	=libpenguinlakeshore.a
 
 
 all: ${OBJS}
 	${AR} ${ARFLAGS} ${TARGET} ${OBJS}
 
-test: penguin_motor.o test_penmotor.o
-	${CPP}  -o test_penmotor test_penmotor.o ${OBJS} ${LIBS}
+test: penguin_lakeshore.o test_penlakeshore.o
+	${CPP}  -o test_penlakeshore test_penlakeshore.o ${OBJS} ${LIBS}
 
 .cpp.o	:
 	${CPP} ${CFLAGS} ${INCLUDES} -c $<
@@ -29,5 +29,8 @@ test: penguin_motor.o test_penmotor.o
 
 
 clean:
-	rm -f *.o test_penmotor *~ ${TARGET}
+	rm -f *.o test_penlakeshore *~ ${TARGET}
+
+
+
 
