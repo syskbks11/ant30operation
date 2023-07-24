@@ -32,6 +32,7 @@ void show_Help(){
 int oper_manual(penguin_lakeshore_t* ppenlks){
 
   printf("Manual operation starting... \n");
+  penguin_lakeshore_fitclose(ppenlks);
   penguin_lakeshore_fitopen(ppenlks);
 
   int cont = 1;
@@ -41,7 +42,10 @@ int oper_manual(penguin_lakeshore_t* ppenlks){
     fflush(stdout);
     fgets(tmpstr, STRLEN+1, stdin);
 
-    printf("cmd:%s\n", tmpstr);
+    printf("cmd:%s", tmpstr);
+
+    penguin_lakeshore_fitclose(ppenlks);
+    penguin_lakeshore_fitopen(ppenlks);
 
     switch(tmpstr[0]){
     case '1':
@@ -99,6 +103,7 @@ int oper_manual(penguin_lakeshore_t* ppenlks){
   }while(cont);
 
   printf("%s\n", "Test end. ");
+  penguin_lakeshore_fitclose(ppenlks);
 
   return 0;
 }
