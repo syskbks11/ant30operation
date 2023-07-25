@@ -1,0 +1,52 @@
+LDFLAGS =
+LIBS    =-L/usr/lib -lnsl -lm -lc -lpthread -L/usr/local/lib -lstdc++
+CFLAGS  =-O
+INCLUDES=-I/usr/include -I/usr/local/include
+CC      =gcc
+CCP     =g++
+OBJS    =u.o conf.o conf2.o rs232c.o netsv.o netcl.o netu.o tm.o thrd.o
+LIBDIR  =./export
+SRCDIR  =./src
+AR      =ar
+ARFLAGS =rc
+TARGET	=libtkb.a
+all     :
+	mkdir -p ${LIBDIR}
+	make -f Makefile.gcc comp
+	${AR} ${ARFLAGS} ${LIBDIR}/${TARGET} ${OBJS}
+
+comp    : ${OBJS}
+
+u.o     :
+	${CCP} ${CFLAGS} ${INCLUDES} -c ${SRCDIR}/$*/$*.cpp
+
+conf.o  :
+	${CCP} ${CFLAGS} ${INCLUDES} -c ${SRCDIR}/$*/$*.cpp
+
+conf2.o :
+	${CCP} ${CFLAGS} ${INCLUDES} -c ${SRCDIR}/$*/$*.cpp
+
+rs232c.o:
+	${CCP} ${CFLAGS} ${INCLUDES} -c ${SRCDIR}/$*/$*.cpp
+
+rs232c2.o:
+	${CCP} ${CFLAGS} ${INCLUDES} -c ${SRCDIR}/$*/$*.cpp
+
+netsv.o :
+	${CCP} ${CFLAGS} ${INCLUDES} -c ${SRCDIR}/$*/$*.cpp
+
+netcl.o :
+	${CCP} ${CFLAGS} ${INCLUDES} -c ${SRCDIR}/$*/$*.cpp
+
+netu.o  :
+	${CCP} ${CFLAGS} ${INCLUDES} -c ${SRCDIR}/$*/$*.cpp
+
+tm.o    :
+	${CCP} ${CFLAGS} ${INCLUDES} -c ${SRCDIR}/$*/$*.cpp
+
+thrd.o  :
+	${CCP} ${CFLAGS} ${INCLUDES} -c ${SRCDIR}/$*/$*.cpp
+
+clean   :
+	/bin/rm -f core *.o *.BAK *.ti *.ii
+	/bin/rm -fr ${LIBDIR}
