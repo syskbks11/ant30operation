@@ -26,6 +26,7 @@
     fprintf(uFp(), "[%s-%s-%d] ", uGetDate(), __FILE__, __LINE__); \
     fprintf(uFp(), str, x1, x2, x3, x4); \
     fprintf(uFp(), "\n"); \
+    fflush(uFp());             \
   } \
 }
 
@@ -48,6 +49,7 @@
     fprintf(uFp(), "[%s-%s-%d] ERROR ", uGetDate(), __FILE__, __LINE__); \
     fprintf(uFp(), str, x1, x2, x3, x4); \
     fprintf(uFp(), "\n"); \
+    fflush(uFp());             \
     exit(1); \
   } \
 }

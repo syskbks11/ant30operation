@@ -62,7 +62,7 @@ int uInit(const char* projectName)
   sprintf(fname, "%s-%04d%02d%02d%02d%02d%02d.log",
       projectName, tmt->tm_year+1900, tmt->tm_mon+1, tmt->tm_mday, tmt->tm_hour, tmt->tm_min, tmt->tm_sec);
   if(fp != NULL){
-    //uM("uInit(); Log file was already opened.\n");
+    uM("uInit(); Log file was already opened.");
     //return 0;
     uEnd();
   }
@@ -72,7 +72,7 @@ int uInit(const char* projectName)
   }
   fp = fopen(fname,"a");
   if(fp == NULL){
-    uE("uInit(); FileOpenError!!\n");
+    uE("uInit(); FileOpenError!!");
     return -1;
   }
   uM1("Use logfile(%s)",fname);
