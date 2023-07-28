@@ -3,15 +3,15 @@ CPP	=/usr/bin/g++
 #CC	=/usr/local/FFC/bin/fcc
 #CPP	=/usr/local/FFC/bin/FCC
 
-LIBS = ../rpcomfit/librpcomfit.a ../libtkb/export/libtkb.a ../gauge_rpcomfit/libpenguingauge.a ../lakeshore_rpcomfit/libpenguinlakeshore.a -lpthread
+LIBS = ../rpcomfit/librpcomfit.a ../libtkb/export/libtkb.a ../powermeter_rpcomfit/libpenguinpowermeter.a -lpthread
 
 CFLAGS	=-g -Wall
 INCLUDES=-I../rpcomfit/
 AR      =ar
 ARFLAGS =rc
 
-OBJS = srv_frontend.o
-TARGET = srv_frontend
+OBJS = srv_powermeter.o
+TARGET = srv_powermeter
 
 all:
 	make ${TARGET}
@@ -27,6 +27,6 @@ ${TARGET}: ${OBJS}
 install : all
 
 clean:
-	rm -f *.o srv_penfrontend *~ ${TARGET}
+	rm -f *.o srv_penpowermeter *~ ${TARGET}
 
 
