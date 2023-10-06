@@ -2,7 +2,7 @@
 \file rs232c/main.cpp
 \author Y.Koide
 \date 2006.08.15
-\brief rs232c繝�繧ｹ繝医�励Ο繧ｰ繝ｩ繝
+\brief rs232cテストプログラム
 */
 #include <stdio.h>
 #include <string.h>
@@ -29,7 +29,7 @@ main(){
   char tmp[256];
   char* buf = new char[1024];
 
-  //DB繧ｵ繝ｳ繝励Ν
+  //DBサンプル
   rs232cInit(2,4800,7,1,1);
   getchar();
   strcpy(buf,"  1, 1, DF");
@@ -47,7 +47,7 @@ main(){
   delete[] buf;
   */
 
-  //ANELVA繧ｵ繝ｳ繝励Ν
+  //ANELVAサンプル
   /*rs232cInit(2,9600,8,0,1);
   strcpy(buf,"$O\r");
   i=rs232cWrite(2,(unsigned char*)buf,5);

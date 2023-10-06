@@ -2,7 +2,7 @@
 \file tm.cpp
 \author Y.Koide
 \date 2006.12.17
-\brief ã‚¿ã‚¤ãƒãƒ¼ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«
+\brief ƒ^ƒCƒ}[ƒ‚ƒWƒ…[ƒ‹
 *
 * Changed by NAGAI Makoto
 * for 32-m telescope & 30-cm telescope
@@ -29,15 +29,15 @@ typedef struct sTm{
 }tTm;
 
 /*! \fn const char* tmVersion()
-\return ãƒãƒ¼ã‚¸ãƒ§ãƒ³æ–‡å­—åˆ—ã‚’è¿”ã™
+\return ƒo[ƒWƒ‡ƒ“•¶š—ñ‚ğ•Ô‚·
 */
 const char* tmVersion(){
   return version;
 }
 
 /*! \fn void* tmInit()
-\brief tmã‚’ä½¿ç”¨ã™ã‚‹ã¨ãã«æœ€åˆã«å‘¼ã³å‡ºã™ã€‚
-\return NULL:Error Other:ãƒ‡ãƒ¼ã‚¿æ§‹é€ ä½“ã¸ã®ãƒã‚¤ãƒ³ã‚¿
+\brief tm‚ğg—p‚·‚é‚Æ‚«‚ÉÅ‰‚ÉŒÄ‚Ño‚·B
+\return NULL:Error Other:ƒf[ƒ^\‘¢‘Ì‚Ö‚Ìƒ|ƒCƒ“ƒ^
 */
 tTm* tmInit(){
 //void* tmInit(){
@@ -57,7 +57,7 @@ tTm* tmInit(){
 }
 
 /*! int tmEnd(void* _p)
-\brief tmã®ä½¿ç”¨ã‚’çµ‚äº†ã™ã‚‹ã¨ãã«ãƒ¡ãƒ¢ãƒªãªã©ã‚’é–‹æ”¾ã™ã‚‹ã€‚
+\brief tm‚Ìg—p‚ğI—¹‚·‚é‚Æ‚«‚Éƒƒ‚ƒŠ‚È‚Ç‚ğŠJ•ú‚·‚éB
 \return 0:Success
 */
 int tmEnd(tTm* p){
@@ -71,7 +71,7 @@ int tmEnd(tTm* p){
 }
 
 /*! \fn int tmReset(void* _p)
-\brief æ™‚åˆ»ã‚’ã‚»ãƒƒãƒˆã™ã‚‹
+\brief ‚ğƒZƒbƒg‚·‚é
 \return 0:Success
 */
 int tmReset(tTm* p){
@@ -84,9 +84,9 @@ int tmReset(tTm* p){
 }
 
 /*! \fn double tmGetLag(void* _p)
-\brief tmGetInit(), tmGetReset()ã•ã‚Œã¦ã‹ã‚‰ã®æ™‚é–“ã‚’[sec]ã§è¿”ã™
-\param[in] _p tmã®ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ãƒ¼
-\return æ™‚é–“ [sec]
+\brief tmGetInit(), tmGetReset()‚³‚ê‚Ä‚©‚ç‚ÌŠÔ‚ğ[sec]‚Å•Ô‚·
+\param[in] _p tm‚Ìƒpƒ‰ƒ[ƒ^[
+\return ŠÔ [sec]
 */
 double tmGetLag(const tTm* p){
 //double tmGetLag(void* _p){
@@ -101,7 +101,7 @@ double tmGetLag(const tTm* p){
 
 #ifdef WIN32
 #else
-  lag -= 0.02; //!< å–å¾—ã™ã‚‹ã®ã«ã‹ã‹ã‚‹æ™‚é–“ã€‚çµŒé¨“å€¤ sec
+  lag -= 0.02; //!< æ“¾‚·‚é‚Ì‚É‚©‚©‚éŠÔBŒoŒ±’l sec
   if(lag < 0){
     lag = 0;
   }
@@ -111,17 +111,17 @@ double tmGetLag(const tTm* p){
 }
 
 /*! \fn const char* tmGetTimeStr(void* _p, double offset)
-\brief æ™‚é–“ã‚’å–å¾—ã™ã‚‹
-\param[in] _p tmãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ãƒ¼
-\param[in] offset ã‚ªãƒ•ã‚»ãƒƒãƒˆç§’ã€‚ç¾åœ¨æ™‚åˆ»ã‹ã‚‰ä½•ç§’å¾Œã®æ™‚åˆ»ã‚’æ–‡å­—åˆ—ã¨ã—ã¦å‡ºåŠ›ã™ã‚‹ã‹ã€‚
-\return YYYYMMDDhhmmss.ssssss(22æ–‡å­—)å½¢å¼ã§æ–‡å­—åˆ—ã‚’è¿”ã™
+\brief ŠÔ‚ğæ“¾‚·‚é
+\param[in] _p tmƒpƒ‰ƒ[ƒ^[
+\param[in] offset ƒIƒtƒZƒbƒg•bBŒ»İ‚©‚ç‰½•bŒã‚Ì‚ğ•¶š—ñ‚Æ‚µ‚Äo—Í‚·‚é‚©B
+\return YYYYMMDDhhmmss.ssssss(22•¶š)Œ`®‚Å•¶š—ñ‚ğ•Ô‚·
 */
 const char* tmGetTimeStr(tTm* p, double offset){
 //const char* tmGetTimeStr(void* _p, double offset){
 //  tTm* p = (tTm*)_p;
   struct tm* tmt;
 
-  //! offsetæ™‚é–“ã‚’è¿½åŠ ã—ãŸå€¤ã‚’è¨­å®š
+  //! offsetŠÔ‚ğ’Ç‰Á‚µ‚½’l‚ğİ’è
   time_t t = p->t + (time_t)offset;
   double ms = p->msec + (offset - (double)((int)offset)) * 1000.0;
 //  double us;
@@ -145,11 +145,11 @@ const char* tmGetTimeStr(tTm* p, double offset){
 }
 
 /*! \fn double tmGetDiff(const time_t t, const double msec)
-\brief æŒ‡å®šã•ã‚ŒãŸæ™‚åˆ»ã®ç¾åœ¨æ™‚åˆ»ã¨ã®å·®ã‚’è¿”ã™ã€‚
-\brief tmInit()ã«ã‚ˆã‚‹åˆæœŸåŒ–ã®å¿…è¦ãªã—ã€‚
-\param[in] t time(t)ã«ã‚ˆã£ã¦å¾—ã‚‰ã‚Œã‚‹ç§’ã¨åŒã˜å®šç¾©
+\brief w’è‚³‚ê‚½‚ÌŒ»İ‚Æ‚Ì·‚ğ•Ô‚·B
+\brief tmInit()‚É‚æ‚é‰Šú‰»‚Ì•K—v‚È‚µB
+\param[in] t time(t)‚É‚æ‚Á‚Ä“¾‚ç‚ê‚é•b‚Æ“¯‚¶’è‹`
 \param[in] msec msec
-\return æ™‚åˆ»ã®å·®(=[å…¥åŠ›æ™‚åˆ»]-[ç¾åœ¨æ™‚åˆ»])
+\return ‚Ì·(=[“ü—Í]-[Œ»İ])
 */
 double tmGetDiff(const time_t t, const double msec){
   double dif;
@@ -171,10 +171,10 @@ double tmGetDiff(const time_t t, const double msec){
 
 
 /*! int tmSleepMSec(double msec)
-\brief æŒ‡å®šã—ãŸãƒã‚¤ã‚¯ãƒ­ç§’é–“å¾…ã¤
-\brief tmInit()ã«ã‚ˆã‚‹åˆæœŸåŒ–ã®å¿…è¦ãªã—ã€‚
-\param[in] msec å¾…æ©Ÿã™ã‚‹æ™‚é–“ã€‚ãƒŸãƒªç§’
-\return 0:æˆåŠŸ, -1:å¤±æ•—, -2:å¼•æ•°ãŒè² ã‹NaN
+\brief w’è‚µ‚½ƒ}ƒCƒNƒ•bŠÔ‘Ò‚Â
+\brief tmInit()‚É‚æ‚é‰Šú‰»‚Ì•K—v‚È‚µB
+\param[in] msec ‘Ò‹@‚·‚éŠÔBƒ~ƒŠ•b
+\return 0:¬Œ÷, -1:¸”s, -2:ˆø”‚ª•‰‚©NaN
 */
 int tmSleepMSec(double msec){
 	if(msec == 0)
@@ -202,11 +202,11 @@ int tmSleepMSec(double msec){
 }
 
 /*! \fn void tmGetTime(double offset, time_t* t, int* msec)
-\brief æ™‚åˆ»ã‚’ãƒŸãƒªç§’å˜ä½ã§å–å¾—ã™ã‚‹ã€‚
-\brief tmInit()ã«ã‚ˆã‚‹åˆæœŸåŒ–ã®å¿…è¦ãªã—ã€‚
-\param[in] offset å–å¾—æ™‚åˆ»ã«å¯¾ã™ã‚‹ã‚ªãƒ•ã‚»ãƒƒãƒˆç§’ 1000åˆ†ã®1ç§’ã¾ã§æŒ‡å®šå¯èƒ½
-\param[out] t æ™‚åˆ»ã®ç§’æ›ç®—ã®å€¤ã€‚time(&t)ã§å¾—ã‚‰ã‚Œã‚‹ã‚‚ã®ã¨åŒç¾©ã€‚
-\param[out] msec å–å¾—æ™‚åˆ»ã®ãƒŸãƒªç§’ã®å€¤ã€‚
+\brief ‚ğƒ~ƒŠ•b’PˆÊ‚Åæ“¾‚·‚éB
+\brief tmInit()‚É‚æ‚é‰Šú‰»‚Ì•K—v‚È‚µB
+\param[in] offset æ“¾‚É‘Î‚·‚éƒIƒtƒZƒbƒg•b 1000•ª‚Ì1•b‚Ü‚Åw’è‰Â”\
+\param[out] t ‚Ì•bŠ·Z‚Ì’lBtime(&t)‚Å“¾‚ç‚ê‚é‚à‚Ì‚Æ“¯‹`B
+\param[out] msec æ“¾‚Ìƒ~ƒŠ•b‚Ì’lB
 */
 void tmGetTime(double offset, time_t* t, double* msec){
   time_t sec;
@@ -225,7 +225,7 @@ void tmGetTime(double offset, time_t* t, double* msec){
   tmt0.tm_sec   = sysTime.wSecond;
   tmt0.tm_isdst = -1;
 
-  //! mktime()ã¯Localã§è¨ˆç®—ã—ã¦ã—ã¾ã†ã€‚
+  //! mktime()‚ÍLocal‚ÅŒvZ‚µ‚Ä‚µ‚Ü‚¤B
   sec = mktime(&tmt0);
   ms = sysTime.wMilliseconds;
 
@@ -235,10 +235,10 @@ void tmGetTime(double offset, time_t* t, double* msec){
   gettimeofday(&tv, NULL);
   sec = tv.tv_sec;
   ms = tv.tv_usec / 1000.0;
-  offset -= 0.02; //!< gettimeofday()ã§å–å¾—ã™ã‚‹ã®ã«ã‹ã‹ã‚‹æ™‚é–“ã€‚çµŒé¨“å€¤ sec
+  offset -= 0.02; //!< gettimeofday()‚Åæ“¾‚·‚é‚Ì‚É‚©‚©‚éŠÔBŒoŒ±’l sec
 #endif
 
-  //! offsetæ™‚é–“ã‚’è¿½åŠ ã—ãŸå€¤ã‚’è¨­å®š
+  //! offsetŠÔ‚ğ’Ç‰Á‚µ‚½’l‚ğİ’è
   sec += (time_t)offset;
   ms += (double)(offset - (double)((int)(offset))) * 1000;
   if(ms >= 1000){
@@ -249,7 +249,7 @@ void tmGetTime(double offset, time_t* t, double* msec){
     sec--;
     ms += 1000;
   }
-	if(ms >= 999.500) {	//*** msecãŒ999.500ä»¥ä¸Šã®æ™‚ãƒ­ã‚°ã«1000ã¨è¡¨ç¤ºã•ã‚Œã‚‹ã®ã§ã€ä»£ã‚ã‚Šã«secã‚’1ç¹°ã‚Šä¸Šã’ã‚‹ã€‚
+	if(ms >= 999.500) {	//*** msec‚ª999.500ˆÈã‚ÌƒƒO‚É1000‚Æ•\¦‚³‚ê‚é‚Ì‚ÅA‘ã‚í‚è‚Ésec‚ğ1ŒJ‚èã‚°‚éB
 		ms = 0.0;
 		sec++;
 	}

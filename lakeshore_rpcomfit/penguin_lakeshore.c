@@ -35,7 +35,7 @@ penguin_lakeshore_t* penguin_lakeshore_init(char* ipaddress, const unsigned int 
 
 void penguin_lakeshore_fitopen(penguin_lakeshore_t* ppenlks){
   FitClose(ppenlks->pctrl);
-  FitOpen(ppenlks->pctrl, 9600, 1, 1, 0);
+  FitOpen(ppenlks->pctrl, 9600, 0, 2, 0);
 }
 
 void penguin_lakeshore_fitclose(penguin_lakeshore_t* ppenlks){

@@ -1,0 +1,17 @@
+SRCS	= StdFileExt.c StdBakFile.c DividePrmRec.c
+OBJS	= StdFileExt.o StdBakFile.o DividePrmRec.o
+LIBS	= libStarFile.a
+FFLAGS	= -O -lm -I../h -D_NO_PROTO
+
+
+$(LIBS):	$(OBJS)
+	ar ruv $(LIBS) $(OBJS)
+	ranlib $(LIBS)
+
+$(OBJS):	$(SRCS)
+	cc -c $(FFLAGS) $(SRCS) -o $(OBJS)
+
+
+clean:;		rm -f $(OBJS) $(LIBS)
+
+###

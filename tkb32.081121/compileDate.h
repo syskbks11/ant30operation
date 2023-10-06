@@ -1,0 +1,1 @@
+#define COMPILE_DATE "2008/11/21-20:37:00"

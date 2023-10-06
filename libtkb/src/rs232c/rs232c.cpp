@@ -2,7 +2,7 @@
 \file rs232c.cpp
 \author Y.Koide
 \date 2006.08.15
-\brief RS-232Cã‚’åˆ¶å¾¡ã™ã‚‹ãƒ©ã‚¤ãƒ–ãƒ©ãƒª
+\brief RS-232C‚ğ§Œä‚·‚éƒ‰ƒCƒuƒ‰ƒŠ
 */
 #ifdef WIN32
 # include <windows.h>
@@ -17,19 +17,19 @@ static const char version[] = "0.0.0";
 #define COM_MAX 20
 
 /*! \fn const char* rs232cVersion()
-\reutrn ãƒãƒ¼ã‚¸ãƒ§ãƒ³æ–‡å­—åˆ—
+\reutrn ƒo[ƒWƒ‡ƒ“•¶š—ñ
 */
 const char* rs232cVersion(){
   return version;
 }
 
 #ifdef WIN32
-static HANDLE hComm[COM_MAX]; //!RS-232Cã®é€šä¿¡ãƒãƒ³ãƒ‰ãƒ«
+static HANDLE hComm[COM_MAX]; //!RS-232C‚Ì’ÊMƒnƒ“ƒhƒ‹
 
 /*! \fn int rs232cInit(int comNo, int bps, int byteSize, int parityBit, int stopBit)
-\brief rs232cãƒ©ã‚¤ãƒ–ãƒ©ãƒªã‚’ä½¿ç”¨ã™ã‚‹éš›ã«æœ€åˆã«å‘¼ã³å‡ºã™
-\param[in] comNo comãƒãƒ¼ãƒˆç•ªå·ã€‚æ•´æ•°1ã€œ
-\param[in] bps é€šä¿¡é€Ÿåº¦
+\brief rs232cƒ‰ƒCƒuƒ‰ƒŠ‚ğg—p‚·‚éÛ‚ÉÅ‰‚ÉŒÄ‚Ño‚·
+\param[in] comNo comƒ|[ƒg”Ô†B®”1`
+\param[in] bps ’ÊM‘¬“x
 \param[in] byteSize 7:7bit 8:8bit
 \param[in] parityBit 0:none 1:oddParity 2:evenParity
 \param[in] stopBit 0,1:1bit 2:2bit 3:1.5bit
@@ -133,8 +133,8 @@ int rs232cInit(int comNo, int bps, int byteSize, int parityBit, int stopBit){
 }
 
 /*! \fn int rs232cEnd(int comNo)
-\brief rs232cãƒ©ã‚¤ãƒ–ãƒ©ãƒªã‚’çµ‚äº†ã•ã›ã‚‹éš›ã«å‘¼ã¶
-\param[in] comNo comãƒãƒ¼ãƒˆç•ªå·ã€‚æ•´æ•°1ã€œ
+\brief rs232cƒ‰ƒCƒuƒ‰ƒŠ‚ğI—¹‚³‚¹‚éÛ‚ÉŒÄ‚Ô
+\param[in] comNo comƒ|[ƒg”Ô†B®”1`
 \return 0:Success other:Error
 */
 int rs232cEnd(int comNo){
@@ -148,10 +148,10 @@ int rs232cEnd(int comNo){
 }
 
 /*! \fn int rs232cWrite(int comNo, unsigned char* buf, unsigned int bufSize)
-\brief RS-232Cã‹ã‚‰ãƒ‡ãƒ¼ã‚¿ã‚’å‡ºåŠ›ã™ã‚‹
-\param[in] comNo comãƒãƒ¼ãƒˆç•ªå·ã€‚æ•´æ•°1ã€œ
-\param[in] buf å‡ºåŠ›ãƒ‡ãƒ¼ã‚¿ã¸ã®ãƒã‚¤ãƒ³ã‚¿
-\param[in] bufSize å‡ºåŠ›ãƒ‡ãƒ¼ã‚¿ã®ãƒã‚¤ãƒˆã‚µã‚¤ã‚º
+\brief RS-232C‚©‚çƒf[ƒ^‚ğo—Í‚·‚é
+\param[in] comNo comƒ|[ƒg”Ô†B®”1`
+\param[in] buf o—Íƒf[ƒ^‚Ö‚Ìƒ|ƒCƒ“ƒ^
+\param[in] bufSize o—Íƒf[ƒ^‚ÌƒoƒCƒgƒTƒCƒY
 \return over0:writeSize under0:Error
 */
 int rs232cWrite(int comNo, unsigned char* buf, const unsigned int bufSize){	
@@ -170,17 +170,17 @@ int rs232cWrite(int comNo, unsigned char* buf, const unsigned int bufSize){
 }
 
 /*! \fn int rs232cRead(int comNo, unsigned char* buf, unsigned int bufSize)
-\brief RS-232Cã‹ã‚‰ãƒ‡ãƒ¼ã‚¿ã‚’èª­è¾¼ã‚€
-\param[in] comNo comãƒãƒ¼ãƒˆç•ªå·ã€‚æ•´æ•°1ã€œ
-\param[in] buf èª­è¾¼ã¿ãƒ‡ãƒ¼ã‚¿æ ¼ç´é ˜åŸŸ
-\param[in] bufSize èª­è¾¼ã¿ãƒ‡ãƒ¼ã‚¿æ ¼ç´é ˜åŸŸã®ãƒã‚¤ãƒˆã‚µã‚¤ã‚º
+\brief RS-232C‚©‚çƒf[ƒ^‚ğ“Ç‚Ş
+\param[in] comNo comƒ|[ƒg”Ô†B®”1`
+\param[in] buf “Ç‚İƒf[ƒ^Ši”[—Ìˆæ
+\param[in] bufSize “Ç‚İƒf[ƒ^Ši”[—Ìˆæ‚ÌƒoƒCƒgƒTƒCƒY
 \return[in] over0:ReadSize, under0:Error
 */
 int rs232cRead(int comNo, unsigned char* buf, const unsigned int bufSize){
-  DWORD err;///ã‚¨ãƒ©ãƒ¼æƒ…å ±
+  DWORD err;///ƒGƒ‰[î•ñ
   COMSTAT comStat;///com Status
-  DWORD readCnt;///å—ä¿¡ãƒ‡ãƒ¼ã‚¿ã®ãƒã‚¤ãƒˆæ•°
-  DWORD readSize;///èª­ã¿è¾¼ã‚“ã ãƒã‚¤ãƒˆæ•°
+  DWORD readCnt;///óMƒf[ƒ^‚ÌƒoƒCƒg”
+  DWORD readSize;///“Ç‚İ‚ñ‚¾ƒoƒCƒg”
 
   if(hComm[comNo] == INVALID_HANDLE_VALUE){
     printf("rs232cRead(); Com[%d] invalid error!!\n",comNo);
@@ -213,7 +213,7 @@ int rs232cRead(int comNo, unsigned char* buf, const unsigned int bufSize){
 #include <sys/signal.h>
 #include <sys/types.h>
 
-#define _POSIX_SOURCE 1 /* POSIX æ¨™æº–ã®ã‚½ãƒ¼ã‚¹ */
+#define _POSIX_SOURCE 1 /* POSIX •W€‚Ìƒ\[ƒX */
 
 void signal_handler_IO(int status);
 static int fd[COM_MAX];
@@ -371,7 +371,7 @@ void signal_handler_IO(int status){
 }
 
 int rs232cEnd(int comNo){
-  //!DTRä¿¡å·ã‚‚è‡ªå‹•çš„ã«Low(HangUp)ã«ãªã‚‹
+  //!DTRM†‚à©“®“I‚ÉLow(HangUp)‚É‚È‚é
   close(fd[comNo]);
   return 0;
 }

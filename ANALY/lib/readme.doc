@@ -1,0 +1,1372 @@
+version up history
+1994/6/28　岡朋治
+1994/5/30　半田利弘・岡朋治
+1993/9/30　半田利弘
+1993/6/16  平野尚美
+1993/1/19  半田利弘
+1993/1/12  半田利弘
+1993/1/8   半田利弘
+1992/12/27 半田利弘
+1992/12/23 半田利弘・平野尚美
+1992/12/20 半田利弘
+1992/12/11 半田利弘
+1992/12/7  半田利弘・岡朋治
+1992/11/27 半田利弘
+1992/9/9 　半田利弘
+1992/8/28　半田利弘
+
+
+star/libの内容
+
+libstar.a	profileデータの標準ライブラリィ
+makefile	上記libstar.aをのmakefile
+makefile.RISC	上記RISC版
+makefile.CISC	上記CISC版
+ProfileIO.c	profileデータの入出力ライブラリィソース
+ProfileShow.c	profileデータ表示に関するライブラリィソース
+ProfileProc.c	profileデータ処理に関するライブラリィソース
+Index.c		idxファイル関連ライブラリィソース
+GPlib.c		一般ライブラリィソース
+
+libStarFile.a	STARファイルの読み書きに関する関数ライブラリィ	
+libStarFile.mkf	上記libStarFile.aのmakefile
+StdFileExt.c	STAR_StdFileExtName()=標準拡張子をつけた完全ファイル名を作る
+StdBakFile.c	STAR_StdBakFileName()=標準バックアップファイル名を作る
+DividePrmRec.c	STAR_DividePrmRecord()=区切られたパラメータファイルのレコードを
+	等号「＝」で区切られた２つの部分「keyword」と「value」とに分割する
+
+/home/star/lib
+Software Tools for Astronomical data Reduction
+共用ライブラリィ解説
+
+以下の関数が現在一般公開されています。使いたい場合は、/home/star/lib/libstar.a
+または/home/star/lib/libStarFile.aをライブラリィとして結合して、コンパイルして
+ください。
+
+共通マクロ定義（詳しくは各includeファイル参照のこと）
+<profhead.h>
+MAX_CH		プロファイルデータの最大チャンネル数
+MAX_FLAG_CH	プロファイル中のビットマップの最大バイト数,MAX_CHの1/8
+MAX_HISTORY_STEP	HISTORYの最大ステップ数
+MAX_FILE_NAME_LENGTH	ファイル名として宣言するc-string長
+
+MAX_HISTORY_LINES_PER_STEP	history.prmの最大要素数
+
+<starlib.h>
+MAX_FILE_NAME_LENGTH	ファイル名を読み込むためのc-string長
+MAX_PRM_RECORD_LENGTH	パラメータファイル(*.prm)の１行を読み込むためのc-string長
+MAX_IDX_RECORD_LENGTH	インデックスファイル(*.idx)の１行を読み込むためのc-string長
+LIGHT_SPEED		光速度=2.99792458e5(km/s)
+FLAGGED         1	ビットマップフラグでフラグが立っている
+UNFLAGGED       0	ビットマップフラグでフラグが立っていない
+BAD_SCAN	1	スキャンデータベースでのbadのフラグ
+GOOD_SCAN	0	スキャンデータベースでのgoodのフラグ
+
+<starXlib.h>
+X_VELOCITY      1	LSR velocity for x_unit of profile_plot();
+X_CHANNEL       0	channel for x_unit of profile_plot();
+
+共通構造体定義（詳しくは各includeファイル参照のこと）
+<profhead.h>
+PROFILE		ヘッダーつきプロファイルデータ
+PRF_HEADER	プロファイルデータのヘッダー（HISTORY以前）のみ
+SYS_HEAD	PROFILEの.sys_head部分の構造体
+OBS_PRM		PROFILEの.obs_prm部分の構造体
+OBJECT		PROFILEの.object部分の構造体
+ANT_STATUS	PROFILEの.ant_status部分の構造体
+RX_STATUS	PROFILEの.rx_status部分の構造体
+BE_STATUS	PROFILEの.be_status部分の構造体
+OBS_LOG		PROFILEの.obs_log部分の構造体
+F_METEO_PRM	PROFILEの.obs_log.meteo部分の構造体
+HISTORY		PROFILEの.history部分の構造体
+XY_POS		2次元の位置を表すdoubleの組
+
+<starlib.h>
+XY_SIZE		2次元の大きさを表すdoubleの組		
+XY_SIZE_long	2次元の大きさを表すlongの組
+XY_POS_long	2次元の位置を表すlongの組
+RANGE		範囲を表すdoubleの組
+RANGE_long	範囲を表すlongの組
+BOX_RANGE	2次元の範囲を表すdoubleの組
+BOX_RANGE_long	2次元の範囲を表すlongの組
+
+---------関数インデックス-------------------
+
+各項目の意味
+名称）
+関数の型と名前、標準的な引き数名とその型
+なお、引き数の型はＣの標準の書き方による。
+ヘッダーファイル）
+その関数を呼び出す親関数で宣言しておかなければならないヘッダーファイル。
+原則として、その関数のプロトタイプ宣言をしているヘッダーファイルだが、
+引き数に構造体などがある場合などはそれを定義しているヘッダーファイルを
+先だって指定しておかなければならない場合もあり、その場合には指定された順に
+include宣言しておかなくてはならない。また、関連するマクロ定義がされている
+場合もある。使用前に一度は内容を見ておくこと。時々追加されている場合もある。
+また、内部で宣言されている#defineに何があるかを見ておくとSTAR全体で大きさを
+統一しておかなければならない配列などの整合がとれる。
+関数のソースファイルに書かれるヘッダーファイルではないことに注意。
+機能）
+その関数の効用の簡単な説明。
+戻り値）
+void型以外の関数ではその戻り値の意味を書く。コード番号の場合は
+いくつならばどういう意味かを列記する。
+解説）
+機能で説明しきれない詳しい解説や使用上の注意、使用実例などを書く。
+製作）
+公開されているバージョンの製作担当者と最新更新日を書く。
+公開してから更新が重なった場合にはその履歴を残す。
+
+/* List of Functions */
+
+名称）
+void STAR_WriteBaselineFlag(profile,ch,flag)
+PROFILE		*profile :フラグを書き込むプロファイル構造体
+int		ch;	 :フラグを立てるべきチャンネル
+int		flag;	 :立てるべきフラグ値、マクロ変数FLAGGED又はマクロ変数UNFLAGGED
+ヘッダーファイル）
+#include <profhead.h>
+#include <starlib.h>
+機能）
+　chで指定したチャンネルに、ｆlagで指定したフラグを、
+ベースラインビットマップフラグに立てる。
+戻り値）
+　なし
+解説）
+　chに入る値が、１より小さければ、１に、
+最大チャンネルよりも大きい場合には、最大チャンネルに設定される。
+製作）
+1993/1/9  木村修
+
+名称）
+int STAR_ReadBaselineFlag(profile,ch)
+PROFILE		*profile :フラグを読み込むプロファイル構造体
+int 		ch	 :読みたいフラグのチャンネル
+ヘッダーファイル）
+#include <profhead.h>
+#include <starlib.h>
+機能）
+　chで指定したチャンネルのベースラインビットマップフラグを読み、
+フラグビットが立っていれば戻り値としてマクロ変数FLAGGEDを返し、
+立っていなければ、マクロ変数UNFLAGGEDを返す。
+戻り値）
+FLAGGED　または 1 : フラグビットが立っている場合
+UNFLAGGED　または 0 : フラグビットが立っていない場合
+製作）
+1993/1/9  木村修
+
+名称）
+void STAR_RWriteBaselineFlags(profile,ch_range,flag)
+PROFILE		*profile:フラグを書き込むプロファイル構造体
+RANGE_long	ch_range:フラグを書き込みたいチャンネル範囲
+int		flag	:立てるべきフラグ値、０又はそれ以外
+ヘッダーファイル）
+#include <profhead.h>
+#include <starlib.h>
+機能）
+　ch_range構造体で指定したチャンネル範囲にflagで指定したフラグを、
+ベースラインビットマップフラグに立てる。
+戻り値）
+　なし
+製作）
+1993/1/9  木村修
+
+名称）
+void STAR_WriteSpuriousFlag(profile,ch,flag)
+PROFILE		*profile;　
+int		ch;	 
+int		flag;	:立てるべきフラグ値、マクロ変数FLAGGED
+又はマクロ変数UNFLAGGED
+ヘッダーファイル）
+機能）
+　ch_range構造体で指定したチャンネル範囲にflagで指定したフラグを、
+スプリアスビットマップフラグに立てる。
+戻り値）
+　なし
+製作）
+1993/1/9  木村修
+
+名称）
+int STAR_ReadSpuriousFlag(profile,ch)
+PROFILE		*profile :フラグを読み込むプロファイル構造体
+int 		ch	 :読みたいフラグのチャンネル
+ヘッダーファイル）
+#include <profhead.h>
+#include <starlib.h>
+機能）
+　chで指定したチャンネルのスプリアスビットマップフラグを読み、
+フラグビットが立っていれば戻り値としてマクロ変数FLAGGEDを返し、
+立っていなければ、マクロ変数UNFLAGGEDを返す。
+戻り値）
+FLAGGED　または 1 : フラグビットが立っている場合
+UNFLAGGED　または 0 : フラグビットが立っていない場合
+製作）
+1993/1/9  木村修
+
+名称）
+void STAR_RWriteSpuriousFlags(profile,ch_range,flag)
+PROFILE		*profile:フラグを書き込むプロファイル構造体
+RANGE_long	ch_range:フラグを書き込みたいチャンネル範囲
+int		flag	:立てるべきフラグ値、
+マクロ変数FLAGGED又はマクロ変数UNFLAGGED
+ヘッダーファイル）
+#include <profhead.h>
+#include <starlib.h>
+機能）
+　ch_range構造体で指定したチャンネル範囲にflagで指定したフラグを、
+スプリアスビットマップフラグに立てる。
+戻り値）
+　なし
+製作）
+1993/1/9  木村修
+
+名称）
+double STAR_VelocityCh(profile,v_lsr)
+PROFILE *profile;
+double v_lsr;   /* 速度(km/s) */
+機能）
+PROFILE構造体から、LSRに対する観測視線速度でのデータチャンネルを求める。
+戻り値）
+LSRに対する観測視線速度のデータチャンネル。
+-(*profile).be_status.be_ch 対応するはずのチャンネル番号が分光器の
+総チャンネル範囲よりも十分に小さい。
+(*profile).be_status.be_ch*2.0 対応するはずのチャンネル番号が分光器の
+総チャンネル範囲よりも十分に大きい。
+-9998.0 解が求められなかった。
+解説）
+実際のデータがある点の端は
+１からprofile.be_status.data_chまでとする。
+製作）
+1993/1/9 半田利弘
+
+名称）
+double STAR_FrequencyCh(profile,freq)
+PROFILE *profile;
+double freq;    /* 受信電波での周波数(GHz) */
+機能）
+PROFILE構造体から、観測周波数でのデータチャンネルを求める。
+戻り値）
+観測周波数のデータチャンネル。
+-9999.0 if out of BackEnd range
+-9998.0 if cannot converge in the limit
+解説）
+実際のデータがある点の端は
+１からprofile.be_status.data_chまでとする。
+製作）
+1992/12/27 半田利弘
+
+名称）
+double STAR_FreqOnBECh(profile,freq)
+PROFILE *profile;
+double freq;
+機能）
+PROFILE構造体と、分光器上周波数からデータチャンネルの位置を求める。
+戻り値）
+データチャンネルの位置。
+-9999.0 if out of BackEnd range
+-9998.0 if cannot converge in the limit
+解説）
+実際のデータがある点の端は
+１からprofile.be_status.data_chまで
+分光器のデータがある点は
+１からprofile.be_status.be_chまでとする。
+チャンネル位置中央に対応するチャンネル位置を返す。
+製作）
+1992/12/28 半田利弘
+
+名称）
+double STAR_BEDeltaFreqOnBE(profile,ch)
+PROFILE *profile;
+double ch;
+ヘッダーファイル）
+#include <profhead.h>
+#include <starlib.h>
+機能）
+PROFILE構造体から、分光器チャネルchでの分光器上周波数の微係数を求める。
+戻り値）
+分光器上周波数の微係数
+解説）
+実際のデータがある点の端は
+１からprofile.be_status.be_chまでとする。
+チャンネル番号が小さいほど周波数が低いとしている。
+製作）
+1992/12/27 半田利弘
+1993/6/16 平野尚美
+
+名称）
+double STAR_BindedCh(profile,ch)
+PROFILE *profile;
+double ch;
+ヘッダーファイル）
+#include <profhead.h>
+#include <starlib.h>
+機能）
+PROFILE構造体から、分光器上チャンネルchでのデータチャンネルの位置を求める。
+戻り値）
+データチャンネルの位置
+解説）
+実際のデータがある点の端は
+１からprofile.be_status.data_chまで
+分光器のデータがある点は
+１からprofile.be_status.be_chまでとする。
+チャンネル位置中央に対応するチャンネル位置を返す。
+製作）
+1992/12/27 半田利弘
+
+名称）
+double STAR_ChVelocity(profile,ch)
+PROFILE *profile;
+double ch;
+ヘッダーファイル）
+#include <profhead.h>
+#include <starlib.h>
+機能)
+PROFILE構造体から、データチャンネルchでのLSRに対する観測視線速度を求める。
+戻り値）
+データチャンネルchでのLSRに対する観測視線速度(km/s)。
+解説）
+　チャンネル数の数え方は、実際のデータがある点の端が
+１からprofile.be_status.data_chまでとなるような数え方である。
+詳しくはSTAR_OriginalChを見よ。
+　チャンネル番号と速度の増加減少の関係はPROFILE構造体のヘッダーに準拠して
+自動判別している。
+製作）
+1992/12/27 半田利弘
+
+名称）
+double STAR_ChFrequency(profile,ch)
+PROFILE *profile;
+double ch;
+ヘッダーファイル）
+#include <profhead.h>
+#include <starlib.h>
+機能)
+PROFILE構造体から、データチャンネルchでの観測周波数を求める。
+戻り値）
+データチャンネルchでの観測周波数(GHz)。
+解説）
+　チャンネル数の数え方は、実際のデータがある点の端が
+１からprofile.be_status.data_chまでとなるような数え方である。
+詳しくはSTAR_OriginalChを見よ。
+　チャンネル番号と周波数の増加減少の関係はPROFILE構造体のヘッダーに準拠して
+自動判別している。
+製作）
+1992/12/27 半田利弘
+
+名称）
+double STAR_ChFreqOnBE(profile,ch)
+PROFILE *profile;
+double ch;
+ヘッダーファイル）
+#include <profhead.h>
+#include <starlib.h>
+機能)
+PROFILE構造体から、データチャンネルchでの分光器上周波数を求める。
+戻り値）
+データチャンネルchでの分光器上周波数(MHz)。
+解説）
+　チャンネル数の数え方は、実際のデータがある点の端が
+１からprofile.be_status.data_chまでとなるような数え方である。
+詳しくはSTAR_OriginalChを見よ。
+　チャンネル番号が小さいほど周波数が低いとしている。
+製作）
+1992/12/25 半田利弘
+
+名称）
+double STAR_OriginalCh(profile,ch)
+PROFILE *profile;
+double ch;
+ヘッダーファイル）
+#include <profhead.h>
+#include <starlib.h>
+機能)
+PROFILE構造体から、データチャンネルchでの分光器上チャンネル位置を求める。
+戻り値）
+データチャンネルchでの分光器上チャンネル位置。
+解説）
+　チャンネル数の数え方は、実際のデータがある点の端が
+１からprofile.be_status.data_chまで、分光器のデータがある点が
+１からprofile.be_status.be_chまでとなるような数え方である。
+チャンネル位置中央に対応するチャンネル位置である。
+現在のバージョンではオーバーラップのないbinningでデータが作られている
+と考えている。例えばorig_ch=1,width=5のとき、データの1chは分光器の3ch、
+データの2chは分光器の8chに対応する。
+製作）
+1992/12/25 半田利弘
+
+名称）
+int STAR_ReadBitMapFlag(ch, bitmap_flag)
+int ch：ビットマップフラグを読みだすチャネル
+char bitmap_flag[]：スペクトルデータのビットマップフラグ部分
+スプリアスビットマップフラグを読みたいときにはこの部分の引き数としてspuriousを、
+ベースライン部分を読みたいときにはbaselineを指定すればよい。
+ヘッダーファイル）
+#include <profhead.h>
+#include <starlib.h>
+機能)
+　引き数で渡されたチャネル（１つ）のスプリアスおよびベースラインのビットマップ
+フラグ部分を読み、フラグビットが立っていれば戻り値として整数１を返し、ビットが
+立っていなければ戻り値０を返す。
+戻り値）
+１：フラグビットが立っている場合
+０：フラグビットが立っていない場合
+解説）
+　この関数は、１チャネル毎に対応するスプリアスまたはベースラインのビットマップ
+フラグ部分を読み込む。フラグの立っている範囲を返すのではない。
+　すべてのチャネルのビットマップフラグを読み取ってフラグ範囲を返す関数は、別に
+STAR_readbitmapflagとして用意されている。
+製作）
+平野尚美 1992/12/22
+
+名称）
+void STAR_WriteBitMapFlag(bitmap_flag, ch, data_ch, flag)
+unsigned char bitmap_flag[];	/* データのビットマップフラグ部分 */
+int ch;		/* フラグを立てるべきチャネル */
+int data_ch;	/* 分光データチャネルの総数 */
+int flag;	/* 立てるべきフラグ値 0またはそれ以外 */
+ヘッダーファイル）
+#include <profhead.h>
+#include <starlib.h>
+機能）
+　フラグを立てるべきチャネルを引き数として受け取り、対応するビットマップフラグ部分に
+flagで指定されたフラグを立てる。
+戻り値）	
+　なし
+引き数）
+bitmap_flag：スペクトルデータのビットマップフラグ部分
+　スプリアスビットマップフラグに書き込む場合にはこの部分の引き数としてspuriousを、
+ベースライン部分を書き込む場合にはbaselineを指定すればよい。
+ch：フラグを立てるべきチャネル。
+data_ch：分光データチャネルの総数
+flag:	立てるべきフラグ値 0またはそれ以外
+解説）
+　chで決められるチャネルのビットマップフラグ部分をflagで指定された値にする。
+０ならばoffにそれ以外ならばONにする。
+製作）
+平野尚美 1992/12/22
+半田利弘 1992/12/24 引き数型の一部変更
+半田利弘 1993/1/8 引き数の一部変更
+
+名称）
+void STAR_RWriteBitMapFlags(bitmap_flag, ch_range, data_ch, flag)
+unsigned char bitmap_flag[];	/* データのビットマップフラグ部分 */
+RANGE_long ch_range;		/* フラグ範囲（大小関係不問） */
+int data_ch;		/* 分光データチャネルの総数 */
+int flag;	/* 立てるべきフラグ値 0またはそれ以外 */
+ヘッダーファイル）
+#include <profhead.h>
+#include <starlib.h>
+機能）
+　フラグを立てるべきチャネル範囲(ch_minとch_max)を引き数として受け取り、対応する
+ビットマップフラグ部分にflagで指定されたフラグを立てる。
+戻り値）	
+　なし
+引き数）
+bitmap_flag：スペクトルデータのビットマップフラグ部分
+　スプリアスビットマップフラグに書き込む場合にはこの部分の引き数としてspuriousを、
+ベースライン部分を書き込む場合にはbaselineを指定すればよい。
+ch_range.min, ch_range.max：フラグを立てるべきチャネルの範囲
+		必ずしもch_range.min < ch_range.maxである必要は無い。
+data_ch：分光データチャネルの総数
+flag:	立てるべきフラグ値 0またはそれ以外
+解説）
+　１組のch_minとch_maxで決められるチャネル範囲のビットマップフラグ部分をflagで
+指定された値にする。０ならばoffにそれ以外ならばONにする。ch_minとch_maxの大小関係は、
+関数内でならべかえをしているので任意でよい。１回のcallでは、１つの範囲のビットマップ
+フラグの書き込みしかできない。
+製作）
+平野尚美 1992/12/22
+半田利弘 1992/12/24 引き数型の一部変更
+半田利弘 1993/1/8 関数名・引き数の一部変更
+
+名称）
+void STAR_SortRange(range)
+RANGE	*range;
+ヘッダーファイル）
+#include <profhead.h>
+#include <starlib.h>
+機能）
+範囲を示すRANGE構造体の内容のソート
+製作）
+半田利弘　1992/12/21
+
+名称）
+void STAR_SortRangeLong(range)
+RANGE_long	*range;
+ヘッダーファイル）
+#include <profhead.h>
+#include <starlib.h>
+機能）
+範囲を示すRANGE_long構造体の内容のソート
+製作）
+半田利弘　1992/12/21
+
+名称）
+void STAR_SortBoxRange(box_range)
+BOX_RANGE	*box_range;
+ヘッダーファイル）
+#include <profhead.h>
+#include <starlib.h>
+機能）
+範囲を示すBOX_RANGE構造体の内容のソート
+製作）
+半田利弘　1992/12/21
+
+名称）
+void STAR_SortBoxRangeLong(box_range)
+BOX_RANGE_long	*box_range;
+ヘッダーファイル）
+#include <profhead.h>
+#include <starlib.h>
+機能）
+範囲を示すBOX_RANGE_long構造体の内容のソート
+製作）
+半田利弘　1992/12/21
+
+名称）
+double STAR_CalcRms(profile,ch_range);
+PROFILE *profile;	プロファイル
+RANGE_long ch_range;	rms計算を行なうチャネル範囲
+ヘッダーファイル）
+#include <profhead.h>
+#include <starlib.h>
+機能）
+プロファイルデータのrmsを計算する。
+戻り値）
+計算されたrmsノイズレベルの値。double型。
+ただし、計算に必要なチャンネル数が得られていない場合には0.0を返す
+この関数の中で使用している関数）
+	int STAR_ReadBitMapFlag	:	ビットマップフラグ読み取り関数。
+	void STAR_SortRangeLong	:	２つの整数の大小関係の並べ変え
+解説）
+rms を計算するレンジについて
+1)　ch_range.min, ch_range.maxに 0,0 以外の値が渡された場合。
+　ch_range.minまたはch_range.maxのどちらかに負の値が入っていると、
+両方とも０にセットする。　ch_range.minまたはch_range.maxのどちらかに
+正の値が入っていると、ch_range.minからch_range.maxの範囲でrmsの計算を行なう。
+引き数として渡されるch_range.minとch_range.maxの大小関係は、任意でよい。
+関数内部で大小関係を並べ変えて処理している。もし、分光データの全チャネル数
+よりも大きな値が渡された場合には、分光データの最後のチャネルがch_range.max
+となる。
+　ch_range.min, ch_range.maxに数値が渡された場合には、ベースライン
+フィッティングレンジの如何にかかわらず、ここで規定される範囲で計算が
+行なわれる。
+　ベースラインフィッティングレンジを用いて計算させるときには、必ず
+ch_range.min, ch_range.maxとも０にセットしておく必要がある！
+2)　ch_range.min, ch_range.maxが 0,0 の場合
+　まず、ベースラインビットマップフラグを読み取り、フラグの立っている部分
+（すなわちベースラインフィットに用いた部分）でrmsの計算を行なう。
+　もし、ベースラインフィットが行なわれていないデータの場合、全分光データの
+端から1/4～1/8 (2048チャネルの場合、256 ch～512 ch) を計算に用いる。
+分光データ数が著しく少なく、1/4～1/8が１チャネルにも満たないような場合には、
+rmsとして０を返す。
+　1),2) いずれの場合にもスプリアスフラグのチェックは行なっており、フラグの
+立っているものは計算には用いていない。
+製作）
+平野尚美 1992/12/22
+半田利弘 1992/12/24 引き数型の変更
+半田利弘 1993/ 1/19 計算失敗時の戻り値の変更(9999.0-->0.0)
+
+名称）
+int	index_headin(default_sdbname)
+char *default_sdbname;	デフォルトの.sdbファイル名
+ヘッダーファイル）
+#include <profhead.h>
+#include <starlib.h>
+機能）
+パイプライン（.sdbパイプ流）からデフォルトの.sdbファイル名を取得する。
+解説）
+.sdbパイプ流は.sdbファイルと異なり、先頭にパイプ識別子とデフォルトファイル名が
+流されている。これから、パイプ流を.sdbであるか確認し、下流で使われる（例えば
+idxsave）であろうデフォルトのファイル名を取得する。パイプラインから
+.sdbパイプ流を取得する際にはindex_load(stdin,scn_filename)のループ前に、
+この関数を１回だけ呼んでおくこと。
+製作）
+半田利弘 1992/12/21
+
+名称）
+int	index_headout(default_sdbname)
+char *default_sdbname;	デフォルトの.sdbファイル名
+ヘッダーファイル）
+#include <profhead.h>
+#include <starlib.h>
+機能）
+パイプライン（.sdbパイプ流）へデフォルトの.sdbファイル名を流しだす。
+解説）
+.sdbパイプ流は.sdbファイルと異なり、先頭にパイプ識別子とデフォルトファイル名が
+流されている。このため、パイプ流に識別子を流しだし、下流で使われる（例えば
+idxsave）であろうデフォルトのファイル名を流す。パイプラインへ
+.sdbパイプ流を流しだす際にはindex_save(stdout,scn_filename)のループ前に、
+この関数を１回だけ呼んでおくこと。
+製作）
+半田利弘 1992/12/21
+
+名称）
+int	profile_in(profile)
+PROFILE *profile;
+ヘッダーファイル）
+#include <profhead.h>
+#include <starlib.h>
+機能）
+パイプラインからPROFILE構造体profileを取得する。
+解説）
+profile_loadがファイルから読み込むのに対して、パイプラインから
+読み込む。ただし、実際にはパイプライン上のイメージとファイル上での
+イメージは異なるためprofile_in(&profile)とprofile_load(stdin,&profile)と
+は異なる結果を生じる。パイプラインからの入力に後者は用いないこと。
+製作者）
+半田利弘　1992/12/20
+
+名称）
+int	profile_out(profile)
+PROFILE *profile;
+ヘッダーファイル）
+#include <profhead.h>
+#include <starlib.h>
+機能）
+パイプラインへPROFILE構造体profileを送出する。
+解説）
+profile_saveがファイルへ書き込むのに対して、パイプラインへ書きだす。
+ただし、実際にはパイプライン上のイメージとファイル上での
+イメージは異なるためprofile_out(&profile)とprofile_save(stdout,&profile)と
+は異なる結果を生じる。パイプラインへの出力に後者は用いないこと。
+製作者）
+半田利弘　1992/12/20
+
+名称）
+int	STAR_AddHistory(PROFILE *profile, HISTORY *history)
+ヘッダーファイル）
+#include <profhead.h>
+#include <starlib.h>
+機能）
+historyに設定した１ステップのプロファイル処理ヒストリーをprofileに写し、他の
+ヘッダー情報との整合性を取る。
+戻り値）
+０：正常終了
+100:ヒストリィーステップが多すぎる
+解説）
+profileのヒストリー部分を追加するにあたっては、単にprofile.historyを
+修正するだけでなく、他の部分も整合性を持つように変更しなければならない。
+そこで、HISTORY構造体historyに１ステップ分の処理ヒストリーを設定して、
+この関数を呼ぶだけで、profileに該当ヒストリーを記録すると共に
+他のヘッダー部分も正しく修正がかかるようにしている。
+historyにはhistory.stepに処理ステップ名をc-string（７文字以内）を、
+各history.prm[]にパラメータをc-string（１６文字以内）を書き、
+history.sizeにhistory.prm[]に設定した行数を書けばよい。
+history.prm[]を書き込む必要がなくhistory.stepのみ追加すればよい（"END"など）
+の場合にはhistory.size=0とすればよい。例えば
+strcpy(history.step,"BSFIT");
+strcpy(history.prm[0],"Ta*=A+B*ch");
+sprintf(history.prm[1],"A=%8f",a);
+sprintf(history.prm[2],"B=%8f",b);
+history.size=3;
+とすればBSFITのヒストリーが正しく設定できる。
+また、history.stepには"END"も対応しているので、複数ステップの書き込みを
+繰り返してから、
+strcpy(history.step,"END");
+history.size=0;
+としてSTAR_AddHitory呼び出せば正しいhistoryがprofileに記録される。
+profile_save時点では"END"のチェックは行なわないので、その直前に必ず"END"
+ステップの追加をこの関数を用いて行なうこと。
+なお、history.timeは本関数中で自動的に時計を調べて記入するので
+なにも代入しておかなくともよい。c-stringのサイズチェックは行なっていないので、
+stepの７文字、prm[]の１６文字をはみ出る恐れがある場合には、
+strncpy(history.prm[0],abc,16);などを用いること。この場合、17文字目
+(history.prm[16])には自動的にNULLが設定されている。stepについても同様。
+製作）
+1992/12/11　半田利弘
+
+名称）
+int	index_load(fp_index,filename,flag)
+FILE	*fp_index;	
+char	*filename;
+unsigned short	flag;
+ヘッダーファイル）
+#include	<stdio.h>
+#include	<string.h>
+#include	<profhead.h>
+#include	<starlib.h>
+機能）
+fp_index に "rb" mode でオープンされた scan index file から一行を読み、ファイル名、フラッグを代入する。flag の値は "good" のとき 0, "bad" のとき 1 である。 
+返値）
+	0	:	正常終了
+	100	:	EOF を検出した
+	201	:	field の数が正しくない（少ない）
+	202	:	field の数が正しくない（多い）
+	301	:	flag の表示が正しくない
+解説）
+読まれるべきファイルは、ファイル名,フラッグ値がタブ又は空白で区切られ、列挙されている形であるとする。
+例：
+/var/home/europa/00011387.scn   good
+/var/home/europa/00011388.scn   good
+00011389.scn   bad
+言うまでもなく、返り値からエラーを判定する場合、100 と 201 は別扱いすべきである。即ち 100 は file read ループを終了する条件として使用すべきであり、201 は flagging をまだ行なっていない（フラッグの値が書かれていない）ファイルを読んだものとして黙認すべきである。
+フラッグ値の判定にはその一文字目だけを使用し、それが "g","G" or "0" のときは flag=0 が、"b","B" or "1" のときは flag=1 が代入される。
+フラッグ値が未定の場合には flag=0 が代入される。
+　例に示したように、絶対パスで指定したものと、環境変数STAR_DATAからの相対パス
+で指定したものとが混在していてもよい。ただし、データの可搬性を考えた場合には
+（UNIXのtarと同様）STAR_DATAからの相対パスにすべきである。
+　フラグはstarlib.hで定義しているマクロ変数GOOD_SCAN,BAD_SCANを使うべきである。
+製作）
+1992/12/1	岡　朋治
+
+名称）
+int	index_save(fp_index, filename, flag)
+FILE	*fp_index;
+char	*filename;
+unsigned short	flag;
+ヘッダーファイル）
+#include	<stdio.h>
+#include	<string.h>
+#include	<profhead.h>
+#include	<starlib.h>
+機能）
+fp_index に "wb" mode でオープンされた scan index file へファイル名、フラッグ値を一行書き込む。
+返値）
+	0	:	正常終了
+	101	:	flag の値が正しくない。(0 or 1 以外)
+解説）
+フラッグ値として flag=0 のときは "good" を、flag=1 のときは "bad" を書き込む。
+それ以外の値が与えられた場合、関数はその行を書かずスキップする。
+　絶対パスで指定したものと、環境変数STAR_DATAからの相対パスで指定したものとが
+混在していてもよい。ただし、データの可搬性を考えた場合には
+（UNIXのtarと同様）STAR_DATAからの相対パスにすべきである。
+　フラグはstarlib.hで定義しているマクロ変数GOOD_SCAN,BAD_SCANを使うべきである。
+製作）
+1992/12/1	岡　朋治
+
+名称）
+void     STAR_DividePrmRecord(char *record, char *keyword, char *value)
+ヘッダーファイル
+#include <profhead.h>
+#include <starlib.h>
+機能）
+パラメータファイル中のfgets()などで取り込まれた１レコードrecordを「＝」で
+区切った２つの部分keyword,valueに分ける。
+戻値）
+なし。
+解説）
+パラメータファイルの１行は「＝」で区切られたキーワードと値からなる
+（「＝」と値部分がない場合もある）。そこでこの２つを分けるために使う関数が
+これである。fgets()で取得した文字列recordをこの関数により分割し、「keyword」
+と「value」に分割し、処理するとパラメータファイルの解釈の際に便利である。
+分割に際して行先頭部の（半角）空白とタブおよび「＝」の前後の（半角）空白と
+タブも切り捨てられる。また、行末部分の「/*」で始まるコメント部分および
+その直前の（半角）空白とタブも同様である。タブや空白はそれらのセットとして
+連続しているものはすべて切り捨ての対象となる。キーワードや値の途中にある
+空白やタブはそのまま保存される。また、fgets()での行末の改行\nの切り捨ても
+この関数で行なっている。入出力として例えば以下のようになる。
+record                  ---> keyword          value
+abc=1  /* sample record ---> abc              1
+abc  =  4/*kdfjd        ---> abc              4
+  ab = ed               ---> ab               ed
+ ab c= d   e            ---> ab c             d   e
+したがって、キーワード検索の場合パラメータファイルの先頭部の空白や「＝」
+直前の空白部分を考慮することなくstrcmp(keyword,"KEYWORD")などで目的のキー
+ワードを含む行を正しく選択し、コメントに煩わされることなく、strcpy(aa,value)
+やaa=atof(value)などを用いて、その値を得ることができる。valueは文字列である
+ことに注意。
+製作者　半田利弘　1992/11/27
+
+名称）
+int     STAR_StdFileExtName(char *env_name,char *filename_main,
+char *full_filename, char *extension)
+ヘッダーファイル
+#include <profhead.h>
+#include <starlib.h>
+機能）
+環境変数env_name、ファイル名主要部filename_main、ファイル名拡張子部分extension
+から完全なファイル名full_filenameを作りだす。
+戻値）
+０　完全なファイルがうまくできた場合。
+５００１　完全なファイル名が長すぎる。
+解説）
+STARの各種のファイルは環境変数で指定されるディレクトリィ部分と
+規定された拡張子部分を持つ。ファイル名主要部は必要に応じて色々な名前を
+持つがこれのみを入力してもらっても環境変数指定部分と拡張子部分とを
+付け加えないと正しいファイルにアクセスできない。この関数を用いることにより、
+アクセスすべき完全なファイル名を容易に作ることができる。
+env_nameは取りだすべき環境変数名を与える。環境変数で設定されている値では
+なく環境変数名自体を指定することに注意。拡張子はファイル名主要部に付加すべき
+部分すべてを指定する必要がある。例えば、.scnならば「.」も必要である。
+関数は指定された環境変数を調べ、その内容が設定されていればファイル名主要部に
+付加する。また、ファイル名主要部の末尾を調べ、指定された拡張子と合わない場合は
+それを付加する。これによって、標準スキャンデータファイルやパラメータファイル
+名を容易に作ることができる。例えばSTAR_StdFileExtName("STAR_PARM",file_name,1
+std_file_name,".prm");と指定することで、file_nameで簡単に指定したファイル名から
+完全なファイル名を作ることができる。
+　setenv STAR_PARM /abc
+としてstrcpy(file_name,"efg");であればstd_file_nameは"/abc/efg.prm"となり、
+strcpy(file_name,"efgh.prm");であれば"/abc/efgh.prm"となる。また、ファイル名
+主要部が絶対パス指定の場合は環境変数の付加は行なわない。また、環境変数の
+値の末尾が「/」であっても正常に機能する。
+製作）
+　半田利弘　1992/11/27
+
+名称）
+int STAR_StdBakFileName(char *org_file_name, char *bak_file_name,
+int backup_ver,char *extension)
+ヘッダーファイル）
+#include <profhead.h>
+#include <starlib.h>
+機能）
+標準バックアップファイルの完全名を作る。
+戻値）
+０　完全なファイルがうまくできた場合。
+５００１　完全なファイル名が長すぎる。
+解説）
+org_file_nameで指定されたファイル名を元にSTAR標準命名規約に従った
+バックアップファイル名bak_file_nameを生成する。この場合バックアップの番号は
+backup_verで指定された値をとり、org_file_nameの前半と拡張子部分との間に
+数字として差し込まれる。この関数は環境変数や標準拡張子部分の自動設定や
+環境変数によるディレクトリィ追加はしないのでその部分はSTAR_StdFileExtName()
+などでorg_file_nameを正しく設定しておく必要がある。
+製作者　半田利弘　1992/11/27
+
+名称）
+int     profile_plot(Display *dis, Window  win, XY_SIZE box_size,
+ XY_POS  orig_pos, int *x_unit, RANGE x_range, RANGE T_range,
+ PROFILE *profile, char line_color[], char label_color[])
+ヘッダーファイル）
+#include <X11/Xlib.h>
+#include <X11/Xutil.h>
+#include <profhead.h>
+#include <starlib.h>
+#include <starXlib.h>
+機能）
+あらかじめDisplay型変数で指定してあるdisplayに、
+あらかじめWindow型変数で指定してあるウィンドゥを表示して
+PROFILE型変数のプロファイルデータを表示する。
+戻値）
+　　０　正常終了
+　１０　x_rangeで指定してある最大値が最小値よりも小さいので入れ替えた。
+　１１　x_rangeで指定してある最大値が最小値と等しい。
+　２０　T_rangeで指定してある最大値が最小値よりも小さいので入れ替えた。
+　２１　T_rangeで指定してある最大値が最小値と等しい。
+解説）
+Display,WindowはXlib標準の型なので、事前にアロケート用のXlib関数で、値を
+確保しておくこと。/home/star/display.cを参考にするとよい。
+プロファイルを表示する枠の大きさと位置はウィンドゥサイズに対する相対値
+で指定する。1.0はウィンドウ全体を意味する。したがって、ウィンドゥの大きさ
+が異なると自動的に拡大縮小された枠サイズになる。変数の型は
+/home/star/h/starlib.hを見ること。
+横軸のディメンジョン（チャンネルか速度かそれ以外か）はx_unitで
+指定できる様にする予定であるが、現在はチャンネルに限られる。
+表示範囲はRANGE型（/home/star/h/starlib.h参照）で縦横とも指定する。
+プロファイルの線の色名、枠とラベルの色をＸ標準色名でc-stringsで指定する。
+背景は白で固定してある。"blue","black"などがよい。色名については
+わからない場合はxcolorsなどで調べるとよい。
+製作）
+岡朋治　　1992/9/?
+半田利弘　1992/9/9
+
+名称）
+int     profile_load(FILE *file_p, PROFILE *profile)
+ヘッダーファイル）
+#include <profhead.h>
+#include <starlib.h>
+機能）
+あらかじめopenしてあるFILE型変数で指定されたファイルから
+STAR標準形式のプロファイルデータを、PROFILE型変数に読み込む。
+戻値）
+　　０　ファイルをうまく読んだ場合、
+　　１　パイプラインが詰まっている（上流処理でエラーが出て処理が
+	止まっている）場合に流れてくる「がらくたデータ（garbage data）」の場合、
+１０１　historyのステップ数が想定されている数より多いために読み込みに
+	失敗した場合、
+１０２　historyの中に行数が想定されているよりも多いものが含まれているために
+	読み込みに失敗した場合、
+１１１　historyステップ数で想定される位置にENDステップが記述されていないために
+	読み込みに失敗した場合、
+９９９　STAR標準形式ではないファイルを読み込んでしまった場合。
+解説）
+プログラム外部から、プログラム内のメモリーへSTAR標準プロファイルデータを
+読み込む際に用いる。ただし、STARの標準仕様として、原則として、プログラムは
+データを標準入力から読み込むことになっているので、
+profile_in(&profile);
+となる場合がほとんどと考えられる（ただし、PROFILE profileとして、プロファイル
+構造体の変数profileが定義されているとする）。ファイルとの接続はコマンド
+loadを呼び出すことで行なうこと。(/home/star/bin/readme.doc参照）
+読み込まれたデータはPROFILE型構造体に入っている。構造体の内部は
+/home/star/h/profhead.h
+を参照のこと。それぞれの値には、例えば
+profile.data[ii]とかprofile.sys_head.l_fileとか、profile.be_status.data_ch
+とかの変数名でアクセスできる。
+ヘッダーのみ読み込めば十分で、データには一切触れない場合には、代わりに
+prfhead_loadを用いたほうが、ファイル読み込みバイト数の違う分だけ処理が
+速くなる。
+製作）
+半田利弘　1992/8/27
+半田利弘　1993/9/30 文章改訂
+
+名称）
+int     prfhead_load(FILE *file_p, PRF_HEADER *prfhead)
+ヘッダーファイル）
+#include <profhead.h>
+#include <starlib.h>
+機能）
+あらかじめopenしてあるFILE型変数で指定されたファイルから
+STAR標準形式のプロファイルデータのヘッダー部分（HISTORYよりも
+前、２つのビットマップとデータ本体は含まない）のみを、
+PRF_HEADER型変数に読み込む。
+戻値）
+　　０　ファイルをうまく読んだ場合、
+　　１　パイプラインが詰まっている（上流処理でエラーが出て処理が
+	止まっている）場合に流れてくる「がらくたデータ（garbage data）」の場合、
+１０１　historyのステップ数が想定されている数より多いために読み込みに
+	失敗した場合、
+１０２　historyの中に行数が想定されているよりも多いものが含まれているために
+	読み込みに失敗した場合、
+１１１　historyステップ数で想定される位置にENDステップが記述されていないために
+	読み込みに失敗した場合、
+９９９　STAR標準形式ではないファイルを読み込んでしまった場合。
+解説）
+プログラム外部から、プログラム内のメモリーへSTAR標準プロファイルデータの
+ヘッダー部分のみを読み込む際に用いる。データまでフルに処理する必要がある場合は
+profile_loadないしprofile_inを用いること。
+読み込まれたデータはPRF_HEADER型構造体に入っている。構造体の内部は
+/home/star/h/profhead.h
+を参照のこと。それぞれの値には、例えば
+prfhead.data[ii]とかprfhead.sys_head.l_fileとか、prfhead.be_status.data_ch
+とかの変数名でアクセスできる。
+製作）
+半田利弘　1993/9/30
+
+
+名称）
+int     profile_save(FILE *file_p,PROFILE *profile)
+ヘッダーファイル
+#include <profhead.h>
+#include <starlib.h>
+機能）
+あらかじめopenしてあるFILE型変数で指定されたファイルに、
+PROFILE型変数で表現されているSTAR標準形式のプロファイルデータを書きだす。
+戻値
+　　０　ファイルをうまく読んだ場合、
+　　１　パイプラインが詰まった（エラーが出て正しいプロファイルデータを下流に
+	送れない）場合に「がらくたデータ（garbage data）」を流した場合、
+９９９　変数の内容がSTAR標準形式ではない場合。
+解説）
+プログラム内のメモリーから、プログラム外部へSTAR標準プロファイルデータを
+書きだす際に用いる。ただし、STARの標準使用として、原則として、プログラムは
+データを標準出力へ書きだすことになっているので、
+profile_out(&profile);
+となる場合がほとんどと考えられる（ただし、PROFILE profileとして、プロファイル
+構造体の変数profileが定義されているとする）。ファイルとの接続はコマンド
+saveを呼び出すことで行なうこと。(/home/star/bin/readme.doc参照）
+書きだすデータはPROFILE型構造体にいれておく。構造体の内部は
+/home/star/h/profhead.h
+を参照のこと。それぞれの値には、例えば
+profile.data[ii]とかprofile.sys_head.l_fileとか、profile.be_status.data_ch
+とかの変数名でアクセスできる。
+後段のパイプライン処理の都合を考えて、後段へ送るべきプロファイルデータの
+生成に失敗した場合にはプロファイルデータの代わりにダミーとなる「がらくた
+データ(garbage data）」を送るべきである。「がらくたデータ」は
+ profile.sys_head.l_file=0;
+として送れば（ profile_out(&profile); すれば）よい。
+その場合には戻り値１で正常である。
+製作）
+半田利弘　1992/8/27
+半田利弘　1993/9/30 文章改訂
+
+名称）
+void STAR_AutoScale(RANGE orig_range,RANGE *ceil_range,
+int *n_step, double *step)
+ヘッダーファイル
+#include <X11/Xlib.h>
+#include <X11/Xutil.h>
+#include <profhead.h>
+#include <starlib.h>
+#include <starXlib.h>
+機能）
+指定した範囲を含む最小の切りのよい値の範囲を求める。
+戻値）
+　なし。
+解説）
+グラフのtickマークやラベルをつける際に有益な関数である。displayでの
+グラフの縦軸の目盛・ラベル、横軸のラベルを考えてもらうと理解しやすい
+であろう。
+RANGE型変数(orig_range)で指定された範囲を含む切りの良い最小の範囲を求め
+RANGE型変数(*ceil_range)に返す。ここで、「切りの良い範囲」とは、有効数字
+があまり多くとも正確であるという意味である。この関数では、範囲の大きさ
+から切りがよいかどうかを判断しているので、有効数字が多少大きくなることが
+あるが、範囲の大きさが有効数字１桁程度で正確に表現できるという意味である。
+また、このとき、その間隔を等分する目盛の数（両端を含む）(*n_step)と間隔
+stepも同時に求めている。
+範囲としては、１以上でも１未満でも、正でも負でも対応している。
+製作）
+半田利弘　1992/9/9
+
+名称）
+void STAR_SetPixelScale(BOX_RANGE rel_box, BOX_RANGE_long pix_box)
+ヘッダーファイル）
+#include <X11/Xlib.h>
+#include <X11/Xutil.h>
+#include <profhead.h>
+#include <starlib.h>
+#include <starXlib.h>
+機能）
+グラフ表示のための仮想座標（物理量座標）を定義する。
+戻値）
+　なし。
+解説）
+グラフ作成にあたって、プロットすべき物理量と画面とのdotとの対応を
+毎回計算するのは手間である。そこで、この関数によって、仮想座標（物理量座標）
+を定義し、以下の２つの関数STAR_PixelPosition();とSTAR_PositionPixel();
+とを使えば、この換算は容易になるであろう。BOX_RANGE型およびBOX_RANGE_long
+型は/home/star/h/starlib.hを参照のこと。この関数は上記の２つの関数を使う
+場合には必ず事前に呼び出しておくこと。仮想座標の変更を行なわないかぎり、
+本関数の呼び出しは１回行なえばよい。
+/home/star/lib/ProfileShow.cのprofile_plot()が使用例となろう。
+製作）
+半田利弘　1992/9/9
+
+名称）
+void STAR_PixelPosition(XY_POS_long pix_pos, XY_POS *rel_pos)
+ヘッダーファイル
+#include <X11/Xlib.h>
+#include <X11/Xutil.h>
+#include <profhead.h>
+#include <starlib.h>
+#include <starXlib.h>
+機能）
+pixel値から物理量値を求める。
+戻値）
+　なし。
+解説）
+グラフ作成にあたって、プロットすべき物理量と画面とのdotとの対応を
+毎回計算するのは手間である。そこで、STAR_SetPixelScale()関数によって、
+定義した仮想座標（物理量座標）に基づいて画面pixel位置から対応する物理量を
+求めることができる。
+製作）
+半田利弘　1992/9/9
+
+名称）
+void STAR_PositionPixel(XY_POS rel_pos, XY_POS_long *pix_pos)
+ヘッダーファイル）
+#include <X11/Xlib.h>
+#include <X11/Xutil.h>
+#include <profhead.h>
+#include <starlib.h>
+#include <starXlib.h>
+機能）
+物理量値からpixel値を求める。
+戻値）
+　なし。
+解説）
+グラフ作成にあたって、プロットすべき物理量と画面とのdotとの対応を
+毎回計算するのは手間である。そこで、STAR_SetPixelScale()関数によって、
+定義した仮想座標（物理量座標）に基づいて、物理量から対応する画面pixel位置を
+求めることができる。/home/star/lib/ProfileShow.cのprofile_plot()が使用例と
+なろう。
+製作）
+半田利弘　1992/9/9
+
+名称）
+unsigned long MyColor(Display *display, char color[])
+ヘッダーファイル）
+#include <X11/Xlib.h>
+#include <X11/Xutil.h>
+#include <profhead.h>
+#include <starlib.h>
+#include <starXlib.h>
+機能）
+カラーパレットを確保する。
+戻値）
+カラーパレットを表す番号。
+解説）
+Ｘウィンドゥでのカラー表示を行なうため、標準色名から対応するパレットを確保し、
+その番号を返す。詳しくは日刊工業新聞社のX11の解説書を見よ。
+製作者
+岡朋治　1992/9/?
+
+名称）
+void    STAR_CopyProfile(out_prf,in_prf)
+PROFILE *out_prf;       コピー先のプロファイル
+PROFILE *in_prf;        コピー元のプロファイル
+ヘッダーファイル）
+#include <profhead.h>
+#include <starlib.h>
+機能）
+　PROFILE型構造体をコピーする。
+解説）
+　ヘッダー付きSTAR標準プロファイルデータである、
+PROFILE型構造体をコピーする。
+製作）
+半田利弘 1993/6/16
+
+名称）
+void	STAR_CopySyshead(out_sys_head,in_sys_head)
+SYS_HEAD  *out_sys_head;  コピー先のシステムヘッダー
+SYS_HEAD  *in_sys_head;   コピー元のシステムヘッダー
+ヘッダーファイル）
+#include <profhead.h>
+#include <starlib.h>
+機能）
+　SYS_HEAD型構造体をコピーする。
+解説）
+　PROFILE型構造体の一部であり、それの形式を規定するヘッダー部分
+であるSYS_HEAD型構造体をコピーする。
+製作）
+半田利弘 1993/6/16
+
+名称）
+void    STAR_CopyObject(out_object,in_object)
+OBJECT  *out_object;   コピー先の天体名ヘッダー
+OBJECT  *in_object;    コピー元の天体名ヘッダー
+ヘッダーファイル）
+#include <profhead.h>
+#include <starlib.h>
+機能）
+　OBJECT型構造体をコピーする。
+解説）
+　PROFILE型構造体の一部であり、天体名などを記述するヘッダー部分
+であるOBJECT型構造体をコピーする。
+製作）
+半田利弘 1993/6/16
+
+名称）
+void    STAR_CopyObsprm(out_obs_prm,in_obs_prm)
+OBS_PRM *out_obs_prm；  コピー先の天体名ヘッダー
+OBS_PRM *in_obs_prm;    コピー元の天体名ヘッダー
+ヘッダーファイル）
+#include <profhead.h>
+#include <starlib.h>
+機能）
+　OBS_PRM型構造体をコピーする。
+解説）
+　PROFILE型構造体の一部であり、観測パラメータを記述するヘッダー部分
+であるOBS_PRM型構造体をコピーする。
+製作）
+半田利弘 1993/6/16
+
+名称）
+void    STAR_CopyAntstatus(out_ant_status,in_ant_status)
+ANT_STATUS      *out_ant_status;  コピー先のアンテナ状態ヘッダー
+ANT_STATUS      *in_ant_status;   コピー元のアンテナ状態ヘッダー
+ヘッダーファイル）
+#include <profhead.h>
+#include <starlib.h>
+機能）
+　ANT_STATUS型構造体をコピーする。
+解説）
+　PROFILE型構造体の一部であり、アンテナの状態を記述するヘッダー部分
+であるANT_STATUS型構造体をコピーする。
+製作）
+半田利弘 1993/6/16
+
+名称）
+void    STAR_CopyBestatus(out_be_status,in_be_status)
+BE_STATUS       *out_be_status;  コピー先のバックエンド状態ヘッダー
+BE_STATUS       *in_be_status;   コピー元のバックエンド状態ヘッダー
+ヘッダーファイル）
+#include <profhead.h>
+#include <starlib.h>
+機能）
+　BE_STATUS型構造体をコピーする。
+解説）
+　PROFILE型構造体の一部であり、バックエンドの状態を記述する
+ヘッダー部分であるBE_STATUS型構造体をコピーする。
+製作）
+半田利弘 1993/6/16
+
+名称）
+void    STAR_CopyObslog(out_obs_log,in_obs_log)
+OBS_LOG *out_obs_log;  コピー先の観測状況ヘッダー
+OBS_LOG *in_obs_log;   コピー元の観測状況ヘッダー
+ヘッダーファイル）
+#include <profhead.h>
+#include <starlib.h>
+機能）
+　OBS_LOG型構造体をコピーする。
+解説）
+　PROFILE型構造体の一部であり、観測状況を記述するヘッダー部分
+であるOBS_LOG型構造体をコピーする。
+製作）
+半田利弘 1993/6/16
+
+名称）
+void    STAR_CopyHistory(out_history,in_history)
+HISTORY         *out_history;   コピー先の処理履歴ヘッダー
+HISOTRY         *in_history;    コピー元の処理履歴ヘッダー
+ヘッダーファイル）
+#include <profhead.h>
+#include <starlib.h>
+機能）
+　HISOTRY型構造体をコピーする。
+解説）
+　PROFILE型構造体の一部であり、処理履歴を記述するヘッダー部分
+であるHISOTRY型構造体をコピーする。
+製作）
+半田利弘 1993/6/16
+
+名称）
+void    STAR_CopySpurious(data_ch,out_spurious,in_spurious)
+unsigned int    data_ch;         有効データ数
+unsigned char   *out_spurious;   コピー先のスプリアスフラグ配列
+unsigned char   *in_spurious;    コピー元のスプリアスフラグ配列
+ヘッダーファイル）
+#include <profhead.h>
+#include <starlib.h>
+機能）
+　スプリアスフラグ配列をコピーする。
+解説）
+　PROFILE型構造体の一部であり、スプリアスの状況を記述する
+スプリアスフラグ配列をコピーする。
+製作）
+半田利弘 1993/6/16
+
+名称）
+void    STAR_CopyBaseline(data_ch,out_baseline,in_baseline)
+unsigned int    data_ch;         有効データ数
+unsigned char   *out_baseline;   コピー先のベースラインフラグ配列
+unsigned char   *in_baseline;    コピー先のベースラインフラグ配列
+ヘッダーファイル）
+#include <profhead.h>
+#include <starlib.h>
+機能）
+　ベースラインフラグ配列をコピーする。
+解説）
+　PROFILE型構造体の一部であり、ベースラインの状況を記述する
+ベースラインフラグ配列をコピーする。
+製作）
+半田利弘 1993/6/16
+
+名称）
+void    STAR_CopyProfdata(data_ch,out_data,in_data)
+unsigned int    data_ch;         有効データ数
+float   *out_data;   コピー先のプロファイルデータ配列
+float   *in_data;    コピー元のプロファイルデータ配列
+ヘッダーファイル）
+#include <profhead.h>
+#include <starlib.h>
+機能）
+　プロファイルデータ配列をコピーする。
+解説）
+　PROFILE型構造体の一部であり、観測されたをプロファイルデータ
+記述するプロファイルデータ配列をコピーする。
+製作）
+半田利弘 1993/6/16
+
+
+名称）
+void	PSInitialize(fp, orig, scale, angle)
+FILE	*fp;		/*	出力ファイルのファイルポインタ	*/
+XY_POS	*orig;		/*	ユーザ空間上での原点の位置	*/
+XY_POS	*scale;		/*	座標値の倍率	*/
+double	angle;		/*	座標の回転角度	*/
+機能）
+ポストスクリプト出力の初期設定部分を、指定されたストリームに出力する。
+解説）
+具体的にはポストスクリプトファイルのヘッダ部分と共に、使用するユーザ座標の原点・倍率・回転角を指定する部分を指定されたストリームに出力する。
+製作）
+岡　朋治	1994/6/28
+
+
+名称）
+void	PSDrawLine(fp, xy1, xy2, width)
+FILE	*fp;		/*	出力ファイルのファイルポインタ	*/
+XY_POS	*xy1;		/*	ユーザ空間上での始点の座標値	*/
+XY_POS	*xy2;		/*	ユーザ空間上での終点の座標値	*/
+double	width;		/*	描画する線幅	*/
+機能）
+指定された二点を結ぶ直線を描くポストスクリプト出力を、指定されたストリームに出力する。
+解説）
+二つのXY_POS構造体xy1, xy2で、それぞれ直線の始点・終点を指定する。
+直線の太さはwidthで指定するが、これは座標値と同様、PSInitialize()で指定されたscaleの影響を受ける。
+製作）
+岡　朋治	1994/6/28
+
+
+名称）
+void	PSDrawRectangle(fp, xy1, xy2, width)
+FILE	*fp;		/*	出力ファイルのファイルポインタ	*/
+XY_POS	*xy1;		/*	ユーザ空間上での左下角の座標値	*/
+XY_POS	*xy2;		/*	ユーザ空間上での右上角の座標値	*/
+double	width;		/*	描画する線幅	*/
+機能）
+指定された二点を対角とする長方形を描くポストスクリプト出力を、指定されたストリームに出力する。
+解説）
+二つのXY_POS構造体xy1, xy2で、それぞれ長方形の左下角・右下角を指定する。
+直線の太さはwidthで指定するが、これは座標値と同様、PSInitialize()で指定されたscaleの影響を受ける。
+製作）
+岡　朋治	1994/6/28
+
+
+名称）
+void	PSDrawString(fp, xy, text, font, size)
+FILE	*fp;		/*	出力ファイルのファイルポインタ	*/
+XY_POS	*xy;		/*	ユーザ空間上での文字の座標値	*/
+char	text[];		/*	印刷される文字		*/
+char	font[];		/*	使用されるフォント	*/
+short	size;		/*	文字のサイズ	*/
+機能）
+指定された位置に指定された文字を、ストリームにポストスクリプト出力する。
+解説）
+XY_POS構造体xyで文字の位置を、fontで使用されるフォントを、sizeでフォントのサイズを指定する。
+製作）
+岡　朋治	1994/6/28
+
+
+名称）
+void	PSFlush(fp)
+FILE	*fp;
+機能）
+これまでにストリームに出力されたポストスクリプト出力を有効にする。
+解説）
+具体的には "showpage" とコメント文の出力である。
+製作）
+岡　朋治	1994/6/28
+
+
+名称）
+int	general_plot(dis,win,box_size,orig_pos,x_unit_char,x_range,y_range,
+		x_data,y_data,data_num,line_color,label_color,title)
+Display	*dis;		/*ディスプレイ*/
+Window	win;		/*ウィンドウ*/
+XY_SIZE	box_size;	/*ボックスの大きさ（ウィンドウに対する比*/
+XY_POS	orig_pos;	/*ボックスの原点の位置（ウィンドウに対する比*/
+char	x_unit_char[];	/*表示範囲単位指定*/
+RANGE	x_range,	/*表示横軸範囲*/
+	y_range;	/*表示温度範囲*/	
+double	x_data[], 
+	y_data[];	/*データ(XY座標)*/
+int	data_num;	/*総データ数*/
+char	*line_color;	/*プロファイル表示色*/
+char	*label_color;	/*ラベル表示色*/
+char	title[];	/*データ名称*/
+ヘッダーファイル）
+#include <profhead.h>
+#include <starlib.h>
+機能）
+　x_data[], y_data[]で与えられた一般のデータをプロットする。
+戻り値）
+　0:	正常終了
+製作）
+　1994/8/29	岡　朋治
+
+
+名称）
+int	profile_plot2(dis,win,box_size,orig_pos,x_unit,x_range,T_range,
+		profile1,profile2,line_color,label_color)
+Display	*dis;		/*ディスプレイ*/
+Window	win;		/*ウィンドウ*/
+XY_SIZE	box_size;	/*ボックスの大きさ（ウィンドウに対する比*/
+XY_POS	orig_pos;	/*ボックスの原点の位置（ウィンドウに対する比*/
+int	x_unit;		/*表示範囲単位指定 (X_VELOCITY 以外は受け付けない。)*/
+RANGE	x_range,	/*表示横軸範囲*/
+	T_range;	/*表示温度範囲*/	
+PROFILE	*profile1;	/*プロファイルデータ1*/
+PROFILE	*profile2;	/*プロファイルデータ2*/
+char	*line_color;	/*プロファイル表示色*/
+ヘッダーファイル）
+#include <profhead.h>
+#include <starlib.h>
+機能）
+　一つの画面に二つのプロファイルをプロットする
+戻り値）
+　0:	正常終了
+製作）
+　1994/8/29	岡　朋治
+
+

@@ -1,0 +1,482 @@
+/*	Cloud indntify code
+1998/3/17	Tomo OKA	Coding	
+*/
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <math.h>
+
+#include <profhead.h>
+#include <starlib.h>
+#include <fitshead.h>
+
+#define	DEBUG	0
+
+
+typedef struct	{	int	dim;
+			double	peak[MAX_DIMENSION];
+			double	cent[MAX_DIMENSION];
+			double	disp[MAX_DIMENSION];
+			double	lumi;			
+		} CLOUD;
+
+
+int	cloudID();
+long	fill_a_cloud();
+long	fill_2D();
+long	SortFillMatrix();
+int	PhysParams();
+int	OutputCloudParams();
+
+
+
+main(argc,argv)
+int	argc;
+char	*argv[];
+{
+FILE		*fp_in, *fp_out, *fp_cloud;
+int		err_code;
+FITS		fits, fits_new;
+int		ii, jj;
+double		w[MAX_DIMENSION];
+int		dim;
+int		pix[MAX_DIMENSION];
+double		x[MAX_DIMENSION];
+char		in_filename[80];
+char		out_filename[80];
+char		filehead[80];
+char		buffer[80];
+char		*token;
+int		clip;
+double		bound, crit;
+CLOUD		cloud[MAX_DATA_NUM];
+
+
+
+/*	Input FITS filename	*/
+fprintf(stderr,"Input FITS filename : ");
+fscanf(stdin,"%s",buffer);
+if((strstr(buffer,".fits")==NULL)&&(strstr(buffer,".FITS")==NULL)){	
+	sprintf(in_filename,"%s.FITS",buffer);
+	strcpy(filehead,buffer);
+	fp_in=fopen(in_filename,"r");
+	if(fp_in==NULL){
+		sprintf(in_filename,"%s.fits",filehead);
+		fp_in=fopen(in_filename,"r");
+		if(fp_in==NULL){
+			fprintf(stderr,"Can't open %s !\n",in_filename);
+			exit(1);
+		}
+	}
+}
+else{	strncpy(filehead,buffer,strlen(buffer)-5);
+	sprintf(in_filename,"%s",buffer);
+	fp_in=fopen(in_filename,"r");
+	if(fp_in==NULL){
+		fprintf(stderr,"Can't open %s !\n",in_filename);
+		exit(1);
+	}
+}
+
+
+
+/*	Reading FITS file	*/
+fprintf(stderr,"Reading %s\n",in_filename);
+err_code=read_Fits(&fits, fp_in);
+if(err_code!=0){
+	fprintf(stderr,
+	"Error in reading the FITS file. Error code=%d\n"
+	,err_code);	
+	exit(999);
+}
+fclose(fp_in);
+
+if((fits.head.naxis[0]!=2)&&(fits.head.naxis[0]!=3)){
+	fprintf(stderr,"Input FITS must be 2 or 3 dimension!\n");
+	exit(998);
+}
+
+
+
+/*	Cloud Position		*/
+again:;
+fprintf(stderr,"Cloud position: ");
+fscanf(stdin,"%s",buffer);	
+token=strtok(buffer,", \t");
+for(jj=0;jj<fits.head.naxis[0];jj++){
+	if(token==NULL)	goto again;
+	else	x[jj]=atof(token);
+	token=strtok(NULL,", \t");	
+}
+err_code=XtoPIX(&fits,x,pix);
+
+
+/*	Boundary Intensity	*/
+fprintf(stderr,"Boundary intensity ( < T[%d,%d,%d]=%f): ",pix[0],pix[1],pix[2],
+				fits.data[PIXtoPOS(&fits,pix)]);
+fscanf(stdin,"%lf",&bound);
+
+/*	Clipping	*/
+fprintf(stderr,"Intensity Clipping ? (y:above boundary; n:from zero) :");
+fscanf(stdin,"%s",buffer);
+if((buffer[0]=='y')||(buffer[0]=='Y'))	clip=0;
+else					clip=1;
+
+
+err_code=copy_Fits(&fits,&fits_new);
+
+/*	Cloud identification	*/
+fprintf(stderr,"Identifying a Cloud\n");
+fp_cloud=stdout;
+err_code=cloudID(&fits, &fits_new, bound, clip, pix, &cloud, fp_cloud);
+if(err_code!=0){
+	fprintf(stderr,
+	"Error in identifying clouds. Error code=%d\n"
+	,err_code);	
+	exit(999);
+}
+
+/*	Open the output file	
+sprintf(out_filename,"%s.%02.0lf.FITS",filehead,bound);
+fp_out=fopen(out_filename,"w");
+if(fp_out==NULL){
+	fprintf(stderr,"Can't open %s !\n",out_filename);
+	exit(1);
+}
+*/
+
+/*	Write output file	
+fprintf(stderr,"Writing to %s\n",out_filename);
+err_code=output_Fits(&fits_new, fp_out);
+if(err_code!=0){
+	fprintf(stderr,
+	"Error in writing the FITS file. Error code=%d\n"
+	,err_code);	
+	exit(999);
+}
+fclose(fp_out);
+*/
+}	/*main*/
+
+
+
+
+
+int	cloudID(fits,fits_new,bound,clip,pix,cloud,fp_cloud)
+FITS	*fits, *fits_new;
+double	bound;
+int	clip;
+int	pix[];
+CLOUD	*cloud;
+FILE	*fp_cloud;
+{
+int	i, j, k, err_code, count;
+int	peak_ch[MAX_DIMENSION];
+long	ii, jj, kk, n, nn;
+long	*fill;
+long	pos, max_ch, num;
+float	max;	
+
+
+count=0; 
+
+/*	Fill a cloud	*/
+fill=(long *)calloc((*fits_new).head.data_num,4);
+nn=fill_a_cloud((*fits_new),bound,pix,fill); 
+
+/*	Calculate physical parameters	*/
+err_code=PhysParams(fits,bound,clip,pix,fill,nn,cloud);
+
+/*	Output cloud parameters	*/
+if(err_code==0){
+count++;
+err_code=OutputCloudParams(cloud,count,fp_cloud);
+}
+
+/*	Subtract a cloud from the data	*/
+if(clip==0){for(ii=0;ii<nn;ii++){(*fits_new).data[fill[ii]]=(float)bound;}}
+else{for(ii=0;ii<nn;ii++){(*fits_new).data[fill[ii]]=0.0;}}
+
+free(fill);
+
+return(0);
+}	/*	cloudID		*/
+
+
+
+
+
+long	fill_a_cloud(fits,bound,max_pix,fill)
+FITS	*fits;
+double	bound;
+int	max_pix[];
+long	*fill;
+{
+int	i, j, err_code;
+int	pix[MAX_DIMENSION];
+int	pix_min[MAX_DIMENSION], pix_max[MAX_DIMENSION], pix_cen[MAX_DIMENSION];
+long	n, nn;
+float	cent1, cent2, weight, data;
+
+
+n=0;
+if((*fits).head.naxis[0]==2)
+	n=fill_2D(fits,bound,max_pix,fill);
+
+else if((*fits).head.naxis[0]==3){
+for(i=0;i<(*fits).head.naxis[0];i++){pix[i]=max_pix[i];}
+for(pix[2]=max_pix[2];pix[2]<(*fits).head.naxis[3];pix[2]++){
+	nn=fill_2D(fits,bound,pix,(fill+n));
+	if(nn==0)	break;
+	n=n+nn; 
+	cent1=0.0; cent2=0.0; weight=0.0;
+	for(i=1;i<=nn;i++){
+		data=(*fits).data[*(fill+n-i)];
+		if(data<0.0)	continue;
+		err_code=POStoPIX(fits,*(fill+n-i),pix);
+		cent1=cent1+data*(float)pix[0];
+		cent2=cent2+data*(float)pix[1];
+		weight=weight+data;
+	}	
+	cent1=cent1/weight;	cent2=cent2/weight;	
+	pix[0]=(int)cent1;	pix[1]=(int)cent2;
+}
+for(i=0;i<(*fits).head.naxis[0];i++){pix[i]=max_pix[i];}
+for(pix[2]=max_pix[2]-1;pix[2]>=0;pix[2]--){
+	nn=fill_2D(fits,bound,pix,(fill+n));
+	if(nn==0)	break;
+	n=n+nn; 
+	cent1=0.0; cent2=0.0; weight=0.0;
+	for(i=1;i<=nn;i++){
+		data=(*fits).data[*(fill+n-i)];
+		if(data<0.0)	continue;
+		err_code=POStoPIX(fits,*(fill+n-i),pix);
+		cent1=cent1+data*(float)pix[0];
+		cent2=cent2+data*(float)pix[1];
+		weight=weight+data;
+	}	
+	cent1=cent1/weight;	cent2=cent2/weight;
+	pix[0]=(int)cent1;	pix[1]=(int)cent2;
+}	
+} /*	else if		*/
+
+return(n);
+}	/*	fill_a_cloud	*/
+
+
+
+
+long	fill_2D(fits,bound,max_pix,fill)
+FITS	*fits;
+double	bound;
+int	max_pix[];
+long	*fill;
+{
+int	i, j;
+int	pix[MAX_DIMENSION];
+int	pix_min[MAX_DIMENSION], pix_max[MAX_DIMENSION], pix_cen[MAX_DIMENSION];
+long	n, nn;
+float	center, weight, data;
+
+
+if((*fits).data[PIXtoPOS(fits,max_pix)]<bound)	return(0);
+
+n=0; if((*fits).head.naxis[0]>2) pix[2]=max_pix[2];
+for(i=0;i<(*fits).head.naxis[0];i++){pix_cen[i]=max_pix[i];}
+for(pix[1]=pix_cen[1];pix[1]<(*fits).head.naxis[2];pix[1]++){nn=0;
+	for(pix[0]=pix_cen[0];pix[0]<(*fits).head.naxis[1];pix[0]++){
+		if((*fits).data[PIXtoPOS(fits,pix)]<bound)	break;
+		else{*(fill+n)=PIXtoPOS(fits,pix);	n++; nn++;}
+	} pix_max[0]=pix[0]-1;
+	for(pix[0]=pix_cen[0]-1;pix[0]>=0;pix[0]--){
+		if((*fits).data[PIXtoPOS(fits,pix)]<bound)	break;
+		else{*(fill+n)=PIXtoPOS(fits,pix);	n++; nn++;}
+	} pix_min[0]=pix[0]+1; 
+	if(nn==0) break; 
+	center=0.0; weight=0.0;
+	for(pix[0]=pix_min[0];pix[0]<=pix_max[0];pix[0]++){
+		data=(*fits).data[PIXtoPOS(fits,pix)]/(*fits).head.datamax;
+		if(data<0.0)	continue;
+		center=center+data*(float)pix[0];
+		weight=weight+data;
+	}
+	center=center/weight;	pix_cen[0]=(int)center;
+} pix_max[1]=pix[1];
+
+for(i=0;i<(*fits).head.naxis[0];i++){pix_cen[i]=max_pix[i];}
+for(pix[1]=pix_cen[1]-1;pix[1]>=0;pix[1]--){nn=0;
+	for(pix[0]=pix_cen[0];pix[0]<(*fits).head.naxis[1];pix[0]++){
+		if((*fits).data[PIXtoPOS(fits,pix)]<bound)	break;
+		else{*(fill+n)=PIXtoPOS(fits,pix);	n++; nn++;}
+	} pix_max[0]=pix[0]-1;
+	for(pix[0]=pix_cen[0]-1;pix[0]>=0;pix[0]--){
+		if((*fits).data[PIXtoPOS(fits,pix)]<bound)	break;
+		else{*(fill+n)=PIXtoPOS(fits,pix);	n++; nn++;}
+	} pix_min[0]=pix[0]+1; 
+	if(nn==0) break; 
+	center=0.0; weight=0.0;
+	for(pix[0]=pix_min[0];pix[0]<=pix_max[0];pix[0]++){
+		data=(*fits).data[PIXtoPOS(fits,pix)]/(*fits).head.datamax;
+		if(data<0.0)	continue;
+		center=center+data*(float)pix[0];
+		weight=weight+data;
+	}
+	center=center/weight;	pix_cen[0]=(int)center;
+} pix_min[1]=pix[1]; pix_cen[1]=(pix_max[1]+pix_min[1])/2;
+
+/*	*/
+for(i=0;i<(*fits).head.naxis[0];i++){pix_cen[i]=max_pix[i];}
+for(pix[0]=pix_cen[0];pix[0]<(*fits).head.naxis[1];pix[0]++){nn=0;
+	for(pix[1]=pix_cen[1];pix[1]<(*fits).head.naxis[2];pix[1]++){
+		if((*fits).data[PIXtoPOS(fits,pix)]<bound)	break;
+		else{*(fill+n)=PIXtoPOS(fits,pix);	n++; nn++;}
+	} pix_max[1]=pix[1]-1;
+	for(pix[1]=pix_cen[1]-1;pix[1]>=0;pix[1]--){
+		if((*fits).data[PIXtoPOS(fits,pix)]<bound)	break;
+		else{*(fill+n)=PIXtoPOS(fits,pix);	n++; nn++;}
+	} pix_min[1]=pix[1]+1; 
+	if(nn==0) break; 
+	center=0.0; weight=0.0;
+	for(pix[1]=pix_min[1];pix[1]<=pix_max[1];pix[1]++){
+		data=(*fits).data[PIXtoPOS(fits,pix)]/(*fits).head.datamax;
+		if(data<0.0)	continue;
+		center=center+data*(float)pix[1];
+		weight=weight+data;
+	}
+	center=center/weight;	pix_cen[1]=(int)center;
+} pix_max[0]=pix[0];
+
+for(i=0;i<(*fits).head.naxis[0];i++){pix_cen[i]=max_pix[i];}
+for(pix[0]=pix_cen[0]-1;pix[0]>=0;pix[0]--){
+	for(pix[1]=pix_cen[1];pix[1]<(*fits).head.naxis[2];pix[1]++){nn=0;
+		if((*fits).data[PIXtoPOS(fits,pix)]<bound)	break;
+		else{*(fill+n)=PIXtoPOS(fits,pix);	n++; nn++;}
+	} pix_max[1]=pix[1]-1;
+	for(pix[1]=pix_cen[1]-1;pix[1]>=0;pix[1]--){
+		if((*fits).data[PIXtoPOS(fits,pix)]<bound)	break;
+		else{*(fill+n)=PIXtoPOS(fits,pix);	n++; nn++;}
+	} pix_min[1]=pix[1]+1; 
+	if(nn==0) break; 
+	center=0.0; weight=0.0;
+	for(pix[1]=pix_min[1];pix[1]<=pix_max[1];pix[1]++){
+		data=(*fits).data[PIXtoPOS(fits,pix)]/(*fits).head.datamax;
+		if(data<0.0)	continue;
+		center=center+data*(float)pix[1];
+		weight=weight+data;
+	}
+	center=center/weight;	pix_cen[1]=(int)center;
+} pix_min[0]=pix[0]; pix_cen[0]=(pix_max[0]+pix_min[0])/2;
+
+
+n=SortFillMatrix(fill,n);
+
+return(n);
+}	/*	fill_2D	*/
+
+
+
+long	SortFillMatrix(fill,n)
+long	*fill;
+long	n;
+{
+long	ii, jj, new_n;
+long	*fill_new, tmp;
+
+fill_new=(long *)calloc(n,sizeof(fill_new));
+
+for(ii=0;ii<n-1;ii++){
+for(jj=ii+1;jj<n;jj++){
+	if((*(fill+jj))<(*(fill+ii))){
+		tmp=(*(fill+ii)); 
+		(*(fill+ii))=(*(fill+jj)); 
+		(*(fill+jj))=tmp;
+	}
+}}
+
+(*(fill_new))=(*fill); new_n=1;
+
+for(ii=1;ii<n;ii++){
+	if((*(fill+ii))==(*(fill+ii-1)))	continue;
+	else{	(*(fill_new+new_n))=(*(fill+ii));	new_n++;}
+}
+for(ii=0;ii<new_n;ii++){
+	(*(fill+ii))=(*(fill_new+ii));
+/*	fprintf(stderr,"fill[%d]=%ld\n",ii,(*(fill+ii)));	*/
+}
+/*fprintf(stderr,"\n");*/
+return(new_n);
+}
+
+
+
+
+int	PhysParams(fits,bound,clip,pix_cen,fill,nn,cloud)
+FITS	*fits;
+double	bound;
+int	clip;
+int	pix_cen[];
+long	*fill;
+long	nn;
+CLOUD	*cloud;
+{
+int	i, j, err_code;
+int	pix[MAX_DIMENSION];
+double	wint, lumi;
+double	x[MAX_DIMENSION], x2[MAX_DIMENSION];
+double	xx[MAX_DIMENSION], xc[MAX_DIMENSION];
+long	ii, jj;
+
+if(clip==1)	bound=0.0;
+
+for(i=0;i<(*fits).head.naxis[0];i++){	
+	x[i]=0.0; x2[i]=0.0;
+}
+PIXtoX(fits,xc,pix_cen);
+lumi=0.0;
+for(ii=0;ii<nn;ii++){
+	if(POStoPIX(fits,*(fill+ii),pix)!=0)	return(1);
+	wint=((*fits).data[*(fill+ii)]-bound);
+	lumi=lumi+wint;
+	PIXtoX(fits,xx,pix);
+	for(i=0;i<(*fits).head.naxis[0];i++){
+		x[i]=x[i]+(xx[i]-xc[i])*wint;	x2[i]=x2[i]+pow((xx[i]-xc[i]),2.0)*wint;
+	}
+}
+for(i=0;i<(*fits).head.naxis[0];i++){
+	x[i]=x[i]/lumi;	x2[i]=x2[i]/lumi;
+}
+
+(*cloud).dim=(*fits).head.naxis[0];
+for(i=0;i<(*fits).head.naxis[0];i++){
+	(*cloud).peak[i] = xc[i];
+	(*cloud).cent[i] = x[i]+xc[i];
+	(*cloud).disp[i] = pow((x2[i]-pow(x[i],2.0)),0.5);
+}
+(*cloud).lumi=lumi;
+
+return(0);
+}
+
+
+
+int	OutputCloudParams(cloud,c,fp_cloud)
+CLOUD	*cloud;
+int	c;
+FILE	*fp_cloud;
+{
+int	i;
+
+fprintf(fp_cloud,"%d\t",c);
+for(i=0;i<(*cloud).dim;i++){
+	fprintf(fp_cloud,"%lf\t",(*cloud).cent[i]);
+}
+for(i=0;i<(*cloud).dim;i++){
+	fprintf(fp_cloud,"%lf\t",(*cloud).disp[i]);
+}
+fprintf(fp_cloud,"%lf\n",(*cloud).lumi);
+
+return(0);
+}
+
+

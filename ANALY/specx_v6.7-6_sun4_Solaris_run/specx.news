@@ -1,0 +1,17 @@
+1 SPECX - Millimetre-wave Spectral data reduction - v6.7-6
+
+ SPECX version 6.7-6 is now available. This is primarily a Y2K bug
+ fix release, but also includes an updated SUN/17 document.
+
+ Changes in this release are:
+
+  o Fix problems with year 2000
+
+  o Allow byte-swapping during FITS reading (was an option that
+    did nothing previously)
+
+  o Read and write Y2K form of DATE-OBS FITS keyword
+
+  o Add commands to simplify the reading of wideband spectra
+      (READ-DUAL-GSD and READ-WIDE-SPECTRUM)
+

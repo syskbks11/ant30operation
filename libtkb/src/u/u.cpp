@@ -46,10 +46,10 @@ const char* uVersion()
 }
 
 /*! \fn int uInit(const char* projectName)
-\brief uã§ä½¿ç”¨ã™ã‚‹ãƒ­ã‚°ãƒ•ã‚¡ã‚¤ãƒ«ãƒãƒ¼ãƒ ã‚’è¨­å®šã™ã‚‹
-\param[in] profectName ãƒ­ã‚°ãƒ•ã‚¡ã‚¤ãƒ«ã®ãƒ‘ã‚¹ã¨é ­æ–‡å­—ã‚’ã¤ã‘ã‚‹
-\return 0 æ­£å¸¸çµ‚äº†
-\return 1 ã‚¨ãƒ©ãƒ¼
+\brief u‚Åg—p‚·‚éƒƒOƒtƒ@ƒCƒ‹ƒl[ƒ€‚ğİ’è‚·‚é
+\param[in] profectName ƒƒOƒtƒ@ƒCƒ‹‚ÌƒpƒX‚Æ“ª•¶š‚ğ‚Â‚¯‚é
+\return 0 ³íI—¹
+\return 1 ƒGƒ‰[
 */
 int uInit(const char* projectName)
 {
@@ -62,7 +62,7 @@ int uInit(const char* projectName)
   sprintf(fname, "%s-%04d%02d%02d%02d%02d%02d.log",
       projectName, tmt->tm_year+1900, tmt->tm_mon+1, tmt->tm_mday, tmt->tm_hour, tmt->tm_min, tmt->tm_sec);
   if(fp != NULL){
-    uM("uInit(); Log file was already opened.");
+    //uM("uInit(); Log file was already opened.\n");
     //return 0;
     uEnd();
   }
@@ -72,7 +72,7 @@ int uInit(const char* projectName)
   }
   fp = fopen(fname,"a");
   if(fp == NULL){
-    uE("uInit(); FileOpenError!!");
+    uE("uInit(); FileOpenError!!\n");
     return -1;
   }
   uM1("Use logfile(%s)",fname);
@@ -80,9 +80,9 @@ int uInit(const char* projectName)
 }
 
 /*! \fn int uEnd()
-\brief uã®ä½¿ç”¨çµ‚äº†æ™‚ã«å‘¼ã¶ã€‚
-\return 0 æ­£å¸¸çµ‚äº†
-\return 1 ã‚¨ãƒ©ãƒ¼
+\brief u‚Ìg—pI—¹‚ÉŒÄ‚ÔB
+\return 0 ³íI—¹
+\return 1 ƒGƒ‰[
 */
 int uEnd()
 {
@@ -102,7 +102,7 @@ const char* uGetLogName(){
 }
 
 /*! \fn uLock()
-\brief ãƒ­ãƒƒã‚¯ã™ã‚‹ã€‚ã‚»ãƒãƒ•ã‚©ã‚’å–å¾—ã™ã‚‹ã€‚
+\brief ƒƒbƒN‚·‚éBƒZƒ}ƒtƒH‚ğæ“¾‚·‚éB
 */
 void uLock()
 {
@@ -112,7 +112,7 @@ void uLock()
 }
 
 /*! \fn uUnLock()
-\breif ãƒ­ãƒƒã‚¯ã‚’è§£é™¤ã™ã‚‹ã€‚ã‚»ãƒãƒ•ã‚©ã‚’ç ´æ£„ã™ã‚‹ã€‚
+\breif ƒƒbƒN‚ğ‰ğœ‚·‚éBƒZƒ}ƒtƒH‚ğ”jŠü‚·‚éB
 */
 void uUnLock()
 {
@@ -120,7 +120,7 @@ void uUnLock()
 }
 
 /*! \fn uFp()
-\brief ãƒ•ã‚¡ã‚¤ãƒ«ãƒã‚¤ãƒ³ã‚¿ãƒ¼ã‚’è¿”ã™ã€‚
+\brief ƒtƒ@ƒCƒ‹ƒ|ƒCƒ“ƒ^[‚ğ•Ô‚·B
 */
 FILE* uFp()
 {
@@ -128,8 +128,8 @@ FILE* uFp()
 }
 
 /*! \fn const char* uGetDate()
-\brief å‘¼ã³å‡ºã—ãŸæ™‚ã®æ—¥æ™‚ã‚’æ–‡å­—åˆ—ã¨ã—ã¦è¿”ã™ã€‚
-\return æ™‚åˆ»ã®æ–‡å­—åˆ—ã€‚
+\brief ŒÄ‚Ño‚µ‚½‚Ì“ú‚ğ•¶š—ñ‚Æ‚µ‚Ä•Ô‚·B
+\return ‚Ì•¶š—ñB
 */
 const char* uGetDate()
 {
@@ -147,8 +147,8 @@ const char* uGetDate()
 }
 
 /*! \fn const char* uGetTime()
-\brief å‘¼ã³å‡ºã—ãŸæ™‚ã®æ™‚åˆ»ã‚’æ–‡å­—åˆ—ã¨ã—ã¦è¿”ã™ã€‚
-\return æ™‚åˆ»ã®æ–‡å­—åˆ—ã€‚
+\brief ŒÄ‚Ño‚µ‚½‚Ì‚ğ•¶š—ñ‚Æ‚µ‚Ä•Ô‚·B
+\return ‚Ì•¶š—ñB
 */
 const char* uGetTime()
 {
@@ -170,8 +170,8 @@ const char* uGetTime()
 }
 
 /*!
-\brief LabViewã¨ã®é€šä¿¡æ™‚ã«ãƒ“ãƒƒã‚¯ã‚¨ãƒ³ãƒ‡ã‚£ã‚¢ãƒ³ã¨ã®ç›¸äº’å¤‰æ›ã‚’è¡Œãªã†ã€‚
-\brief å„ç¨®Bitã«å¯¾å¿œ
+\brief LabView‚Æ‚Ì’ÊM‚ÉƒrƒbƒNƒGƒ“ƒfƒBƒAƒ“‚Æ‚Ì‘ŠŒİ•ÏŠ·‚ğs‚È‚¤B
+\brief ŠeíBit‚É‘Î‰
 */
 template <class T> T uEndian(T* p)
 {
@@ -192,7 +192,7 @@ template <class T> T uEndian(T* p)
 }
 
 /*!
-\brief LabViewã¨ã®é€šä¿¡æ™‚ã«ãƒ“ãƒƒã‚¯ã‚¨ãƒ³ãƒ‡ã‚£ã‚¢ãƒ³ã¨ã®ç›¸äº’å¤‰æ›ã‚’è¡Œãªã†ã€‚
+\brief LabView‚Æ‚Ì’ÊM‚ÉƒrƒbƒNƒGƒ“ƒfƒBƒAƒ“‚Æ‚Ì‘ŠŒİ•ÏŠ·‚ğs‚È‚¤B
 */
 short uEndianShort(short* pa)
 {
@@ -210,7 +210,7 @@ long long uEndianLongLong(long long* pa)
 }
 
 /*!
-\brief ã‚·ã‚°ãƒŠãƒ«å—ä¿¡é–¢é€£
+\brief ƒVƒOƒiƒ‹óMŠÖ˜A
 */
 #ifdef WIN32
 #include <windows.h>
@@ -236,12 +236,12 @@ BOOL WINAPI uSigCallFunc(DWORD sig){
   default:
     return TRUE;
   }
-  return FALSE; //!< ãƒ—ãƒ­ã‚»ã‚¹ã‚’çµ‚äº†ã™ã‚‹ã®ã§FALSEã‚’è¿”ã™
+  return FALSE; //!< ƒvƒƒZƒX‚ğI—¹‚·‚é‚Ì‚ÅFALSE‚ğ•Ô‚·
 }
 #else
 void uSigCallFunc(int sig){
   switch(sig){
-    //! çµ‚äº†å‡¦ç†
+    //! I—¹ˆ—
   case SIGINT:
   case SIGFPE:
   case SIGTERM:
@@ -250,11 +250,11 @@ void uSigCallFunc(int sig){
     exit(0);
     break;
 
-    //! çµ‚äº†ã—ãªã„å‡¦ç†
+    //! I—¹‚µ‚È‚¢ˆ—
   case SIGSEGV:
     return;
 
-    //! çµ‚äº†ã—ãªã„å‡¦ç†
+    //! I—¹‚µ‚È‚¢ˆ—
   case SIGALRM:
   case SIGCHLD:
   case SIGTSTP:

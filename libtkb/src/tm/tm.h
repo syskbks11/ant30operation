@@ -2,7 +2,7 @@
 \file tm.h
 \author Y.Koide
 \date 2006.12.17
-\brief 繧ｿ繧､繝槭�ｼ繝｢繧ｸ繝･繝ｼ繝ｫ
+\brief タイマーモジュール
 */
 #ifndef __TM_H__
 #define __TM_H__

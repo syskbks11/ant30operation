@@ -17,8 +17,8 @@ const char* netuVersion(){
 }
 
 /*! \fn void netuCnvShort(unsigned char* pa)
-\brief LabViewã¨ã®é€šä¿¡æ™‚ã«ãƒ“ãƒƒã‚¯ã‚¨ãƒ³ãƒ‡ã‚£ã‚¢ãƒ³ã¨ã®ç›¸äº’å¤‰æ›ã‚’è¡Œãªã†ã€‚
-\brief 2ãƒã‚¤ãƒˆã®å‹ã«å¯¾å¿œ
+\brief LabView‚Æ‚Ì’ÊM‚ÉƒrƒbƒNƒGƒ“ƒfƒBƒAƒ“‚Æ‚Ì‘ŠŒİ•ÏŠ·‚ğs‚È‚¤B
+\brief 2ƒoƒCƒg‚ÌŒ^‚É‘Î‰
 */
 void netuCnvShort(unsigned char* pa){
   int i,n;
@@ -35,8 +35,8 @@ void netuCnvShort(unsigned char* pa){
 }
 
 /*! \fn void netuCnvInt(unsigned char* pa)
-\brief LabViewã¨ã®é€šä¿¡æ™‚ã«ãƒ“ãƒƒã‚¯ã‚¨ãƒ³ãƒ‡ã‚£ã‚¢ãƒ³ã¨ã®ç›¸äº’å¤‰æ›ã‚’è¡Œãªã†ã€‚
-\brief 4ãƒã‚¤ãƒˆã®å‹ã«å¯¾å¿œ
+\brief LabView‚Æ‚Ì’ÊM‚ÉƒrƒbƒNƒGƒ“ƒfƒBƒAƒ“‚Æ‚Ì‘ŠŒİ•ÏŠ·‚ğs‚È‚¤B
+\brief 4ƒoƒCƒg‚ÌŒ^‚É‘Î‰
 */
 void netuCnvInt(unsigned char* pa){
   int i,n;
@@ -53,8 +53,8 @@ void netuCnvInt(unsigned char* pa){
 }
 
 /*! \fn void netuCnvLong(unsigned char* pa)
-\brief LabViewã¨ã®é€šä¿¡æ™‚ã«ãƒ“ãƒƒã‚¯ã‚¨ãƒ³ãƒ‡ã‚£ã‚¢ãƒ³ã¨ã®ç›¸äº’å¤‰æ›ã‚’è¡Œãªã†ã€‚
-\brief 8ãƒã‚¤ãƒˆã®å‹ã«å¯¾å¿œ
+\brief LabView‚Æ‚Ì’ÊM‚ÉƒrƒbƒNƒGƒ“ƒfƒBƒAƒ“‚Æ‚Ì‘ŠŒİ•ÏŠ·‚ğs‚È‚¤B
+\brief 8ƒoƒCƒg‚ÌŒ^‚É‘Î‰
 */
 void netuCnvLong(unsigned char* pa){
   int i,n;

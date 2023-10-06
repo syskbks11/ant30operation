@@ -1,0 +1,15 @@
+LDFLAGS  = -L/usr/lib -lnsl -lm \
+	   -L/usr/trk45/lib -ltrk \
+	   -L/usr/FFC/lib -lssl2
+CFLAGS   = -I/usr/trk45/include
+FC       = /usr/FFC/bin/frt
+CC       = /usr/FFC/bin/fcc
+SRCCL1    = doppler.c
+OBJCL1    = ${SRCCL1:.c=.o}
+OBJCL2    = ${SRCCL2:.cpp=.o}
+all      : doppler
+doppler     : ${OBJCL1}
+	   ${FC} -o $@ ${OBJCL1} ${LDFLAGS}
+
+clean    :
+	   /bin/rm -f core *.o *.BAK

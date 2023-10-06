@@ -1,37 +1,37 @@
 2008.03.18 Y.Koide
-・M1の扇野 氏のためのlibtkbの技術資料。研究室のための技術資料ではない。
-また、著作権を放棄してはいない。
-・本ライブラリのライセンス形態はGNU LESSER GENERAL PUBLIC LICENSE(LGPL)とし、
-何者もこのlibtkbライブラリを用いたプログラムをソースコードの公開無しで譲渡配布することを禁ずる。
-ただし、libtkbの動的な外部ライブラリとしての使用に限り上記の限りではない。
-詳細はLICENSE.TXTを参照。
-・Makefileを用いてFFC用とgcc用(動作未確認)ライブラリのコンパイルが行える。
-・libtkbのlibtkb.slnでVC++用ライブラリのコンパイルが行える
+�EM1�̐�� ���̂��߂�libtkb�̋Z�p�����B�������̂��߂̋Z�p�����ł͂Ȃ��B
+�܂��A���쌠��������Ă͂��Ȃ��B
+�E�{���C�u�����̃��C�Z���X�`�Ԃ�GNU LESSER GENERAL PUBLIC LICENSE(LGPL)�Ƃ��A
+���҂�����libtkb���C�u������p�����v���O�������\�[�X�R�[�h�̌��J�����ŏ��n�z�z���邱�Ƃ��ւ���B
+�������Alibtkb�̓��I�ȊO�����C�u�����Ƃ��Ă̎g�p�Ɍ����L�̌���ł͂Ȃ��B
+�ڍׂ�LICENSE.TXT���Q�ƁB
+�EMakefile��p����FFC�p��gcc�p(���얢�m�F)���C�u�����̃R���p�C�����s����B
+�Elibtkb��libtkb.sln��VC++�p���C�u�����̃R���p�C�����s����
 
 2008.03.01 Y.Koide
-・rs232c, rs232c2のInit関数の引数parityBitの定義を修正。
-今まで0:none 1:evenParity 2:oddParityだったのを0:none 1:oddParity 2:evenParityに直した。
+�Ers232c, rs232c2��Init�֐��̈���parityBit�̒�`���C���B
+���܂�0:none 1:evenParity 2:oddParity�������̂�0:none 1:oddParity 2:evenParity�ɒ������B
 
 2007.10.25 Y.Koide
-・libtkb01を再構築
-conf,conf2,netcl,netsv,netu,rs232c,tm,uを含む。
+�Elibtkb01���č\�z
+conf,conf2,netcl,netsv,netu,rs232c,tm,u���܂ށB
 
 2007.10.21 Y.Koide
-・confにてValの"の定義を変更。
-ValはKeyと空文字を挟んで接しており、Val自体に空文字を含むことも可能とする。
-よって、今まではValに空文字を含む場合に""で囲っていたのを廃止する。
-同様にValの中に"を含んでいても""と変換して記す必要はない。
+�Econf�ɂ�Val��"�̒�`��ύX�B
+Val��Key�Ƌ󕶎�������Őڂ��Ă���AVal���̂ɋ󕶎����܂ނ��Ƃ��\�Ƃ���B
+����āA���܂ł�Val�ɋ󕶎����܂ޏꍇ��""�ň͂��Ă����̂�p�~����B
+���l��Val�̒���"���܂�ł��Ă�""�ƕϊ����ċL���K�v�͂Ȃ��B
 
 2007.10.18 Y.Koide
-・ライブラリ関連用のリポジトリlibtkb01を作成。
-・./src/{conf,netcl,netsv,netu,u,rs232c,tm}を作成
-・Makefileを作成
+�E���C�u�����֘A�p�̃��|�W�g��libtkb01���쐬�B
+�E./src/{conf,netcl,netsv,netu,u,rs232c,tm}���쐬
+�EMakefile���쐬
 % make
-で./export/にスタティックライブラリが生成される。
-・全ライブラリを集約した./export/libtkb.aを生成するようにした。
-インクルードファ@イルは各ライブラリのを使用し、ライブラリのみlibtkb.aを使用する
-こと
-・使い方
+��./export/�ɃX�^�e�B�b�N���C�u���������������B
+�E�S���C�u�������W�񂵂�./export/libtkb.a�𐶐�����悤�ɂ����B
+�C���N���[�h�t�@@�C���͊e���C�u�����̂��g�p���A���C�u�����̂�libtkb.a���g�p����
+����
+�E�g����
 % FCC -I/usr/FFC/include -I./myinclude/ libtkb.a xxx.cpp
 
-以上
+�ȏ�

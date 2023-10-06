@@ -8,14 +8,14 @@
 #define __U_H__
 
 /*! \fn #define uMWrite(str, x1, x2, x3, x4)
-\brief æ¨™æº–å‡ºåŠ›ã¨ãƒ­ã‚°ãƒ•ã‚¡ã‚¤ãƒ«ã«ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’å‡ºåŠ›ã™ã‚‹ã€‚
-\param[in] thisFile __FILE__ã§æ¸¡ã•ã‚Œã‚‹å‘¼ã³å‡ºã—å…ƒã®ãƒ•ã‚¡ã‚¤ãƒ«åã€‚
-\param[in] fileLine __LINE__ã§æ¸¡ã•ã‚Œã‚‹å‘¼ã³å‡ºã—å…ƒã®è¡Œç•ªå·ã€‚
-\param[in] str è¡¨ç¤ºæ–‡å­—åˆ—ã®æ›¸å¼ã€‚fprintfã«æº–æ‹ ã—ãŸæ›¸å¼ã€‚
-\param[in] x1 æ›¸å¼strã®ä¸­ã«å«ã¾ã‚Œã‚‹å¤‰æ•°1
-\param[in] x2 æ›¸å¼strã®ä¸­ã«å«ã¾ã‚Œã‚‹å¤‰æ•°1
-\param[in] x3 æ›¸å¼strã®ä¸­ã«å«ã¾ã‚Œã‚‹å¤‰æ•°1
-\param[in] x4 æ›¸å¼strã®ä¸­ã«å«ã¾ã‚Œã‚‹å¤‰æ•°1
+\brief •W€o—Í‚ÆƒƒOƒtƒ@ƒCƒ‹‚ÉƒƒbƒZ[ƒW‚ğo—Í‚·‚éB
+\param[in] thisFile __FILE__‚Å“n‚³‚ê‚éŒÄ‚Ño‚µŒ³‚Ìƒtƒ@ƒCƒ‹–¼B
+\param[in] fileLine __LINE__‚Å“n‚³‚ê‚éŒÄ‚Ño‚µŒ³‚Ìs”Ô†B
+\param[in] str •\¦•¶š—ñ‚Ì‘®Bfprintf‚É€‹’‚µ‚½‘®B
+\param[in] x1 ‘®str‚Ì’†‚ÉŠÜ‚Ü‚ê‚é•Ï”1
+\param[in] x2 ‘®str‚Ì’†‚ÉŠÜ‚Ü‚ê‚é•Ï”1
+\param[in] x3 ‘®str‚Ì’†‚ÉŠÜ‚Ü‚ê‚é•Ï”1
+\param[in] x4 ‘®str‚Ì’†‚ÉŠÜ‚Ü‚ê‚é•Ï”1
 */
 #define uMWrite(str, x1, x2, x3, x4) \
 { \
@@ -26,19 +26,18 @@
     fprintf(uFp(), "[%s-%s-%d] ", uGetDate(), __FILE__, __LINE__); \
     fprintf(uFp(), str, x1, x2, x3, x4); \
     fprintf(uFp(), "\n"); \
-    fflush(uFp());             \
   } \
 }
 
 /*! \fn #define uEWrite(str, x1, x2, x3, x4)
-\brief ã‚¨ãƒ©ãƒ¼å‡ºåŠ›ã¨ãƒ­ã‚°ãƒ•ã‚¡ã‚¤ãƒ«ã«ã‚¨ãƒ©ãƒ¼ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’å‡ºåŠ›ã—ç•°å¸¸çµ‚äº†ã™ã‚‹ã€‚
-\param[in] thisFile __FILE__ã§æ¸¡ã•ã‚Œã‚‹å‘¼ã³å‡ºã—å…ƒã®ãƒ•ã‚¡ã‚¤ãƒ«åã€‚
-\param[in] fileLine __LINE__ã§æ¸¡ã•ã‚Œã‚‹å‘¼ã³å‡ºã—å…ƒã®è¡Œç•ªå·ã€‚
-\param[in] str è¡¨ç¤ºæ–‡å­—åˆ—ã®æ›¸å¼ã€‚fprintfã«æº–æ‹ ã—ãŸæ›¸å¼ã€‚
-\param[in] x1 æ›¸å¼strã®ä¸­ã«å«ã¾ã‚Œã‚‹å¤‰æ•°1
-\param[in] x2 æ›¸å¼strã®ä¸­ã«å«ã¾ã‚Œã‚‹å¤‰æ•°1
-\param[in] x3 æ›¸å¼strã®ä¸­ã«å«ã¾ã‚Œã‚‹å¤‰æ•°1
-\param[in] x4 æ›¸å¼strã®ä¸­ã«å«ã¾ã‚Œã‚‹å¤‰æ•°1
+\brief ƒGƒ‰[o—Í‚ÆƒƒOƒtƒ@ƒCƒ‹‚ÉƒGƒ‰[ƒƒbƒZ[ƒW‚ğo—Í‚µˆÙíI—¹‚·‚éB
+\param[in] thisFile __FILE__‚Å“n‚³‚ê‚éŒÄ‚Ño‚µŒ³‚Ìƒtƒ@ƒCƒ‹–¼B
+\param[in] fileLine __LINE__‚Å“n‚³‚ê‚éŒÄ‚Ño‚µŒ³‚Ìs”Ô†B
+\param[in] str •\¦•¶š—ñ‚Ì‘®Bfprintf‚É€‹’‚µ‚½‘®B
+\param[in] x1 ‘®str‚Ì’†‚ÉŠÜ‚Ü‚ê‚é•Ï”1
+\param[in] x2 ‘®str‚Ì’†‚ÉŠÜ‚Ü‚ê‚é•Ï”1
+\param[in] x3 ‘®str‚Ì’†‚ÉŠÜ‚Ü‚ê‚é•Ï”1
+\param[in] x4 ‘®str‚Ì’†‚ÉŠÜ‚Ü‚ê‚é•Ï”1
 */
 #define uEWrite(str, x1, x2, x3, x4) \
 { \
@@ -49,14 +48,13 @@
     fprintf(uFp(), "[%s-%s-%d] ERROR ", uGetDate(), __FILE__, __LINE__); \
     fprintf(uFp(), str, x1, x2, x3, x4); \
     fprintf(uFp(), "\n"); \
-    fflush(uFp());             \
     exit(1); \
   } \
 }
 
 /*! \fn #define uM*(str)
-\brief ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸å‡ºåŠ›ç”¨
-\brief æ¨™æº–å‡ºåŠ›ã¨ãƒ­ã‚°ãƒ•ã‚¡ã‚¤ãƒ«ã«å‡ºåŠ›ã™ã‚‹ã€‚
+\brief ƒƒbƒZ[ƒWo—Í—p
+\brief •W€o—Í‚ÆƒƒOƒtƒ@ƒCƒ‹‚Éo—Í‚·‚éB
 */
 #define uM(str) { uMWrite((str), NULL, NULL, NULL, NULL); }
 #define uM1(str,x1) { uMWrite((str), (x1), NULL, NULL, NULL); }
@@ -65,8 +63,8 @@
 #define uM4(str,x1,x2,x3,x4) { uMWrite((str), (x1), (x2), (x3), (x4)); }
 
 /*! \fn #define uE*(str)
-\brief ã‚¨ãƒ©ãƒ¼å‡ºåŠ›ç”¨
-\brief ã‚¨ãƒ©ãƒ¼å‡ºåŠ›ã¨ãƒ­ã‚°ãƒ•ã‚¡ã‚¤ãƒ«ã«å‡ºåŠ›ã™ã‚‹ã€‚
+\brief ƒGƒ‰[o—Í—p
+\brief ƒGƒ‰[o—Í‚ÆƒƒOƒtƒ@ƒCƒ‹‚Éo—Í‚·‚éB
 */
 #define uE(str) { uEWrite((str), NULL, NULL, NULL, NULL); }
 #define uE1(str,x1) { uEWrite((str), (x1), NULL, NULL, NULL); }
@@ -76,14 +74,14 @@
 
 
 #ifdef __cplusplus
-//! C++ã®ã¿å¯¾å¿œã®å®£è¨€
+//! C++‚Ì‚İ‘Î‰‚ÌéŒ¾
 template <class T> T uEndian(T* p);
 
 extern "C"{
 
 #endif
 
-  //! C,C++ã«å¯¾å¿œã®å®£è¨€
+  //! C,C++‚É‘Î‰‚ÌéŒ¾
   const char* uVersion();
   int uInit(const char* projectName);
   int uEnd();

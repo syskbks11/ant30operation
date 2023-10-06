@@ -1,0 +1,20 @@
+0	# interacive
+2009	# yaer
+1	# month
+1	# day
+12	# hour
+13	# minute
+14	# second
+50.0	# milisecond
+1	# object
+2	# epoch
+350	# x [deg]
+10	# y [deg]
+2	# offset coordinate
+0.0	# offset x [deg]
+0.0	# offset y [deg]
+1.0	# ddAz [deg]
+1.0	# ddEl [deg]
+1.0E09	# tracking freqency
+# something
+

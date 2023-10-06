@@ -1,0 +1,110 @@
+/*
+CfA CO(J=1-0) FITS file reader
+
+1993/9/1	Tomoharu OKA	:	Coding 開始
+1993/9/2	Tomoharu OKA	:	Ver.1.00 完成
+1994/9/7	Tomoharu OKA	:	Bug fix for pixel inner structure
+1995/6/20	Tomoharu OKA	:	FITS -> COLOMNS
+1997/9/18	Tomoharu OKA	:	Print xy range
+*/
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <math.h>
+
+#include <profhead.h>
+#include <starlib.h>
+#include <fitshead.h>
+
+#define	DEBUG	0
+
+#ifdef	_NO_PROTO
+extern int read_FitsHeader();
+extern int divide_Line();
+extern int rm_Quot();
+extern int get_MatrixData();
+extern int OutputMatrixData();
+#else
+extern int read_FitsHeader(FITS_HEAD *, int *, AXIS_INDEX *, FILE *);
+extern int divide_Line(char *, char *, char *, char *);
+extern int rm_Quot(char *, char *);
+extern int get_MatrixData(FITS_HEAD *, int, MATRIX *, AXIS_INDEX *, FILE *);
+extern int OutputMatrixData(MATRIX *, FILE *);
+#endif
+
+
+
+main(argc,argv)
+int	argc;
+char	*argv[];
+{
+FILE		*fp_in, *fp_out;
+int		err_code;
+AXIS_INDEX	axis;
+XY_POS		position;
+FITS_HEAD	fits_head;
+int		offset;
+
+/*	入力ファイルのオープン	*/
+
+fp_in=stdin;
+fp_out=stdout;
+
+
+
+err_code=read_FitsHeader(&fits_head, &offset, &axis, fp_in);
+if(err_code!=0){
+	fprintf(stderr,"Error in reading the FITS header. Error code=%d\n",err_code);
+	exit(999);
+}
+
+
+err_code=OutputXYrange(&fits_head,fp_out);
+if(err_code!=0){
+	fprintf(stderr,"Error in outputing the Matrix data. Error code=%d\n",err_code);
+	exit(999);
+}
+
+
+}	/*main*/
+
+
+
+int OutputXYrange(fits_head,fp_out)
+FITS_HEAD	*fits_head;
+FILE		*fp_out;
+{
+int	ii, jj;
+double	min, max;
+int	ra, dec;
+
+ra=(-1);	dec=(-1);
+for(ii=1;ii<=(*fits_head).naxis[0];ii++){
+	if((strstr((*fits_head).ctype[ii],"RA")!=NULL)||
+	(strstr((*fits_head).ctype[ii],"GLON")!=NULL))	ra=ii;
+	if((strstr((*fits_head).ctype[ii],"DEC")!=NULL)||
+	(strstr((*fits_head).ctype[ii],"GLAT")!=NULL))	dec=ii;
+}
+
+for(ii=1;ii<=(*fits_head).naxis[0];ii++){
+	if(ii==ra){
+	min=(*fits_head).crval[ii] 
+		+ (*fits_head).cdelt[ii]/cos((*fits_head).crval[dec]*PI/180.0)*(1.0-(*fits_head).crpix[ii]);
+	max=(*fits_head).crval[ii] 
+		+ (*fits_head).cdelt[ii]/cos((*fits_head).crval[dec]*PI/180.0)*((double)(*fits_head).naxis[ii]-(*fits_head).crpix[ii]);
+	}
+	else{
+	min=(*fits_head).crval[ii] + (*fits_head).cdelt[ii]*(1.0-(*fits_head).crpix[ii]);
+	max=(*fits_head).crval[ii] + (*fits_head).cdelt[ii]*((double)(*fits_head).naxis[ii]-(*fits_head).crpix[ii]);
+	}
+	fprintf(stdout,"ch: 1 to %d\t%s: %lf to %lf\n", (*fits_head).naxis[ii], (*fits_head).ctype[ii], min, max);
+}
+return(0);
+
+}
+	
+
+
+
+

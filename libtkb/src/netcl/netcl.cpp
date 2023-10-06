@@ -49,17 +49,17 @@ typedef struct sNetParam{
 static int _netclConnect(tNetParam* param);
 
 /*! \fn const char* netclVersion()
-\return netclã®ãƒãƒ¼ã‚¸ãƒ§ãƒ³æ–‡å­—åˆ—ã‚’è¿”ã™ 
+\return netcl‚Ìƒo[ƒWƒ‡ƒ“•¶š—ñ‚ğ•Ô‚· 
 */
 const char* netclVersion(){
   return version;
 }
 
 /*! \fn void* netclInit(const char* serverName, const int serverPort)
-\brief åˆæœŸåŒ–ã‚’è¡Œã†ã€‚
-\param[in] serverName æ¥ç¶šå…ˆã‚µãƒ¼ãƒã®ãƒ›ã‚¹ãƒˆãƒãƒ¼ãƒ ã¾ãŸã¯IP
-\param[in] serverPort æ¥ç¶šå…ˆã‚µãƒ¼ãƒã®ãƒãƒ¼ãƒˆ
-\return netclãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ NULL:Error
+\brief ‰Šú‰»‚ğs‚¤B
+\param[in] serverName Ú‘±æƒT[ƒo‚ÌƒzƒXƒgƒl[ƒ€‚Ü‚½‚ÍIP
+\param[in] serverPort Ú‘±æƒT[ƒo‚Ìƒ|[ƒg
+\return netclƒpƒ‰ƒ[ƒ^ NULL:Error
 */
 tNetParam* netclInit(const char* serverName, const int serverPort){
 //void* netclInit(const char* serverName, const int serverPort){
@@ -67,11 +67,11 @@ tNetParam* netclInit(const char* serverName, const int serverPort){
 }
 
 /*! \fn void* netclInitWithTimeOut(const char* serverName, const int serverPort, const double t)
-\brief ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆã¤ãã§åˆæœŸåŒ–ã‚’è¡Œã†ã€‚
-\param[in] serverName æ¥ç¶šå…ˆã‚µãƒ¼ãƒã®ãƒ›ã‚¹ãƒˆãƒãƒ¼ãƒ ã¾ãŸã¯IP
-\param[in] serverPort æ¥ç¶šå…ˆã‚µãƒ¼ãƒã®ãƒãƒ¼ãƒˆ
-\param[in] t ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆæ™‚é–“ sec
-\return NULL netclãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿
+\brief ƒ^ƒCƒ€ƒAƒEƒg‚Â‚«‚Å‰Šú‰»‚ğs‚¤B
+\param[in] serverName Ú‘±æƒT[ƒo‚ÌƒzƒXƒgƒl[ƒ€‚Ü‚½‚ÍIP
+\param[in] serverPort Ú‘±æƒT[ƒo‚Ìƒ|[ƒg
+\param[in] t ƒ^ƒCƒ€ƒAƒEƒgŠÔ sec
+\return NULL netclƒpƒ‰ƒ[ƒ^
 */
 tNetParam* netclInitWithTimeOut(const char* serverName, const int serverPort, const double t){
 //void* netclInitWithTimeOut(const char* serverName, const int serverPort, const double t){
@@ -96,8 +96,8 @@ tNetParam* netclInitWithTimeOut(const char* serverName, const int serverPort, co
   memcpy(param->srvName, serverName, strlen(serverName)+1);
   param->srvPort = serverPort;
   param->sock = -1;
-  param->waitTimeRead.tv_sec = -1; //!< å¾…ã¡æ™‚é–“sec(-1ã§selectå‡¦ç†ã—ãªã„)
-  param->waitTimeRead.tv_usec = 0; //!< å¾…ã¡æ™‚é–“usec
+  param->waitTimeRead.tv_sec = -1; //!< ‘Ò‚¿ŠÔsec(-1‚Åselectˆ—‚µ‚È‚¢)
+  param->waitTimeRead.tv_usec = 0; //!< ‘Ò‚¿ŠÔusec
   if(t >= 0){
     netclSetTimeOut(param, t);
 //    netclSetTimeOut((void*)param, t);
@@ -117,9 +117,9 @@ tNetParam* netclInitWithTimeOut(const char* serverName, const int serverPort, co
 }
 
 /*! \fn int netclEnd(void* _param)
-\brief çµ‚äº†å‡¦ç†ã‚’è¡Œã†ã€‚
-\param[in] _param netclãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿
-\return 0:æ­£å¸¸çµ‚äº† -1:Error
+\brief I—¹ˆ—‚ğs‚¤B
+\param[in] _param netclƒpƒ‰ƒ[ƒ^
+\return 0:³íI—¹ -1:Error
 */
 int netclEnd(tNetParam* _param){
 //int netclEnd(void* _param){
@@ -151,9 +151,9 @@ int netclEnd(tNetParam* _param){
 }
 
 /*! \fn void netclSetTimeOut(void* _param, double t)
-\brief å—ä¿¡æ™‚ã®ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆã‚’å®šç¾©ã™ã‚‹
-\param[in] _param netclãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿
-\param[in] t ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆæ™‚é–“ sec
+\brief óM‚Ìƒ^ƒCƒ€ƒAƒEƒg‚ğ’è‹`‚·‚é
+\param[in] _param netclƒpƒ‰ƒ[ƒ^
+\param[in] t ƒ^ƒCƒ€ƒAƒEƒgŠÔ sec
 */
 void netclSetTimeOut(tNetParam* _param, const double t){
 //void netclSetTimeOut(void* _param, const double t){
@@ -175,9 +175,9 @@ void netclSetTimeOut(tNetParam* _param, const double t){
 }
 
 /*! \fn int netclSelectWrite(void* _param)
-\brief ãƒ‡ãƒ¼ã‚¿é€ä¿¡ãŒå¯èƒ½ã‹ã‚’ç¢ºèªã™ã‚‹
-\param[in] _param netclãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿
-\reutrn 0:é€ä¿¡å¯èƒ½ -1:é€ä¿¡ä¸èƒ½ -2:Error
+\brief ƒf[ƒ^‘—M‚ª‰Â”\‚©‚ğŠm”F‚·‚é
+\param[in] _param netclƒpƒ‰ƒ[ƒ^
+\reutrn 0:‘—M‰Â”\ -1:‘—M•s”\ -2:Error
 */
 int netclSelectWrite(tNetParam* _param){
 //int netclSelectWrite(void* _param){
@@ -191,19 +191,19 @@ int netclSelectWrite(tNetParam* _param){
   FD_SET(param->sock, &fde);
   select(FD_SETSIZE, NULL, &fdw, &fde, &param->waitTimeRead);
   if(FD_ISSET(param->sock, &fde)){
-    //! ä¾‹å¤–ã‚ã‚Š
+    //! —áŠO‚ ‚è
     return -2;
   }
   if(!FD_ISSET(param->sock, &fdw)){
-    //! æ›¸ãè¾¼ã¿ä¸èƒ½(ãƒ‡ãƒ¼ã‚¿ãªã—)
+    //! ‘‚«‚İ•s”\(ƒf[ƒ^‚È‚µ)
     return -1;
   }
   return 0;
 }
 
 /*! \fn int netclSelectRead(void* _param)
-\brief ãƒ‡ãƒ¼ã‚¿ãŒå±Šã„ã¦ã„ã‚‹ã‹ã‚’ç¢ºèªã™ã‚‹
-\param[in] _param netclãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿
+\brief ƒf[ƒ^‚ª“Í‚¢‚Ä‚¢‚é‚©‚ğŠm”F‚·‚é
+\param[in] _param netclƒpƒ‰ƒ[ƒ^
 \return 0:Success 1:ReciveData -1:Error
 */
 int netclSelectRead(tNetParam* _param){
@@ -218,22 +218,22 @@ int netclSelectRead(tNetParam* _param){
   FD_SET(param->sock, &fde);
   select(FD_SETSIZE, &fdr, NULL, &fde, &param->waitTimeRead);
   if(FD_ISSET(param->sock, &fde)){
-    //! ä¾‹å¤–ã‚ã‚Š
+    //! —áŠO‚ ‚è
     return -1;
   }
   if(FD_ISSET(param->sock, &fdr)){
-    //! å—ä¿¡ãƒ‡ãƒ¼ã‚¿ã‚ã‚Š
+    //! óMƒf[ƒ^‚ ‚è
     return 1;
   }
   return 0;
 }
 
 /*! \fn int netclWrite(void* _param, const unsigned char* buf, const size_t bufSize)
-\brief ãƒ‡ãƒ¼ã‚¿é€ä¿¡ã€‚
-\param[in] _param netclãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿
-\param[in] buf é€ä¿¡ãƒ‡ãƒ¼ã‚¿
-\param[in] bufSize é€ä¿¡ãƒ‡ãƒ¼ã‚¿ã‚µã‚¤ã‚º
-\return >=0:é€ä¿¡ã—ãŸãƒã‚¤ãƒˆæ•°ã€€<0:Errror
+\brief ƒf[ƒ^‘—MB
+\param[in] _param netclƒpƒ‰ƒ[ƒ^
+\param[in] buf ‘—Mƒf[ƒ^
+\param[in] bufSize ‘—Mƒf[ƒ^ƒTƒCƒY
+\return >=0:‘—M‚µ‚½ƒoƒCƒg”@<0:Errror
 */
 int netclWrite(tNetParam* _param, const unsigned char* buf, const size_t bufSize){
 //int netclWrite(void* _param, const unsigned char* buf, const size_t bufSize){
@@ -259,7 +259,7 @@ int netclWrite(tNetParam* _param, const unsigned char* buf, const size_t bufSize
     }
   }
 
-  //! ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆå‡¦ç†
+  //! ƒ^ƒCƒ€ƒAƒEƒgˆ—
   if(param->waitTimeRead.tv_sec >= 0){
     FD_ZERO(&fdw);
     FD_ZERO(&fde);
@@ -267,11 +267,11 @@ int netclWrite(tNetParam* _param, const unsigned char* buf, const size_t bufSize
     FD_SET(param->sock, &fde);
     select(FD_SETSIZE, NULL, &fdw, &fde, &param->waitTimeRead);
     if(!FD_ISSET(param->sock, &fdw)){
-      //! æ›¸ãè¾¼ã¿ä¸èƒ½(ãƒ‡ãƒ¼ã‚¿ãªã—)
+      //! ‘‚«‚İ•s”\(ƒf[ƒ^‚È‚µ)
       //return 0;
     }
     if(FD_ISSET(param->sock, &fde)){
-      //! ä¾‹å¤–ã‚ã‚Š
+      //! —áŠO‚ ‚è
       return -1;
     }
   }
@@ -296,11 +296,11 @@ int netclWrite(tNetParam* _param, const unsigned char* buf, const size_t bufSize
 }
 
 /*! \fn int netclRead(void* _param, unsigned char* buf, size_t bufSize)
-\brief ãƒ‡ãƒ¼ã‚¿ã‚’å—ä¿¡ã™ã‚‹
-\param[in] _param netclãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿
-\param[in] buf å—ä¿¡ãƒ‡ãƒ¼ã‚¿
-\param[in] bufSize å—ä¿¡ãƒ‡ãƒ¼ã‚¿æ ¼ç´é ˜åŸŸã‚µã‚¤ã‚º
-\return >=0:å—ä¿¡ã—ãŸãƒã‚¤ãƒˆæ•° <0:Error
+\brief ƒf[ƒ^‚ğóM‚·‚é
+\param[in] _param netclƒpƒ‰ƒ[ƒ^
+\param[in] buf óMƒf[ƒ^
+\param[in] bufSize óMƒf[ƒ^Ši”[—ÌˆæƒTƒCƒY
+\return >=0:óM‚µ‚½ƒoƒCƒg” <0:Error
 */
 int netclRead(tNetParam* _param, unsigned char* buf, size_t bufSize){
 //int netclRead(void* _param, unsigned char* buf, size_t bufSize){
@@ -326,7 +326,7 @@ int netclRead(tNetParam* _param, unsigned char* buf, size_t bufSize){
     }
   }
 
-  //! ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆå‡¦ç†
+  //! ƒ^ƒCƒ€ƒAƒEƒgˆ—
   if(param->waitTimeRead.tv_sec >= 0){
     FD_ZERO(&fdr);
     FD_ZERO(&fde);
@@ -334,11 +334,11 @@ int netclRead(tNetParam* _param, unsigned char* buf, size_t bufSize){
     FD_SET(param->sock, &fde);
     select(FD_SETSIZE, &fdr, NULL, &fde, &param->waitTimeRead);
     if(!FD_ISSET(param->sock, &fdr)){
-      //! èª­ã¿è¾¼ã¿ä¸èƒ½(ãƒ‡ãƒ¼ã‚¿ãªã—)
+      //! “Ç‚İ‚İ•s”\(ƒf[ƒ^‚È‚µ)
       return -1;
     }
     if(FD_ISSET(param->sock, &fde)){
-      //! ä¾‹å¤–ã‚ã‚Š
+      //! —áŠO‚ ‚è
       return -1;
     }
   }
@@ -374,13 +374,13 @@ int _netclConnect(tNetParam* param){
     return 0;
   }
   //uM("_netclConnect();");
-  //ã‚½ã‚±ãƒƒãƒˆã‚ªãƒ¼ãƒ—ãƒ³
+  //ƒ\ƒPƒbƒgƒI[ƒvƒ“
   param->sock=socket(PF_INET, SOCK_STREAM, 0);
   if(param->sock == -1){
     //uM("_netclConnect(); Socket open error!!\n");
     return -1;
   }
-  //ã‚µãƒ¼ãƒã®IPã‚’å–å¾—
+  //ƒT[ƒo‚ÌIP‚ğæ“¾
   param->hostEntry=gethostbyname(param->srvName);
   if(param->hostEntry == NULL){
     addr=inet_addr(param->srvName);
@@ -399,7 +399,7 @@ int _netclConnect(tNetParam* param){
   param->sockadd.sin_family=AF_INET;
   param->sockadd.sin_port=htons(param->srvPort);
   param->sockadd.sin_addr=*((struct in_addr*)*param->hostEntry->h_addr_list);
-  //ã‚µãƒ¼ãƒã«æ¥ç¶š
+  //ƒT[ƒo‚ÉÚ‘±
   if(connect(param->sock, (struct sockaddr*)&param->sockadd, sizeof(param->sockadd))==-1){
     //uM2("_netclConnect(); Connection %s:%d error!!\n", param->srvName, param->srvPort);
 #ifdef WIN32

@@ -2,7 +2,7 @@
 \file libtkb.h
 \date 2007.11.12
 \author Y.Koide
-\brief 荳ｻ隕√↑繝｢繧ｸ繝･繝ｼ繝ｫ繧偵∪縺ｨ繧√◆繝ｩ繧､繝悶Λ繝ｪ
+\brief 主要なモジュールをまとめたライブラリ
 */
 #ifndef __LIBTKB_H__
 #define __LIBTKB_H__

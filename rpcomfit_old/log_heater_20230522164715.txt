@@ -1,0 +1,2 @@
+20230522-164725  00259,00245,Invalid command format. --> /home/user/software/test-20230227/rpcomfit//run_heater [DEVICE-ID: 1-7] [ADDR] [COMMAND]
+20230522-164735  00258,00249,Invalid command format. --> /home/user/software/test-20230227/rpcomfit//run_heater [DEVICE-ID: 1-7] [ADDR] [COMMAND]

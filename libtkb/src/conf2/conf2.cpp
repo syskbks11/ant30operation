@@ -2,7 +2,7 @@
 \file conf.cpp
 \auther Y.Koide
 \date 2006.08.16
-\brief ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ãƒ¼ã‚’èª­ã¿è¾¼ã‚€ãŸã‚ã®ãƒ©ã‚¤ãƒ–ãƒ©ãƒª
+\brief ƒpƒ‰ƒ[ƒ^[‚ğ“Ç‚İ‚Ş‚½‚ß‚Ìƒ‰ƒCƒuƒ‰ƒŠ
 */
 
 #include <stdio.h>
@@ -14,12 +14,12 @@
 const char version[] = "0.0.0";
 
 typedef struct{
-  char** conf;              //!< ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿æƒ…å ±æ ¼ç´ç”¨
-  int confNum;              //!< ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã®æ•°ã€‚
-  int confNumMax;           //!< confã«é ˜åŸŸç¢ºä¿ã—ã¦ã„ã‚‹æ•°(å®Ÿéš›ã¯ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿åã¨å€¤ãŒã‚ã‚‹ã®ã§ã“ã®æ•°å€¤ã®2å€ç¢ºä¿ã—ã¦ã„ã‚‹)
-  char* allKeyVal;          //!< å…¨ã¦ã®ã‚­ãƒ¼ã¨å€¤ã‚’æ ¼ç´
-  int valPos;               //!< è©²å½“ã™ã‚‹å€¤ã®ä½ç½®
-}tConfParam; //!< ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿æ§‹é€ ä½“ã®ã‚¿ã‚¤ãƒ—å®£è¨€
+  char** conf;              //!< ƒpƒ‰ƒ[ƒ^î•ñŠi”[—p
+  int confNum;              //!< ƒpƒ‰ƒ[ƒ^‚Ì”B
+  int confNumMax;           //!< conf‚É—ÌˆæŠm•Û‚µ‚Ä‚¢‚é”(ÀÛ‚Íƒpƒ‰ƒ[ƒ^–¼‚Æ’l‚ª‚ ‚é‚Ì‚Å‚±‚Ì”’l‚Ì2”{Šm•Û‚µ‚Ä‚¢‚é)
+  char* allKeyVal;          //!< ‘S‚Ä‚ÌƒL[‚Æ’l‚ğŠi”[
+  int valPos;               //!< ŠY“–‚·‚é’l‚ÌˆÊ’u
+}tConfParam; //!< ƒpƒ‰ƒ[ƒ^\‘¢‘Ì‚Ìƒ^ƒCƒvéŒ¾
 
 static int addLine(void* _p, const char* line);
 static int findPos(void* _p, const char* key);
@@ -36,7 +36,7 @@ int main(){
 #endif
 
 /*! \fn const char* conf2Version()
-\return ãƒãƒ¼ã‚¸ãƒ§ãƒ³æƒ…å ±ã‚’è¨˜è¿°ã—ãŸæ–‡å­—åˆ—ã€‚
+\return ƒo[ƒWƒ‡ƒ“î•ñ‚ğ‹Lq‚µ‚½•¶š—ñB
 */
 const char* conf2Version()
 {
@@ -44,12 +44,12 @@ const char* conf2Version()
 }
 
 /*! \fn int conf2Init()
-\brief æœ€åˆã«å‘¼ã³å‡ºã™ã€‚
-\return ãƒ‡ãƒ¼ã‚¿æ§‹é€ ä½“ã¸ã®ãƒã‚¤ãƒ³ã‚¿
+\brief Å‰‚ÉŒÄ‚Ño‚·B
+\return ƒf[ƒ^\‘¢‘Ì‚Ö‚Ìƒ|ƒCƒ“ƒ^
 */
 void* conf2Init()
 {
-  tConfParam* p; //!< ãƒ‡ãƒ¼ã‚¿æ§‹é€ ä½“ã¸ã®ãƒã‚¤ãƒ³ã‚¿
+  tConfParam* p; //!< ƒf[ƒ^\‘¢‘Ì‚Ö‚Ìƒ|ƒCƒ“ƒ^
 
   p = new tConfParam();
   if(!p)
@@ -65,7 +65,7 @@ void* conf2Init()
 }
 
 /*! \fn int conf2End(void* _p)
-\breif æœ€å¾Œã«å¿…ãšå‘¼ã³å‡ºã™ã€‚
+\breif ÅŒã‚É•K‚¸ŒÄ‚Ño‚·B
 */
 int conf2End(void* _p)
 {
@@ -92,10 +92,10 @@ int conf2End(void* _p)
 }
 
 /*! \fn int conf2AddFile(const char* fileName)
-\breif ãƒ•ã‚¡ã‚¤ãƒ«ã‹ã‚‰è¨­å®šæƒ…å ±ã‚’è¿½åŠ å–å¾—ã™ã‚‹ã€‚
-\param[in] fileName ãƒ•ã‚¡ã‚¤ãƒ«å
-\retval 0 æˆåŠŸ
-\retval 1 å¤±æ•—
+\breif ƒtƒ@ƒCƒ‹‚©‚çİ’èî•ñ‚ğ’Ç‰Áæ“¾‚·‚éB
+\param[in] fileName ƒtƒ@ƒCƒ‹–¼
+\retval 0 ¬Œ÷
+\retval 1 ¸”s
 */
 int conf2AddFile(void* _p, const char* fileName)
 {
@@ -118,7 +118,7 @@ int conf2AddFile(void* _p, const char* fileName)
   while(1){
     c = fgetc(fp);
     
-    //! ãƒ•ã‚¡ã‚¤ãƒ«çµ‚ç«¯
+    //! ƒtƒ@ƒCƒ‹I’[
     if(c == EOF){
       if(size != 0){
 	tmp[size] = '\0';
@@ -127,7 +127,7 @@ int conf2AddFile(void* _p, const char* fileName)
       break;
     }
     
-    //! æ”¹è¡Œã‚³ãƒ¼ãƒ‰ãŒè¦‹ã¤ã‹ã£ãŸã‚‰ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿è¿½åŠ 
+    //! ‰üsƒR[ƒh‚ªŒ©‚Â‚©‚Á‚½‚çƒpƒ‰ƒ[ƒ^’Ç‰Á
     if(c == '\n' || c == '\r' || c == '\a'){
       tmp[size] = '\0';
       addLine(_p, tmp);
@@ -138,7 +138,7 @@ int conf2AddFile(void* _p, const char* fileName)
       size++;
     }
 
-    //! æ ¼ç´é ˜åŸŸã‚’ã‚ªãƒ¼ãƒãƒ¼ã—ãŸã‚‰æ–°ãŸã«2å€ã®é ˜åŸŸã‚’ä½œæˆã—ç§»å‹•ã™ã‚‹
+    //! Ši”[—Ìˆæ‚ğƒI[ƒo[‚µ‚½‚çV‚½‚É2”{‚Ì—Ìˆæ‚ğì¬‚µˆÚ“®‚·‚é
     if(size >= tmpSize){
       tmp2 = new char[tmpSize * 2];
       memcpy(tmp2, tmp, size);
@@ -154,16 +154,16 @@ int conf2AddFile(void* _p, const char* fileName)
 }
 
 /*! \fn int conf2AddStr(const char* str)
-\brief æ”¹è¡Œã‚’å«ã‚€æ–‡å­—åˆ—ã‹ã‚‰è¨­å®šæƒ…å ±ã‚’è¿½åŠ å–å¾—ã™ã‚‹ã€‚
-\param[in] str æ–‡å­—åˆ—
-\retval 0 æˆåŠŸ
+\brief ‰üs‚ğŠÜ‚Ş•¶š—ñ‚©‚çİ’èî•ñ‚ğ’Ç‰Áæ“¾‚·‚éB
+\param[in] str •¶š—ñ
+\retval 0 ¬Œ÷
 */
 int conf2AddStr(void* _p, const char* str){
-  char* tmp;                     //!< ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã‚’1è¡Œã”ã¨ã«æ ¼ç´ã™ã‚‹é ˜åŸŸã€‚
-  const char* s;                 //!< strã§è¡Œã‚’æ¤œç´¢ã—ã¦ã„ããŸã‚ã®ãƒã‚¤ãƒ³ã‚¿ã€‚
-  const char* a;                 //!< æ”¹è¡Œã‚³ãƒ¼ãƒ‰ã‚’æ¤œç´¢ã™ã‚‹ãŸã‚ã®ãƒã‚¤ãƒ³ã‚¿
-  const char* line;              //!< æ¤œå‡ºã—ãŸè¡Œã®å…ˆé ­ãƒã‚¤ãƒ³ã‚¿
-  int len;                       //!< æ¤œå‡ºã—ãŸè¡Œã®æ–‡å­—æ•°
+  char* tmp;                     //!< ƒpƒ‰ƒ[ƒ^‚ğ1s‚²‚Æ‚ÉŠi”[‚·‚é—ÌˆæB
+  const char* s;                 //!< str‚Ås‚ğŒŸõ‚µ‚Ä‚¢‚­‚½‚ß‚Ìƒ|ƒCƒ“ƒ^B
+  const char* a;                 //!< ‰üsƒR[ƒh‚ğŒŸõ‚·‚é‚½‚ß‚Ìƒ|ƒCƒ“ƒ^
+  const char* line;              //!< ŒŸo‚µ‚½s‚Ìæ“ªƒ|ƒCƒ“ƒ^
+  int len;                       //!< ŒŸo‚µ‚½s‚Ì•¶š”
 
 
   s = str;
@@ -171,24 +171,24 @@ int conf2AddStr(void* _p, const char* str){
   {
     line = s;
 
-    //! æ”¹è¡Œã‚³ãƒ¼ãƒ‰ã‚’æ¢ã—ã¦ä¸€è¡Œã ã‘tmpã«ã‚³ãƒ”ãƒ¼ã™ã‚‹ã€‚
-    if((a = strchr(s, '\n')) != NULL)      //!< unix,windowsã®æ”¹è¡Œã‚³ãƒ¼ãƒ‰
+    //! ‰üsƒR[ƒh‚ğ’T‚µ‚Äˆês‚¾‚¯tmp‚ÉƒRƒs[‚·‚éB
+    if((a = strchr(s, '\n')) != NULL)      //!< unix,windows‚Ì‰üsƒR[ƒh
     {
-      len = a - s + 1;                     //!< \nã®æ‰‹å‰ã®æ–‡å­—ã¾ã§ä½•æ–‡å­—ã‹
-      s += len;                            //!< æ¬¡ã®è¡Œé ­ã«ç§»å‹•
+      len = a - s + 1;                     //!< \n‚Ìè‘O‚Ì•¶š‚Ü‚Å‰½•¶š‚©
+      s += len;                            //!< Ÿ‚Ìs“ª‚ÉˆÚ“®
     }
-    else if((a = strchr(s, '\a')) != NULL) //!< macã®æ”¹è¡Œã‚³ãƒ¼ãƒ‰
+    else if((a = strchr(s, '\a')) != NULL) //!< mac‚Ì‰üsƒR[ƒh
     {
-      len = a - s + 1;                     //!< \nã®æ‰‹å‰ã®æ–‡å­—ã¾ã§ä½•æ–‡å­—ã‹
-      s += len;                            //!< æ¬¡ã®è¡Œé ­ã«ç§»å‹•
+      len = a - s + 1;                     //!< \n‚Ìè‘O‚Ì•¶š‚Ü‚Å‰½•¶š‚©
+      s += len;                            //!< Ÿ‚Ìs“ª‚ÉˆÚ“®
     }
     else{
-      //! æœ€å¾Œã®è¡Œ
+      //! ÅŒã‚Ìs
       len = strlen(s);
       s += len;
     }
 
-    //! ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã®è¿½åŠ 
+    //! ƒpƒ‰ƒ[ƒ^‚Ì’Ç‰Á
     tmp = new char[len +1];
     strncpy(tmp, line, len);
     tmp[len] = '\0';
@@ -201,9 +201,9 @@ int conf2AddStr(void* _p, const char* str){
 }
 
 /*! \fn const char* conf2GetStr(const char* _setKey)
-\brief ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿åã‹ã‚‰ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿å€¤ã‚’å–å¾—ã™ã‚‹
-\param[in] _setKey ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿å
-\return è¨­å®šå€¤
+\brief ƒpƒ‰ƒ[ƒ^–¼‚©‚çƒpƒ‰ƒ[ƒ^’l‚ğæ“¾‚·‚é
+\param[in] _setKey ƒpƒ‰ƒ[ƒ^–¼
+\return İ’è’l
 */
 const char* conf2GetStr(void* _p, const char* _setKey)
 {
@@ -217,30 +217,30 @@ const char* conf2GetStr(void* _p, const char* _setKey)
 }
 
 /*! \fn int conf2SetKey(const char* _setKey)
-\brief confGetVal()ã§å–å¾—ã™ã‚‹ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿åã‚’æŒ‡å®šã™ã‚‹ã€‚
-\param[in] _setKey ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿å
-\retval 1 è©²å½“ã‚ã‚Š
-\retval 0 è©²å½“ãªã—
+\brief confGetVal()‚Åæ“¾‚·‚éƒpƒ‰ƒ[ƒ^–¼‚ğw’è‚·‚éB
+\param[in] _setKey ƒpƒ‰ƒ[ƒ^–¼
+\retval 1 ŠY“–‚ ‚è
+\retval 0 ŠY“–‚È‚µ
 */
 int conf2SetKey(void* _p, const char* _setKey)
 {
   tConfParam* p = (tConfParam*)_p;
   
-  //! è©²å½“ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã‚’æ¢ã™
+  //! ŠY“–ƒpƒ‰ƒ[ƒ^‚ğ’T‚·
   int pos = findPos(_p, _setKey);
   if(pos < 0){
-    //! è©²å½“ãªã—
+    //! ŠY“–‚È‚µ
     p->valPos = -1;
     return 0;
   }
-  //! è©²å½“ã‚ã‚Š
+  //! ŠY“–‚ ‚è
   p->valPos = pos;
   return 1;
 }
 
 /*! \fn const char* conf2GetVal()
-\brief ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿å€¤ã‚’å–å¾—ã™ã‚‹ã€‚ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿åã®è¨­å®šã¯confSetKeyã§è¡Œã†ã€‚
-\return ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿å
+\brief ƒpƒ‰ƒ[ƒ^’l‚ğæ“¾‚·‚éBƒpƒ‰ƒ[ƒ^–¼‚Ìİ’è‚ÍconfSetKey‚Ås‚¤B
+\return ƒpƒ‰ƒ[ƒ^–¼
 */
 const char* conf2GetVal(void* _p)
 {
@@ -253,33 +253,33 @@ const char* conf2GetVal(void* _p)
 }
 
 /*! \fn const char* conf2GetAllKeyVal()
-\brief å…¨ã¦ã®ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿åã¨ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿å€¤ã‚’å–å¾—ã™ã‚‹ã€‚
-\brief ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿åã¨ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿å€¤ã¯\tã§åŒºåˆ‡ã‚‰ã‚Œã€ä¸€è¡Œã«ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿é …ç›®ï¼‘ã¤ã‚’æ›¸ãå‡ºã™ã€‚
-\return ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿åã¨ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿å€¤ã®ä¸€è¦§
+\brief ‘S‚Ä‚Ìƒpƒ‰ƒ[ƒ^–¼‚Æƒpƒ‰ƒ[ƒ^’l‚ğæ“¾‚·‚éB
+\brief ƒpƒ‰ƒ[ƒ^–¼‚Æƒpƒ‰ƒ[ƒ^’l‚Í\t‚Å‹æØ‚ç‚êAˆês‚Éƒpƒ‰ƒ[ƒ^€–Ú‚P‚Â‚ğ‘‚«o‚·B
+\return ƒpƒ‰ƒ[ƒ^–¼‚Æƒpƒ‰ƒ[ƒ^’l‚Ìˆê——
 */
 const char* conf2GetAllKeyVal(void* _p)
 {
   tConfParam* p = (tConfParam*)_p;
-  size_t size = 1; //! \0ç”¨
+  size_t size = 1; //! \0—p
 
   if(p->confNum == 0){
     return NULL;
   }
 
-  //! å…¨ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã‚’æ›¸ãå‡ºã—ãŸã¨ãã®ã‚µã‚¤ã‚ºã‚’ç®—å‡ºã™ã‚‹ã€‚
+  //! ‘Sƒpƒ‰ƒ[ƒ^‚ğ‘‚«o‚µ‚½‚Æ‚«‚ÌƒTƒCƒY‚ğZo‚·‚éB
   for(int i = 0; i < p->confNum; i++)
   {
-    size += strlen(p->conf[i * 2]) + strlen(p->conf[i * 2 + 1]) + 1 + 2; //!< \tã¨æ”¹è¡Œã‚³ãƒ¼ãƒ‰åˆ†(2byte)
+    size += strlen(p->conf[i * 2]) + strlen(p->conf[i * 2 + 1]) + 1 + 2; //!< \t‚Æ‰üsƒR[ƒh•ª(2byte)
   }
 
-  //! æ›¸ãå‡ºã—ã‚ˆã†ã®é ˜åŸŸã‚’ç¢ºä¿
+  //! ‘‚«o‚µ‚æ‚¤‚Ì—Ìˆæ‚ğŠm•Û
   if(p->allKeyVal)
   {
     delete[] p->allKeyVal;
   }
   p->allKeyVal = new char[size];
 
-  //! æ›¸ãå‡ºã—
+  //! ‘‚«o‚µ
   char* pTmp = p->allKeyVal;
   for(int i = 0; i < p->confNum; i++)
   {
@@ -291,8 +291,8 @@ const char* conf2GetAllKeyVal(void* _p)
 }
 
 /*! \fn const char* conf2GetAllKeyVal2()
-\brief å…¨ã¦ã®ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿åã¨ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿å€¤ã‚’å–å¾—ã™ã‚‹ã€‚
-\return ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿åã¨ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿å€¤ãŒ1ã‚»ãƒƒãƒˆã¥ã¤æ ¼ç´ã•ã‚Œã¦ã„ã‚‹ã€‚key1 val1 key2 val2 ...
+\brief ‘S‚Ä‚Ìƒpƒ‰ƒ[ƒ^–¼‚Æƒpƒ‰ƒ[ƒ^’l‚ğæ“¾‚·‚éB
+\return ƒpƒ‰ƒ[ƒ^–¼‚Æƒpƒ‰ƒ[ƒ^’l‚ª1ƒZƒbƒg‚Ã‚ÂŠi”[‚³‚ê‚Ä‚¢‚éBkey1 val1 key2 val2 ...
 */
 const char** conf2GetAllKeyVal2(void* _p)
 {
@@ -301,7 +301,7 @@ const char** conf2GetAllKeyVal2(void* _p)
 }
 
 /*! \fn void conf2Print()
-\brief ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿åã¨ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿å€¤ã®ä¸€è¦§ã‚’è¡¨ç¤ºã™ã‚‹ã€‚
+\brief ƒpƒ‰ƒ[ƒ^–¼‚Æƒpƒ‰ƒ[ƒ^’l‚Ìˆê——‚ğ•\¦‚·‚éB
 */
 void conf2Print(void* _p){
   tConfParam* p = (tConfParam*)_p;
@@ -314,14 +314,14 @@ void conf2Print(void* _p){
 
 
 /*! \fn int addLine(const char* line)
-\brief 1è¡Œã®æ–‡å­—åˆ—ã‹ã‚‰è¨­å®šæƒ…å ±ã‚’å–å¾—ã™ã‚‹ã€‚
-\param[in] line æ–‡å­—åˆ—
-\retval 0 æˆåŠŸ
-\retval 1 å¤±æ•—
+\brief 1s‚Ì•¶š—ñ‚©‚çİ’èî•ñ‚ğæ“¾‚·‚éB
+\param[in] line •¶š—ñ
+\retval 0 ¬Œ÷
+\retval 1 ¸”s
 */
 int addLine(void* _p, const char* line){
   tConfParam* p = (tConfParam*)_p;
-  char* tmp;         //!< ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã‚’1è¡Œã”ã¨ã«æ ¼ç´ã™ã‚‹é ˜åŸŸã€‚
+  char* tmp;         //!< ƒpƒ‰ƒ[ƒ^‚ğ1s‚²‚Æ‚ÉŠi”[‚·‚é—ÌˆæB
   char* tmp2;
   char* key;
   char* val;
@@ -334,13 +334,13 @@ int addLine(void* _p, const char* line){
   tmp = new char[strlen(line) + 1];
   tmp2 = new char[strlen(line) + 1];
 
-  //! ã‚³ãƒ¡ãƒ³ãƒˆ&æœ«ç«¯å‡¦ç†
+  //! ƒRƒƒ“ƒg&––’[ˆ—
   strcpy(tmp, line);
   ln = tmp;
 
   if((a = strchr(ln, '#')) != NULL)
   {
-    len = a - ln;            //!< #ç›´å‰ã¾ã§ã®æ–‡å­—æ•°
+    len = a - ln;            //!< #’¼‘O‚Ü‚Å‚Ì•¶š”
     strncpy(tmp2, ln, len);
     tmp2[len] = '\0';
     strcpy(tmp, tmp2);
@@ -348,7 +348,7 @@ int addLine(void* _p, const char* line){
   }
   if((a = strchr(ln, '\n')) != NULL)
   {
-    len = a - ln;            //!< \nç›´å‰ã¾ã§ã®æ–‡å­—æ•°
+    len = a - ln;            //!< \n’¼‘O‚Ü‚Å‚Ì•¶š”
     strncpy(tmp2, ln, len);
     tmp2[len] = '\0';
     strcpy(tmp, tmp2);
@@ -356,7 +356,7 @@ int addLine(void* _p, const char* line){
   }
   if((a = strchr(ln, '\r')) != NULL)
   {
-    len = a - ln;            //!< \rç›´å‰ã¾ã§ã®æ–‡å­—æ•°
+    len = a - ln;            //!< \r’¼‘O‚Ü‚Å‚Ì•¶š”
     strncpy(tmp2, ln, len);
     tmp2[len] = '\0';
     strcpy(tmp, tmp2);
@@ -364,13 +364,13 @@ int addLine(void* _p, const char* line){
   }
   if((a = strchr(ln, '\a')) != NULL)
   {
-    len = a - ln;            //!< \aç›´å‰ã¾ã§ã®æ–‡å­—æ•°
+    len = a - ln;            //!< \a’¼‘O‚Ü‚Å‚Ì•¶š”
     strncpy(tmp2, ln, len);
     tmp2[len] = '\0';
     strcpy(tmp, tmp2);
     ln = tmp;
   }
-  //! è¡Œé ­ã®ç©ºæ–‡å­—å‰Šé™¤
+  //! s“ª‚Ì‹ó•¶šíœ
   pTmp = tmp;
   len = 0;
   while(*pTmp == ' ' || *pTmp == '\t')
@@ -388,7 +388,7 @@ int addLine(void* _p, const char* line){
     return 1;
   }
   
-  //! ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿åã¨ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿å€¤ã‚’åŒºåˆ‡ã‚‹ç©ºå­—ã‚’æ¤œç´¢ã™ã‚‹
+  //! ƒpƒ‰ƒ[ƒ^–¼‚Æƒpƒ‰ƒ[ƒ^’l‚ğ‹æØ‚é‹óš‚ğŒŸõ‚·‚é
   ln = tmp;
   a = strchr(ln, ' ');
   b = strchr(ln, '\t');
@@ -413,22 +413,22 @@ int addLine(void* _p, const char* line){
   }
   else
   {
-    //! æ¤œç´¢å¤±æ•—
+    //! ŒŸõ¸”s
     delete[] tmp;
     delete[] tmp2;
     return 1;
   }
 
-  //! é ˜åŸŸç¢ºä¿
+  //! —ÌˆæŠm•Û
   key = new char[len + 1];
   val = new char[strlen(ln + len) + 1];
 
-  //! ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿åã¨ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿å€¤å–å¾—
+  //! ƒpƒ‰ƒ[ƒ^–¼‚Æƒpƒ‰ƒ[ƒ^’læ“¾
   strncpy(key, ln, len);
   key[len] = '\0';
   strcpy(val, ln + len);
 
-  //! valã®å…ˆé ­ç©ºæ–‡å­—å‰Šé™¤
+  //! val‚Ìæ“ª‹ó•¶šíœ
   pTmp = val;
   len = 0;
   while(*pTmp == ' ' || *pTmp == '\t'){
@@ -447,17 +447,17 @@ int addLine(void* _p, const char* line){
     return 1;
   }
 
-  //! ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ãƒ¼ã®è¿½åŠ 
-  //! åŒã˜keyãŒç™»éŒ²ã•ã‚Œã¦ã„ãŸå ´åˆä¸Šæ›¸ãã™ã‚‹
+  //! ƒpƒ‰ƒ[ƒ^[‚Ì’Ç‰Á
+  //! “¯‚¶key‚ª“o˜^‚³‚ê‚Ä‚¢‚½ê‡ã‘‚«‚·‚é
   int pos = findPos(_p, key);
   if(pos < 0)
   {
-    //! æ–°è¦
+    //! V‹K
     pushKeyVal(_p, key, val);
   }
   else
   {
-    //! ä¸Šæ›¸ã
+    //! ã‘‚«
     delete[] p->conf[pos * 2 + 1];
     p->conf[pos * 2 + 1] = new char[strlen(val) + 1];
     strcpy(p->conf[pos * 2 + 1], val);
@@ -491,32 +491,32 @@ int pushKeyVal(void* _p, const char* _key, const char* _val)
   char** tmp;
 
   num++;
-  //! æ ¼ç´é ˜åŸŸãŒã‚ªãƒ¼ãƒãƒ¼ã—ãŸå ´åˆã¯å¤§ãç›®ã®æ‹¡å¼µé ˜åŸŸã‚’ç¢ºä¿ã—ã€ç§»å‹•ã™ã‚‹
+  //! Ši”[—Ìˆæ‚ªƒI[ƒo[‚µ‚½ê‡‚Í‘å‚«–Ú‚ÌŠg’£—Ìˆæ‚ğŠm•Û‚µAˆÚ“®‚·‚é
   if(num >= p->confNumMax - 1)
   {
     if(p->confNum == 0)
     {
-      //! æœ€åˆã«å‘¼ã³å‡ºã•ã‚ŒãŸã¨ãã¯ã€é©å½“ã«å¤§ãã‚ã«ç¢ºä¿ã—ã¦ã‚„ã‚‹ã€‚
+      //! Å‰‚ÉŒÄ‚Ño‚³‚ê‚½‚Æ‚«‚ÍA“K“–‚É‘å‚«‚ß‚ÉŠm•Û‚µ‚Ä‚â‚éB
       p->confNumMax = 256;
     }
     else
     {
-      //! ãã®å¾Œã¯2å€ãšã¤ç¢ºä¿ã™ã‚‹ã€‚
+      //! ‚»‚ÌŒã‚Í2”{‚¸‚ÂŠm•Û‚·‚éB
       p->confNumMax *= 2;
     }
 
-    //! é ˜åŸŸç¢ºä¿
+    //! —ÌˆæŠm•Û
     tmp = new char*[p->confNumMax * 2];
     memset(tmp, NULL, sizeof(*tmp) * p->confNumMax * 2);
 
-    //! æ—§ãƒ‡ãƒ¼ã‚¿ã®æ–‡å­—åˆ—ä½ç½®ã®ã‚³ãƒ”ãƒ¼
+    //! ‹Œƒf[ƒ^‚Ì•¶š—ñˆÊ’u‚ÌƒRƒs[
     memcpy(tmp, p->conf, sizeof(*tmp) * 2 * p->confNum);
     //for(int i = 0; i < p->confNum * 2; i++)
     //{
     //  tmp[i] = p->conf[i];
     //}
     
-    //! æ®‹ã‚Šã¯åˆæœŸåŒ–
+    //! c‚è‚Í‰Šú‰»
     //memset(tmp + p->confNum * 2, NULL, sizeof(*tmp) * (p->confNumMax - p->confNum) * 2);
     //for(int i = p->confNum * 2; i <  p->confNumMax * 2; i++)
     //{

@@ -1,9 +1,9 @@
-以下履歴
+�ȉ�����
 
 2007.09.24
-・netuへ関数を統合。
+�Enetu�֊֐��𓝍��B
 
 2006.11.23
-・NetworkUtilityモジュール。エンディアンの変換などを行う。
+�ENetworkUtility���W���[���B�G���f�B�A���̕ϊ��Ȃǂ��s���B
 
-以上
+�ȏ�

@@ -1,0 +1,51 @@
+#include	<stdio.h>
+#include	<stdlib.h>
+#include	<string.h>
+#include	<math.h>
+
+#define		MAX_CHAR_LENGTH	81920
+#define		MAX_COL		1024
+#define		MAX_ROW		1024
+
+
+main(int argc, char *argv[])
+{
+int	ii, jj;
+char	buffer[MAX_CHAR_LENGTH], *token;
+int	inum, jnum;
+double	x[MAX_COL], y[MAX_ROW], z;
+
+
+
+fgets(buffer,MAX_CHAR_LENGTH,stdin);
+    // fprintf(stderr,"%s\t",buffer);	
+
+jj=0;
+token=strtok(buffer,"\t\n ,");
+x[jj]=atof(token);
+jj++;
+while(1){
+	token=strtok(NULL,"\t\n ,");
+	if(token==NULL)	break;
+	x[jj]=atof(token);
+	// fprintf(stderr,"%lf\t%s\t%d\n",x[jj],token,jj);
+	jj++;
+}
+jnum=jj;
+
+
+for(ii=0;;ii++){
+	if(fgets(buffer,MAX_CHAR_LENGTH,stdin)==NULL)	break;
+	token=strtok(buffer,"\t\n ,");
+	if(token==NULL)	break;
+	y[ii]=atof(token);
+	for(jj=0;jj<jnum;jj++){
+		token=strtok(NULL,"\t\n ,");
+		z=atof(token);
+		fprintf(stdout,"%lf\t%lf\t%lf\n",x[jj],y[ii],z);
+	}
+}
+
+
+
+}

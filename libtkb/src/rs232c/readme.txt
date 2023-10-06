@@ -1,8 +1,8 @@
 2008.03.01 Y.Koide
-・parityBitの定義を0:none 1:oddParity 2:evenParityにした。今まで1と2の定義が逆であった。
-・u.hを使用しないようにした。
+�EparityBit�̒�`��0:none 1:oddParity 2:evenParity�ɂ����B���܂�1��2�̒�`���t�ł������B
+�Eu.h���g�p���Ȃ��悤�ɂ����B
 
 2006.08.15 Y.Koide
-・RS-232Cを操作するライブラリ
+�ERS-232C�𑀍삷�郉�C�u����
 
-以上
+�ȏ�

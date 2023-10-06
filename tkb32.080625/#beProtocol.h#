@@ -1,0 +1,77 @@
+/*!
+\file beProtocol.h
+\author Y.Koide
+\date 2008.03.07
+\brief ’Ãæ’±û’À©’¸æ’¥Ð’¥Ã’¥¯’¥¨’¥ó’¥É’´Ö’ÄÌ’¿®’¥×’¥í’¥È’¥³’¥ë
+*/
+#ifndef __BEPROTOCOL_H__
+#define __BEPROTOCOL_H__
+
+//! ’Ãæ’±û’À©’¸æ’¤«’¤é’¥Ð’¥Ã’¥¯’¥¨’¥ó’¥É’¤Ø’¤Î’½é’´ü’²½’¥ê’¥¯’¥¨’¥¹’¥È’¹½’Â¤’ÂÎ
+typedef struct beReqInit_s{
+  long size;             //!< ’Á÷’¿®’¥Ç’¡¼’¥¿’¥µ’¥¤’¥º
+  int paramSize;         //!< param’¤Î’¥µ’¥¤’¥º
+  char param;            //!< ’½é’´ü’¥Ñ’¥é’¥á’¡¼’¥¿’¡¼’Ê¸’»ú’Îó.(PARAMETER1\tVALUE1\nPARAMETER2\tVALUE2\n....\n’¤Î’·Á’¤Ç’Æþ’¤Ã’¤Æ’¤¤’¤ë)
+} beReqInit_t;
+
+//! ’Ãæ’±û’À©’¸æ’¤«’¤é’¥Ð’¥Ã’¥¯’¥¨’¥ó’¥É’¤Ø’¤Î’¥ê’¥¯’¥¨’¥¹’¥È’¹½’Â¤’ÂÎ
+typedef struct beReqInteg_s{
+  long size;              //!< ’Á÷’¿®’¥Ç’¡¼’¥¿’¥µ’¥¤’¥º
+  int exeFlag;            //!< STOP=0, START=1, STATUS=2
+  int OnOffRoad;          //!< ON=0, OFF=1, ROAD=2
+  //int returnFlag;         //!< NORETSPE=0, RETSPE=1 (’Â¿’Ê¬’ÉÔ’Í×)
+  int scanId;             //!< ’¸½’ºß’¤Î’´Ñ’Â¬’ÂÐ’¾ÝID 0:Load -1:OFF’ÅÀA -2:OFF’ÅÀB 1:ON’ÅÀ1’ÈÖ 2:ON’ÅÀ2’ÈÖ ...
+  unsigned long nowTime;  //!< time(&now) nowTime=(unsigned long)now [sec] ’Ã±’¤Ë’¥­’¥ã’¥¹’¥È
+  int crctSec;            //!< ’ÀÑ’Ê¬’»Ø’Îá’¤¬’ÆÏ’¤¤’¤¿’»þ’¹ï’¤«’¤é’¡¢’²¿’²ó’ÌÜ’¤Î’Àµ’ÉÃ’¤ò’¸Ù’¤¤’¤À’¤é’ÀÑ’Ê¬’¤ò’¥¹’¥¿’¡¼’¥È’¤µ’¤»’¤ë’¤«
+  double DRA;             //!< ’¥¹’¥­’¥ã’¥ó’¥ª’¥Õ’¥»’¥Ã’¥È ’¦¤’ÀÖ’·Ð[rad]
+  double DDEC;            //!< ’¥¹’¥­’¥ã’¥ó’¥ª’¥Õ’¥»’¥Ã’¥È ’¦¤’ÀÖ’°Þ[rad]
+  double DGL;             //!< ’¥¹’¥­’¥ã’¥ó’¥ª’¥Õ’¥»’¥Ã’¥È ’¦¤’¶ä’·Ð[rad]
+  double DGB;             //!< ’¥¹’¥­’¥ã’¥ó’¥ª’¥Õ’¥»’¥Ã’¥È ’¦¤’¶ä’°Þ[rad]
+  double DAZ;             //!< ’¥¹’¥­’¥ã’¥ó’¥ª’¥Õ’¥»’¥Ã’¥È ’¦¤Az[rad]
+  double DEL;             //!< ’¥¹’¥­’¥ã’¥ó’¥ª’¥Õ’¥»’¥Ã’¥È ’¦¤El[rad]
+  double RA;              //!< ’´Ñ’Â¬’ÅÀ’¤Î’ºÂ’É¸’¤Î’Àä’ÂÐ’ÃÍ ’ÀÖ’·Ð[rad]
+  double DEC;             //!< ’´Ñ’Â¬’ÅÀ’¤Î’ºÂ’É¸’¤Î’Àä’ÂÐ’ÃÍ ’ÀÖ’°Þ[rad]
+  double GL;              //!< ’´Ñ’Â¬’ÅÀ’¤Î’ºÂ’É¸’¤Î’Àä’ÂÐ’ÃÍ ’¶ä’·Ð[rad]
+  double GB;              //!< ’´Ñ’Â¬’ÅÀ’¤Î’ºÂ’É¸’¤Î’Àä’ÂÐ’ÃÍ ’¶ä’°Þ[rad]
+  double AZ;              //!< ’´Ñ’Â¬’ÅÀ’¤Î’ºÂ’É¸’¤Î’Àä’ÂÐ’ÃÍ Az[rad]
+  double EL;              //!< ’´Ñ’Â¬’ÅÀ’¤Î’ºÂ’É¸’¤Î’Àä’ÂÐ’ÃÍ El[rad]
+  double PAZ;             //!< ’·×’»»’¾å’¤Î’¥¢’¥ó’¥Æ’¥Ê’Êý’°Ì’³Ñ Az[rad]
+  double PEL;             //!< ’·×’»»’¾å’¤Î’¥¢’¥ó’¥Æ’¥Ê’¶Ä’³Ñ El[rad]
+  double RAZ;             //!< ’¼Â’ºÝ’¤Î’¥¢’¥ó’¥Æ’¥Ê’Êý’°Ì’³Ñ Az[rad]
+  double REL;             //!< ’¼Â’ºÝ’¤Î’¥¢’¥ó’¥Æ’¥Ê’¶Ä’³Ñ El[rad]
+  double PA;              //!< ’¥Ý’¥¸’¥·’¥ç’¥ó’¥¢’¥ó’¥°’¥ë(’ÉÔ’Í×,’½é’´ü’²½’»þ’¤Ë’¥Ñ’¥é’¥á’¡¼’¥¿’¤Ç’ÅÏ’¤·’¤Æ’¤¤’¤ë)
+  //double HPBW;            //!< ’¥Ó’¡¼’¥à’¥µ’¥¤’¥º
+  //double EFFA;            //!< ’³«’¸ý’Ç½’Î¨
+  //double EFFB;            //!< ’¼ç’¥Ó’¡¼’¥à’Ç½’Î¨
+  //double EFFL;            //!< ’¥¢’¥ó’¥Æ’¥Ê’Ç½’Î¨
+  //double EFSS;            //!< FSS’Ç½’Î¨
+  //double GAIN;            //!< ’¥¢’¥ó’¥Æ’¥Ê’Íø’ÆÀ
+  //double FQTRK;           //!< ’ÀÅ’»ß’¥È’¥é’¥Ã’¥­’¥ó’¥°’¼þ’ÇÈ’¿ô [Hz]
+  double FQIF1;           //!< ’Âè’°ì’Ãæ’´Ö’¼þ’ÇÈ’¿ô [Hz]
+  double VRAD;            //!< Vrad [km/s]
+  int IFATT;              //!< ’Ãæ’´Ö’¼þ’ÇÈ’¿ô’Éô’¸º’¿ê’´ï’¤Î’²Ã’»»’ÃÍ [db]
+  int dummy2;
+  double TEMP;            //!< ’µ¤’²¹ --- 10’ÉÃ’Ê¿’¶Ñ’¤·’¤¿’¤â’¤Î [degC]
+  double PATM;            //!< ’µ¤’°µ --- 10’ÉÃ’Ê¿’¶Ñ’¤·’¤¿’¤â’¤Î [hPa]
+  double PH2O;            //!< ’¿å’¾ø’µ¤’°µ --- 10’ÉÃ’Ê¿’¶Ñ’¤·’¤¿’¤â’¤Î [hPa]
+  double VWIND;           //!< ’É÷’Â® --- 10’ÉÃ’Ê¿’¶Ñ’¤·’¤¿’¤â’¤Î [m/s]
+  double DWIND;           //!< ’É÷’¸þ --- 10’ÉÃ’Ê¿’¶Ñ’¤·’¤¿’¤â’¤Î’¡£’Ìµ’É÷=0 NE=45 E=90 SE=135 S=180 SW=225 W=270 NW=315 N=360 [deg]’¤Ê’¤É’¤Ç’É½’¤µ’¤ì’¤ë16’Êý’°Ì
+  double TAU;             //!< ’Âç’µ¤’¤Î’¸÷’³Ø’Åª’¸ü’¤ß(’¾ï’¤Ë0)
+  double TSYS;            //!< ’¥·’¥¹’¥Æ’¥à’»¨’²»’²¹’ÅÙ [K](’ÉÔ’Í×)
+  double BATM;            //!< ’Âç’µ¤’¤Î’²¹’ÅÙ [K] (’¾Ü’ºÙ’ÉÔ’ÌÀTEMP’¤È’¤Î’°ã’¤¤’¤Ï?)
+  double IPINT;           //!< ’¶¯’ÅÙ’³Ó’Àµ’ÂÎ’¤Î’²¹’ÅÙ [K]--- ’½Ö’´Ö’ÃÍ
+} beReqInteg_t;
+
+
+//! ’¥Ð’¥Ã’¥¯’¥¨’¥ó’¥É’¤«’¤é’Ãæ’±û’À©’¸æ’¤Ø’¤Î’±þ’Åú’¹½’Â¤’ÂÎ
+typedef struct beAnsStatus_s{
+  long size;              //!< ’Á÷’¿®’¥Ç’¡¼’¥¿’¥µ’¥¤’¥º
+  int endExeFlag;         //!< -1:FAILED 1:SUCCESS 2:STANDBY 3:EXECUTION 4:ACCEPT 5:REJECT
+  int acqErr;             //!< 1:NORMAL 2:ADCovfl 3:ACCovfl 4:ADACCovfl
+  float tsys;             //!< Tsys [K]
+  float totalPower;       //!< Ptotal [dBm]
+  int nbrOfChannel;       //!< number of spectrum-channel (’Â¿’Ê¬’ÉÔ’Í×)
+  double spectrum;        //!< == float spectrum[nbrOfChannel] spectrum data (’Â¿’Ê¬’ÉÔ’Í×)
+} beAnsStatus_t;
+
+#endif //!< __BEPROTOCOL_H__

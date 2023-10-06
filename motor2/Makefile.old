@@ -1,0 +1,63 @@
+CC = gcc
+
+LIBS	= -lncurses /usr/lib/edreapi.so
+CFLAGS	=-O -g -Wall
+INCLUDES= -lncurses /usr/lib/edreapi.so -I/usr/edre/include -DLINUX
+
+OBJS =test.o
+
+# All Target
+all:
+	make test
+	make test2
+	make test3
+	make test4
+	make test5
+	make commands
+
+# Tool invocations
+test: $(OBJS)
+	@echo 'Building target: $@'
+	@echo 'Invoking: GCC C Linker'
+	$(CC)  -o $@ $(OBJS) $(LIBS)
+	@echo 'Finished building target: $@'
+	@echo ' '
+
+test2: test2.o
+	@echo 'Building target: $@'
+	@echo 'Invoking: GCC C Linker'
+	$(CC)  -o $@ test2.o $(LIBS)
+	@echo 'Finished building target: $@'
+	@echo ' '
+
+test4: test4.o
+	@echo 'Building target: $@'
+	@echo 'Invoking: GCC C Linker'
+	$(CC)  -o $@ test4.o $(LIBS)
+	@echo 'Finished building target: $@'
+	@echo ' '
+
+test3: test3.o
+	@echo 'Building target: $@'
+	@echo 'Invoking: GCC C Linker'
+	$(CC)  -o $@ test3.o $(LIBS)
+	@echo 'Finished building target: $@'
+	@echo ' '
+
+test5: test5.o
+	@echo 'Building target: $@'
+	@echo 'Invoking: GCC C Linker'
+	$(CC)  -o $@ test5.o $(LIBS)
+	@echo 'Finished building target: $@'
+	@echo ' '
+
+test6: test6.o commands.o	
+	$(CC)  -o $@ test6.o commands.o $(LIBS)
+
+.c.o	:
+	${CC} ${CFLAGS} ${INCLUDES} -c $<
+
+# Other Targets
+clean:
+	rm -f core *.o *.BAK *.ti *.ii
+	rm -f ${OBJS}

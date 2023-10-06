@@ -1,0 +1,57 @@
+make -f Makefile.gcc
+make[1]: ディレクトリ `/home/nagai/Documents/workspace/libtkb' に入ります
+mkdir -p ./export
+#echo "" > ./export/libtkb.h
+make -f Makefile.gcc comp
+make[2]: ディレクトリ `/home/nagai/Documents/workspace/libtkb' に入ります
+make[2]: `comp' に対して行うべき事はありません.
+make[2]: ディレクトリ `/home/nagai/Documents/workspace/libtkb' から出ます
+ar rc ./export/libtkb.a u.o conf.o conf2.o rs232c.o netsv.o netcl.o netu.o tm.o thrd.o
+make[1]: ディレクトリ `/home/nagai/Documents/workspace/libtkb' から出ます
+/bin/rm -f core *.o *.BAK *.ti *.ii
+make -f Makefile.ffc
+make[1]: ディレクトリ `/home/nagai/Documents/workspace/libtkb' に入ります
+mkdir -p ./export
+#echo "" > ./export/libtkb.h
+make -f Makefile.ffc comp
+make[2]: ディレクトリ `/home/nagai/Documents/workspace/libtkb' に入ります
+/usr/local/FFC/bin/FCC -O -I/usr/local/FFC/include -G ./src/u/u.cpp -L/usr/lib -lnsl -lm -lc -lpthread -L/usr/local/FFC/lib -lssl2 -lstd6b
+/usr/local/FFC/bin/FCC -O -I/usr/local/FFC/include -c ./src/u/u.cpp -L/usr/lib -lnsl -lm -lc -lpthread -L/usr/local/FFC/lib -lssl2 -lstd6b
+#ar rc ./export/u.a u.o
+#cp ./src/u/u.h ./export/u.h
+#cat ./src/u/u.h >> ./export/libtkb.h
+/usr/local/FFC/bin/FCC -O -I/usr/local/FFC/include -G ./src/conf/conf.cpp
+/usr/local/FFC/bin/FCC -O -I/usr/local/FFC/include -c ./src/conf/conf.cpp
+#ar rc ./export/conf.a conf.o
+rm a.out
+#cp ./src/conf/conf.h ./export/conf.h
+#cat ./src/conf/conf.h >> ./export/libtkb.h
+/usr/local/FFC/bin/FCC -O -I/usr/local/FFC/include -c ./src/conf2/conf2.cpp
+#ar rc ./export/conf2.a conf2.o
+#cp ./src/conf2/conf2.h ./export/conf2.h
+#cat ./src/conf2/conf2.h >> ./export/libtkb.h
+/usr/local/FFC/bin/FCC -O -I/usr/local/FFC/include -c ./src/rs232c/rs232c.cpp
+#ar rc ./export/rs232c.a rs232c.o
+#cp ./src/rs232c/rs232c.h ./export/rs232c.h
+#cat ./src/rs232c/rs232c.h >> ./export/libtkb.h
+/usr/local/FFC/bin/FCC -O -I/usr/local/FFC/include -c ./src/netsv/netsv.cpp
+#ar rc ./export/netsv.a netsv.o
+#cp ./src/netsv/netsv.h ./export/netsv.h
+#cat ./src/netsv/netsv.h >> ./export/libtkb.h
+/usr/local/FFC/bin/FCC -O -I/usr/local/FFC/include -c ./src/netcl/netcl.cpp
+#ar rc ./export/netcl.a netcl.o
+#cp ./src/netcl/netcl.h ./export/netcl.h
+#cat ./src/netcl/netcl.h >> ./export/libtkb.h
+/usr/local/FFC/bin/FCC -O -I/usr/local/FFC/include -c ./src/netu/netu.cpp
+#ar rc ./export/netu.a netu.o
+#cp ./src/netu/netu.h ./export/netu.h
+#cat ./src/netu/netu.h >> ./export/libtkb.h
+/usr/local/FFC/bin/FCC -O -I/usr/local/FFC/include -c ./src/tm/tm.cpp
+#ar rc ./export/tm.a tm.o
+#cp ./src/tm/tm.h ./export/tm.h
+#cat ./src/tm/tm.h >> ./export/libtkb.h
+/usr/local/FFC/bin/FCC -O -I/usr/local/FFC/include -c ./src/thrd/thrd.cpp -L/usr/lib -lnsl -lm -lc -lpthread -L/usr/local/FFC/lib -lssl2 -lstd6b
+make[2]: ディレクトリ `/home/nagai/Documents/workspace/libtkb' から出ます
+ar rc ./export/libtkb_ffc.a u.o conf.o conf2.o rs232c.o netsv.o netcl.o netu.o tm.o thrd.o
+make[1]: ディレクトリ `/home/nagai/Documents/workspace/libtkb' から出ます
+cp src/libtkb.h export/.

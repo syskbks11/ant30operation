@@ -29,5 +29,5 @@ test: penguin_motor.o test_penmotor.o
 
 
 clean:
-	rm -f *.o test_penmotor *~ ${TARGET}
+	rm -f *.o test *~ ${TARGET}
 

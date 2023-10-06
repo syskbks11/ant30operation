@@ -2,7 +2,7 @@
 \file rs232c.h
 \author Y.Koide
 \date 2006.08.15
-\brief RS-232Cã‚’åˆ¶å¾¡ã™ã‚‹ãƒ©ã‚¤ãƒ–ãƒ©ãƒª
+\brief RS-232C‚ğ§Œä‚·‚éƒ‰ƒCƒuƒ‰ƒŠ
 */
 #ifndef __RS232C_H__
 #define __RS232C_H__

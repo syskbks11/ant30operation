@@ -1,0 +1,44 @@
+LDFLAGS =
+LIBS	=-L/usr/lib -lnsl -lm -lc -lpthread\
+	-L/usr/trk45/lib -ltrk \
+	-L/usr/FFC/lib -lssl2 -lstd6b
+CFLAGS	=-O
+INCLUDES=-I/usr/FFC/include \
+	-I/usr/trk45/include
+FC	=/usr/FFC/bin/frt
+CC	=/usr/FFC/bin/fcc
+CCP	=/usr/FFC/bin/FCC
+TARGET	=trkTest
+OBJS	=u.o conf.o rs232c.o tm.o trk.o trkTest.o
+
+all:	${TARGET}
+
+${TARGET}: ${OBJS}
+	${FC} ${LDFLAGS} -o $@ ${OBJS} ${LIBS}
+
+.cpp.o	:
+	${CCP} ${CFLAGS} ${INCLUDES} -c $<
+.c.o	:
+	${CC} ${CFLAGS} ${INCLUDES} -c $<
+
+u.o	:
+	${CCP} ${CFLAGS} ${INCLUDES} -c ../$*/$*.cpp
+
+conf.o	:
+	${CCP} ${CFLAGS} ${INCLUDES} -c ../$*/$*.cpp
+
+rs232c.o:
+	${CCP} ${CFLAGS} ${INCLUDES} -c ../$*/$*.cpp
+
+netcl.o	:
+	${CCP} ${CFLAGS} ${INCLUDES} -c ../$*/$*.cpp
+
+netu.o	:
+	${CCP} ${CFLAGS} ${INCLUDES} -c ../$*/$*.cpp
+
+tm.o	:
+	${CCP} ${CFLAGS} ${INCLUDES} -c ../$*/$*.cpp
+
+
+clean   :
+	   /bin/rm -f core *.o *.BAK

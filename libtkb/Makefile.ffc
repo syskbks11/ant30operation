@@ -1,0 +1,83 @@
+LDFLAGS =
+LIBS    =-L/usr/lib -lnsl -lm -lc -lpthread \
+	-L/usr/local/FFC/lib -lssl2 -lstd6b
+CFLAGS  =-O
+INCLUDES=-I/usr/local/FFC/include
+CC      =/usr/local/FFC/bin/fcc
+CCP     =/usr/local/FFC/bin/FCC
+OBJS    =u.o conf.o conf2.o rs232c.o netsv.o netcl.o netu.o tm.o thrd.o
+LIBDIR  =./export
+SRCDIR  =./src
+AR      =ar
+ARFLAGS =rc
+TARGET	=libtkb_ffc.a
+all     :
+	mkdir -p ${LIBDIR}
+	#echo "" > ${LIBDIR}/libtkb.h
+	make -f Makefile.ffc comp
+	${AR} ${ARFLAGS} ${LIBDIR}/${TARGET} ${OBJS}
+
+comp    : ${OBJS}
+
+u.o     :
+	${CCP} ${CFLAGS} ${INCLUDES} -G ${SRCDIR}/$*/$*.cpp ${LIBS}
+	${CCP} ${CFLAGS} ${INCLUDES} -c ${SRCDIR}/$*/$*.cpp ${LIBS}
+	#${AR} ${ARFLAGS} ${LIBDIR}/$*.a $*.o
+	#cp ${SRCDIR}/$*/$*.h ${LIBDIR}/$*.h
+	#cat ${SRCDIR}/$*/$*.h >> ${LIBDIR}/libtkb.h
+
+conf.o  :
+	${CCP} ${CFLAGS} ${INCLUDES} -G ${SRCDIR}/$*/$*.cpp
+	${CCP} ${CFLAGS} ${INCLUDES} -c ${SRCDIR}/$*/$*.cpp
+	#${AR} ${ARFLAGS} ${LIBDIR}/$*.a $*.o
+	#cp ${SRCDIR}/$*/$*.h ${LIBDIR}/$*.h
+	#cat ${SRCDIR}/$*/$*.h >> ${LIBDIR}/libtkb.h
+
+conf2.o :
+	${CCP} ${CFLAGS} ${INCLUDES} -c ${SRCDIR}/$*/$*.cpp
+	#${AR} ${ARFLAGS} ${LIBDIR}/$*.a $*.o
+	#cp ${SRCDIR}/$*/$*.h ${LIBDIR}/$*.h
+	#cat ${SRCDIR}/$*/$*.h >> ${LIBDIR}/libtkb.h
+
+rs232c.o:
+	${CCP} ${CFLAGS} ${INCLUDES} -c ${SRCDIR}/$*/$*.cpp
+	#${AR} ${ARFLAGS} ${LIBDIR}/$*.a $*.o
+	#cp ${SRCDIR}/$*/$*.h ${LIBDIR}/$*.h
+	#cat ${SRCDIR}/$*/$*.h >> ${LIBDIR}/libtkb.h
+
+rs232c2.o:
+	${CCP} ${CFLAGS} ${INCLUDES} -c ${SRCDIR}/$*/$*.cpp
+	#${AR} ${ARFLAGS} ${LIBDIR}/$*.a $*.o
+	#cp ${SRCDIR}/$*/$*.h ${LIBDIR}/$*.h
+	#cat ${SRCDIR}/$*/$*.h >> ${LIBDIR}/libtkb.h
+
+netsv.o :
+	${CCP} ${CFLAGS} ${INCLUDES} -c ${SRCDIR}/$*/$*.cpp
+	#${AR} ${ARFLAGS} ${LIBDIR}/$*.a $*.o
+	#cp ${SRCDIR}/$*/$*.h ${LIBDIR}/$*.h
+	#cat ${SRCDIR}/$*/$*.h >> ${LIBDIR}/libtkb.h
+
+netcl.o :
+	${CCP} ${CFLAGS} ${INCLUDES} -c ${SRCDIR}/$*/$*.cpp
+	#${AR} ${ARFLAGS} ${LIBDIR}/$*.a $*.o
+	#cp ${SRCDIR}/$*/$*.h ${LIBDIR}/$*.h
+	#cat ${SRCDIR}/$*/$*.h >> ${LIBDIR}/libtkb.h
+
+netu.o  :
+	${CCP} ${CFLAGS} ${INCLUDES} -c ${SRCDIR}/$*/$*.cpp
+	#${AR} ${ARFLAGS} ${LIBDIR}/$*.a $*.o
+	#cp ${SRCDIR}/$*/$*.h ${LIBDIR}/$*.h
+	#cat ${SRCDIR}/$*/$*.h >> ${LIBDIR}/libtkb.h
+
+tm.o    :
+	${CCP} ${CFLAGS} ${INCLUDES} -c ${SRCDIR}/$*/$*.cpp
+	#${AR} ${ARFLAGS} ${LIBDIR}/$*.a $*.o
+	#cp ${SRCDIR}/$*/$*.h ${LIBDIR}/$*.h
+	#cat ${SRCDIR}/$*/$*.h >> ${LIBDIR}/libtkb.h
+
+thrd.o	:
+	${CCP} ${CFLAGS} ${INCLUDES} -c ${SRCDIR}/$*/$*.cpp ${LIBS}
+
+clean   :
+	/bin/rm -f core *.o *.BAK *.ti *.ii
+	/bin/rm -fr ${LIBDIR}

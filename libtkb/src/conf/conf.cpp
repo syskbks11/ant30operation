@@ -2,7 +2,7 @@
 \file conf.cpp
 \author Y.Koide
 \date 2006.08.16
-\brief ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ãƒ¼ã‚’èª­ã¿è¾¼ã‚€ãŸã‚ã®ãƒ©ã‚¤ãƒ–ãƒ©ãƒª
+\brief ƒpƒ‰ƒ[ƒ^[‚ğ“Ç‚İ‚Ş‚½‚ß‚Ìƒ‰ƒCƒuƒ‰ƒŠ
 */
 
 #include <stdio.h>
@@ -16,21 +16,21 @@ using namespace std;
 
 const char version[] = "0.0.0";
 
-static std::map<string, string> conf;///è¨­å®šãƒ‡ãƒ¼ã‚¿æ ¼ç´ç”¨
-static string allKeyVal;///å…¨ã¦ã®ã‚­ãƒ¼ã¨å€¤ã‚’æ ¼ç´
-string setKey;///ã‚­ãƒ¼ã‚’ä¸€æ™‚çš„ã«æ ¼ç´ã™ã‚‹
+static std::map<string, string> conf;///İ’èƒf[ƒ^Ši”[—p
+static string allKeyVal;///‘S‚Ä‚ÌƒL[‚Æ’l‚ğŠi”[
+string setKey;///ƒL[‚ğˆê“I‚ÉŠi”[‚·‚é
 
 static int confAddLine(const char* line);
 
 /*! \fn const char* confVersion();
-\return confã®ãƒãƒ¼ã‚¸ãƒ§ãƒ³æ–‡å­—åˆ—ã‚’è¿”ã™ 
+\return conf‚Ìƒo[ƒWƒ‡ƒ“•¶š—ñ‚ğ•Ô‚· 
 */
 const char* confVersion(){
   return version;
 }
 
 /*! \fn int confInit()
-\brief confã®åˆæœŸåŒ–ã‚’è¡Œã†ã€‚
+\brief conf‚Ì‰Šú‰»‚ğs‚¤B
 \return 0:Success
 */
 int confInit(){
@@ -39,8 +39,8 @@ int confInit(){
 }
 
 /*! \fn int confAddFile(const char* fileName)
-\brief ãƒ•ã‚¡ã‚¤ãƒ«ã‹ã‚‰ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã‚’å–å¾—ã™ã‚‹
-\param[in] fileName ãƒ•ã‚¡ã‚¤ãƒ«åè¾¼ã¿ã®ãƒ‘ã‚¹
+\brief ƒtƒ@ƒCƒ‹‚©‚çƒpƒ‰ƒ[ƒ^‚ğæ“¾‚·‚é
+\param[in] fileName ƒtƒ@ƒCƒ‹–¼‚İ‚ÌƒpƒX
 \reutrn 0:Success 1:Fault
 */
 int confAddFile(const char* fileName){
@@ -78,8 +78,8 @@ int confAddFile(const char* fileName){
 }
 
 /*! \fn int confAddStr(const char* str)
-\brief 1è¡Œã‚‚ã—ãã¯è¤‡æ•°è¡Œã®æ–‡å­—åˆ—ã‹ã‚‰ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã‚’å–å¾—ã™ã‚‹
-\param[in] str ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã®è¨˜ã•ã‚ŒãŸæ–‡å­—åˆ—
+\brief 1s‚à‚µ‚­‚Í•¡”s‚Ì•¶š—ñ‚©‚çƒpƒ‰ƒ[ƒ^‚ğæ“¾‚·‚é
+\param[in] str ƒpƒ‰ƒ[ƒ^‚Ì‹L‚³‚ê‚½•¶š—ñ
 \reutrn 0:Success 1:Fault
 */
 int confAddStr(const char* str){
@@ -118,7 +118,7 @@ int confAddLine(const char* line){
   int i,j,min;
 
   tmp=line;
-  //ã‚³ãƒ¡ãƒ³ãƒˆ&æœ«ç«¯å‡¦ç†
+  //ƒRƒƒ“ƒg&––’[ˆ—
   if((i=(int)tmp.find('#'))!=-1){
     tmp=tmp.substr(0,i);
   }
@@ -137,14 +137,14 @@ int confAddLine(const char* line){
   //if(tmp.empty()){
   //  tmp=line;
   //}
-  //è¡Œé ­ã®ç©ºæ–‡å­—å‰Šé™¤
+  //s“ª‚Ì‹ó•¶šíœ
   while(tmp[0]==' ' || tmp[0]=='\t'){
     tmp = tmp.substr(1,tmp.size()-1);
   }
   if(tmp.empty())
     return -1;
 
-  //ã‚¹ãƒ—ãƒªãƒƒã‚¿ãƒ¼æ¤œç´¢
+  //ƒXƒvƒŠƒbƒ^[ŒŸõ
   i=(int)tmp.find(' ');
   j=(int)tmp.find('\t');
   if(i>0 && j>0){
@@ -166,14 +166,14 @@ int confAddLine(const char* line){
   val=tmp.substr(min+1, tmp.size()-min-1);
   //val=tmp.substr(min+1, tmp.size()-1);
 
-  //valã®å…ˆé ­ç©ºæ–‡å­—å‰Šé™¤
+  //val‚Ìæ“ª‹ó•¶šíœ
   while(val[0]==' ' || val[0]=='\t'){
     val = val.substr(1,val.size()-1);
   }
   //if(val[0]=='"'){
-  //  //valãŒ"ã§å§‹ã¾ã£ã¦ã„ã‚Œã°å¯¾å¿œã™ã‚‹ã¯ã˜ã‚ã®"ã®ä¸­èº«ã‚’valã¨ã™ã‚‹
-  //  //å¯¾å¿œã™ã‚‹"(""ä»¥å¤–)ãŒè¦‹ã¤ã‹ã‚‰ãªã‘ã‚Œã°ã‚¨ãƒ©ãƒ¼
-  //  //"å†…ã®ã€Œ""ã€ã¯"ã¨ã—ã¦æ‰±ã†
+  //  //val‚ª"‚Ån‚Ü‚Á‚Ä‚¢‚ê‚Î‘Î‰‚·‚é‚Í‚¶‚ß‚Ì"‚Ì’†g‚ğval‚Æ‚·‚é
+  //  //‘Î‰‚·‚é"(""ˆÈŠO)‚ªŒ©‚Â‚©‚ç‚È‚¯‚ê‚ÎƒGƒ‰[
+  //  //"“à‚Ìu""v‚Í"‚Æ‚µ‚Äˆµ‚¤
   //  tmp = val.substr(1,val.size()-1);
   //  val.clear();
   //  while((i=(int)tmp.find('"'))!=-1){
@@ -182,7 +182,7 @@ int confAddLine(const char* line){
   //      break;
   //    }
   //    else{
-  //      val+=tmp.substr(0, i)+'"';//""ã‚’"ã«å¤‰æ›ã—ã¦å–ã‚Šè¾¼ã‚“ã§ã„ã‚‹
+  //      val+=tmp.substr(0, i)+'"';//""‚ğ"‚É•ÏŠ·‚µ‚Äæ‚è‚ñ‚Å‚¢‚é
   //      if(tmp.size()<=i+2)
   //        break;
   //      tmp=tmp.substr(i+2, tmp.size()-i-2);
@@ -190,7 +190,7 @@ int confAddLine(const char* line){
   //  }
   //}
   //else{
-  //  //valå†…ã®ç©ºæ–‡å­—ä»¥é™ã‚’æ’é™¤
+  //  //val“à‚Ì‹ó•¶šˆÈ~‚ğ”rœ
   //  i=(int)val.find(' ');
   //  j=(int)val.find('\t');
   //  if(i>0 && j>0){
@@ -206,7 +206,7 @@ int confAddLine(const char* line){
   //    min=j;
   //  }
   //  else if(i==-1 && j==-1){
-  //    //valã«ç©ºæ–‡å­—ã¯å«ã¾ã‚Œãªã„
+  //    //val‚É‹ó•¶š‚ÍŠÜ‚Ü‚ê‚È‚¢
   //    min=val.size();
   //  }
   //  val=val.substr(0,min);
@@ -216,8 +216,8 @@ int confAddLine(const char* line){
     return -1;
   }
 
-  //ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ãƒ¼ã®è¿½åŠ 
-  //åŒã˜keyãŒç™»éŒ²ã•ã‚Œã¦ã„ãŸå ´åˆä¸Šæ›¸ãã™ã‚‹
+  //ƒpƒ‰ƒ[ƒ^[‚Ì’Ç‰Á
+  //“¯‚¶key‚ª“o˜^‚³‚ê‚Ä‚¢‚½ê‡ã‘‚«‚·‚é
   if(conf.find(key)==conf.end()){
     conf.insert(map<string, string>::value_type(key, val));
   }
@@ -229,9 +229,9 @@ int confAddLine(const char* line){
 }
 
 /*! \fn const char* confGetStr(const char* _setKey)
-\brief _setKeyã«å¯¾å¿œã™ã‚‹ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã®å€¤ã‚’å–å¾—ã™ã‚‹ã€‚
-\param[in] _setKey ã‚­ãƒ¼ã¨ãªã‚‹æ–‡å­—åˆ—
-\return NULL:Fault other:å€¤ã®å…¥ã£ãŸæ–‡å­—åˆ—ã¸ã®ãƒã‚¤ãƒ³ã‚¿
+\brief _setKey‚É‘Î‰‚·‚éƒpƒ‰ƒ[ƒ^‚Ì’l‚ğæ“¾‚·‚éB
+\param[in] _setKey ƒL[‚Æ‚È‚é•¶š—ñ
+\return NULL:Fault other:’l‚Ì“ü‚Á‚½•¶š—ñ‚Ö‚Ìƒ|ƒCƒ“ƒ^
 */
 const char* confGetStr(const char* _setKey){
   string key=_setKey;
@@ -243,8 +243,8 @@ const char* confGetStr(const char* _setKey){
 }
 
 /*! \fn int confSetKey(const char* _setKey)
-\brief confGetVal();ã§å€¤ã‚’å–ã‚Šå‡ºã™ãŸã‚ã«è¨­å®šã™ã‚‹ã‚­ãƒ¼ã®ç™»éŒ²
-\param[in] _setKey ã‚­ãƒ¼ã¨ãªã‚‹æ–‡å­—åˆ—
+\brief confGetVal();‚Å’l‚ğæ‚èo‚·‚½‚ß‚Éİ’è‚·‚éƒL[‚Ì“o˜^
+\param[in] _setKey ƒL[‚Æ‚È‚é•¶š—ñ
 \return 0:Fault 1:Success
 */
 int confSetKey(const char* _setKey){
@@ -257,8 +257,8 @@ int confSetKey(const char* _setKey){
 }
 
 /*! \fn const char* confGetVal()
-\brief confSetKey();ã§è¨­å®šã•ã‚ŒãŸã‚­ãƒ¼ã«å¯¾å¿œã™ã‚‹ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã®å€¤ã‚’å–å¾—ã™ã‚‹
-\return NULL:Fault other:å¯¾å¿œã™ã‚‹æ–‡å­—åˆ—ã¸ã®ãƒã‚¤ãƒ³ã‚¿
+\brief confSetKey();‚Åİ’è‚³‚ê‚½ƒL[‚É‘Î‰‚·‚éƒpƒ‰ƒ[ƒ^‚Ì’l‚ğæ“¾‚·‚é
+\return NULL:Fault other:‘Î‰‚·‚é•¶š—ñ‚Ö‚Ìƒ|ƒCƒ“ƒ^
 */
 const char* confGetVal(){
   if(conf.find(setKey) == conf.end()){
@@ -268,7 +268,7 @@ const char* confGetVal(){
 }
 
 /*! \fn const char* confGetAllKeyVal()
-\return å…¨ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã®æ–‡å­—åˆ—ã€‚1è¡Œã«ã‚­ãƒ¼ã¨å€¤ãŒä¸€çµ„ãšã¤å…¥ã£ã¦ã„ã‚‹ã€‚
+\return ‘Sƒpƒ‰ƒ[ƒ^‚Ì•¶š—ñB1s‚ÉƒL[‚Æ’l‚ªˆê‘g‚¸‚Â“ü‚Á‚Ä‚¢‚éB
 */
 const char* confGetAllKeyVal(){
   map<string, string>::iterator itrConf;
@@ -277,9 +277,9 @@ const char* confGetAllKeyVal(){
   allKeyVal.clear();
   for(itrConf=conf.begin(); itrConf!=conf.end(); itrConf++){
     tmp=itrConf->second;
-    //! ã‚¹ãƒšãƒ¼ã‚¹ã‚„ã‚¿ãƒ–ãŒå«ã¾ã‚Œã‚‹å ´åˆã¯'"'ã§å›²ã†
+    //! ƒXƒy[ƒX‚âƒ^ƒu‚ªŠÜ‚Ü‚ê‚éê‡‚Í'"'‚ÅˆÍ‚¤
     //if(((int)tmp.find(' '))!=-1 || ((int)tmp.find('\t'))!=-1){
-    //  //! ã•ã‚‰ã«ã€"ãŒå«ã¾ã‚Œã‚‹å ´åˆã¯""ã«å¤‰æ›ã™ã‚‹
+    //  //! ‚³‚ç‚ÉA"‚ªŠÜ‚Ü‚ê‚éê‡‚Í""‚É•ÏŠ·‚·‚é
     //  while((i=(int)tmp.find('"'))!=-1){
     //    tmp2=tmp.substr(0,i)+'"'+'"';
     //    if(tmp.size()==i+1){
@@ -297,7 +297,7 @@ const char* confGetAllKeyVal(){
 }
 
 /*! \fn void confPrint()
-\brief å…¨ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã‚’è¡¨ç¤ºã€ãƒ­ã‚°ã«è¨˜éŒ²ã™ã‚‹ã€‚
+\brief ‘Sƒpƒ‰ƒ[ƒ^‚ğ•\¦AƒƒO‚É‹L˜^‚·‚éB
 */
 void confPrint(){
   string tmp;

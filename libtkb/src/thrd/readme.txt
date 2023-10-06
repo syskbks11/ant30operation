@@ -1,2 +1,2 @@
 2008.03.10
-ãƒ»windowsã«ãŠã‘ã‚‹thrdFunc();ã®å‡¦ç†ã§thrdRetã¾ã‚ã‚Šã§ãƒã‚°ã‚’ä¿®æ­£
+Ewindows‚É‚¨‚¯‚éthrdFunc();‚Ìˆ—‚ÅthrdRet‚Ü‚í‚è‚ÅƒoƒO‚ðC³

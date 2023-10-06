@@ -1,0 +1,290 @@
+/*	Cloud indntify code
+1998/3/17	Tomo OKA	Coding	
+*/
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <math.h>
+
+#include <profhead.h>
+#include <starlib.h>
+#include <fitshead.h>
+
+#define	DEBUG	0
+
+
+typedef struct	{	double	peak[MAX_DIMENSION];
+			double	disp[MAX_DIMENSION];
+			double	lumi[MAX_DIMENSION];			
+} CLOUD;
+typedef struct	{	int	*x;
+			int	*y;
+} CONTOUR;
+
+int	cloudID();
+long	fill_a_cloud();
+long	fill_2D();
+int	PhysParams();
+
+main(argc,argv)
+int	argc;
+char	*argv[];
+{
+FILE		*fp_in, *fp_out;
+int		err_code;
+static FITS	fits;
+int		ii, jj;
+double		w[MAX_DIMENSION];
+int		dim;
+char		in_filename[80];
+char		out_filename[80];
+char		filehead[80];
+char		buffer[80];
+char		*token;
+double		clip;
+CLOUD		cloud[MAX_DATA_NUM];
+
+
+
+/*	Input FITS filename	*/
+fprintf(stderr,"Input FITS filename : ");
+fscanf(stdin,"%s",buffer);
+if((strstr(buffer,".fits")==NULL)&&(strstr(buffer,".FITS")==NULL)){	
+	sprintf(in_filename,"%s.FITS",buffer);
+	strcpy(filehead,buffer);
+	fp_in=fopen(in_filename,"r");
+	if(fp_in==NULL){
+		sprintf(in_filename,"%s.fits",filehead);
+		fp_in=fopen(in_filename,"r");
+		if(fp_in==NULL){
+			fprintf(stderr,"Can't open %s !\n",in_filename);
+			exit(1);
+		}
+	}
+}
+else{	strncpy(filehead,buffer,strlen(buffer)-5);
+	sprintf(in_filename,"%s",buffer);
+	fp_in=fopen(in_filename,"r");
+	if(fp_in==NULL){
+		fprintf(stderr,"Can't open %s !\n",in_filename);
+		exit(1);
+	}
+}
+
+/*	Clipping Intensity	*/
+fprintf(stderr,"Clipping intensity : ");
+fscanf(stdin,"%lf",&clip);
+
+
+/*	Reading FITS file	*/
+fprintf(stderr,"Reading %s\n",in_filename);
+err_code=read_Fits(&fits, fp_in);
+if(err_code!=0){
+	fprintf(stderr,
+	"Error in reading the FITS file. Error code=%d\n"
+	,err_code);	
+	exit(999);
+}
+fclose(fp_in);
+
+
+
+/*	Cloud identification	*/
+fprintf(stderr,"Identifying Clouds\n");
+err_code=cloudID(&fits, clip, &cloud);
+if(err_code!=0){
+	fprintf(stderr,
+	"Error in identifying clouds. Error code=%d\n"
+	,err_code);	
+	exit(999);
+}
+
+
+/*	Open the output file	*/
+sprintf(out_filename,"%s.%2.0lf.FITS",filehead,clip);
+fp_out=fopen(out_filename,"w");
+if(fp_out==NULL){
+	fprintf(stderr,"Can't open %s !\n",out_filename);
+	exit(1);
+}
+
+/*	Write output file	*/
+fprintf(stderr,"Writing to %s\n",out_filename);
+err_code=output_Fits(&fits, fp_out);
+if(err_code!=0){
+	fprintf(stderr,
+	"Error in writing the FITS file. Error code=%d\n"
+	,err_code);	
+	exit(999);
+}
+fclose(fp_out);
+
+}	/*main*/
+
+
+
+
+
+int	cloudID(fits,clip,cloud)
+FITS	*fits;
+double	clip;
+CLOUD	*cloud;
+{
+int	i, j, k, err_code, count;
+int	peak_ch[MAX_DIMENSION];
+int	pix[MAX_DIMENSION];
+long	ii, jj, kk, n, nn;
+long	*fill;
+long	pos, max_ch, num;
+float	max;	
+
+
+if(((*fits).head.naxis[0]==2)&&((*fits).head.naxis[0]==3)){
+	fprintf(stderr,"Input FITS must be 2 or 3 dimension!\n");
+	return(1);
+}
+
+count=0; nn=0;  max=(*fits).head.datamax;
+/*while(max>clip)*/{
+
+/*	Search the intensity maximum	*/
+max=(*fits).head.datamin;
+for(ii=0;ii<(*fits).head.data_num;ii++){
+	if((*fits).data[ii]>max){
+		max=(*fits).data[ii];
+		max_ch=(long)ii;	
+	}
+}
+
+err_code=POStoPIX(fits,max_ch,pix);
+
+
+/*	Fill a cloud	*/
+fill=(long *)calloc((*fits).head.data_num,4);
+nn=fill_a_cloud(fits,clip,pix,fill); 
+
+/*	Calculate physical parameters	*/
+/*err_code=PhysParams();*/
+
+free(fill);
+
+
+/*	Subtract a cloud from the data	*/
+for(ii=0;ii<nn;ii++){
+	(*fits).data[fill[ii]]=(float)clip;
+}
+count++;
+fprintf(stderr,"cloud #%d :\t",count);
+for(ii=0;ii<(*fits).head.naxis[0];ii++){fprintf(stderr,"%d ",pix[ii]);}
+fprintf(stderr," :\t%d\n",nn);
+}	/*	while loop	*/
+return(0);
+}	/*	cloudID		*/
+
+
+
+
+
+long	fill_a_cloud(fits,clip,max_pix,fill)
+FITS	*fits;
+double	clip;
+int	max_pix[];
+long	*fill;
+{
+int	i, j, err_code;
+int	pix[MAX_DIMENSION];
+int	pix_min[MAX_DIMENSION], pix_max[MAX_DIMENSION], pix_cen[MAX_DIMENSION];
+long	n, nn;
+float	cent1, cent2, weight, data;
+
+n=0;
+if((*fits).head.naxis[0]==2)
+	n=fill_2D(fits,clip,max_pix,fill);
+
+else if((*fits).head.naxis[0]==3){
+for(i=0;i<(*fits).head.naxis[0];i++){pix[i]=max_pix[i];}
+for(pix[2]=max_pix[2];pix[2]<(*fits).head.naxis[3];pix[2]++){
+	nn=fill_2D(fits,clip,pix,(fill+n));
+	if(nn==0)	break;
+	n=n+nn; 
+	cent1=0.0; cent2=0.0;
+	for(i=0;i<=nn;i++){
+		data=(*fits).data[*(fill+i)]/(*fits).head.datamax;
+		if(data<0.0)	continue;
+		err_code=POStoPIX(fits,*(fill+i),pix);
+		cent1=cent1+data*(float)pix[0];
+		cent2=cent2+data*(float)pix[1];
+		weight=weight+data;
+	}	
+	cent1=cent1/weight;	cent2=cent2/weight;	
+	pix[0]=(int)cent1;	pix[1]=(int)cent2;
+}
+for(i=0;i<(*fits).head.naxis[0];i++){pix[i]=max_pix[i];}
+for(pix[2]=max_pix[2]-1;pix[2]>=0;pix[2]--){
+	nn=fill_2D(fits,clip,pix,(fill+n));
+	if(nn==0)	break;
+	n=n+nn; 
+	cent1=0.0; cent2=0.0;
+	for(i=0;i<=nn;i++){
+		data=(*fits).data[*(fill+i)]/(*fits).head.datamax;
+		if(data<0.0)	continue;
+		err_code=POStoPIX(fits,*(fill+i),pix);
+		cent1=cent1+data*(float)pix[0];
+		cent2=cent2+data*(float)pix[1];
+		weight=weight+data;
+	}	
+	cent1=cent1/weight;	cent2=cent2/weight;
+	pix[0]=(int)cent1;	pix[1]=(int)cent2;
+}	
+} /*	else if		*/
+
+return(n);
+}	/*	fill_a_cloud	*/
+
+
+
+
+long	fill_2D(fits,clip,max_pix,fill)
+FITS	*fits;
+double	clip;
+int	max_pix[];
+long	*fill;
+{
+int	i, j;
+int	pix[MAX_DIMENSION];
+int	pix_min[MAX_DIMENSION], pix_max[MAX_DIMENSION], pix_cen[MAX_DIMENSION];
+long	n, nn, c;
+float	center, weight, data;
+CONTOUR	cont;
+
+
+/*	make a contour	*/
+pix[1]=pix_cen[1];
+for(pix[0]=pix_cen[0];pix[0]<(*fits).head.naxis[1];pix[0]++){
+	if((*fits).data[PIXtoPOS(fits,pix)]<clip)	break;
+} pix_max[0]=pix[0]-1;
+
+cont.x[0]=(int *)malloc(sizeof(cont.x));	cont.x[0]=pix_max[0];	
+cont.y[0]=(int *)malloc(sizeof(cont.y));	cont.y[0]=pix_cen[1];
+c=1;
+while((cont.x[0]!=cont.x[c])||(cont.y[0]!=cont.y[c])){
+	
+
+
+	c++;
+	cont.x[c] = (int *)realloc(cont.x, sizeof(cont.x)*c);
+	cont.y[c] = (int *)realloc(cont.y, sizeof(cont.y)*c);
+}	/*	while() loop	*/
+
+
+
+
+
+n=0; 
+
+return(n);
+}	/*	fill_2D	*/
+
+
+

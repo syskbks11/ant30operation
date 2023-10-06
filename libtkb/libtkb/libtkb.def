@@ -1,0 +1,71 @@
+LIBRARY	"libtkb"
+EXPORTS
+	confVersion
+	confInit
+	confAddFile
+	confAddStr
+	confGetStr
+	confSetKey
+	confGetVal
+	confGetAllKeyVal
+	confPrint
+	
+	conf2Version
+	conf2Init
+	conf2End
+	conf2AddFile
+	conf2AddStr
+	conf2GetStr
+	conf2SetKey
+	conf2GetVal
+	conf2GetAllKeyVal
+	conf2Print
+	
+	netclVersion
+	netclInit
+	netclInitWithTimeOut
+	netclEnd
+	netclSetTimeOut
+	netclWrite
+	netclRead
+	
+	netsvVersion
+	netsvInit
+	netsvWaiting
+	netsvDisconnect
+	netsvDisconnectListen
+	netsvEnd
+	netsvWrite
+	netsvRead
+	
+	netuVersion
+	netuCnvShort
+	netuCnvInt
+	netuCnvLong
+	
+	rs232cVersion
+	rs232cInit
+	rs232cEnd
+	rs232cWrite
+	rs232cRead
+	
+	tmVersion
+	tmInit
+	tmEnd
+	tmReset
+	tmGetLag
+	tmGetTimeStr
+	tmSleepMSec
+	
+	uVersion
+	uInit
+	uEnd
+	uLock
+	uUnLock
+	uFp
+	uGetDate
+	uGetTime
+	uEndianShort
+	uEndianInt
+	uEndianLongLong
+	

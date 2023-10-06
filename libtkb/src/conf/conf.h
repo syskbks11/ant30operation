@@ -2,32 +2,32 @@
 \file conf.h
 \author Y.Koide
 \date 2006.08.16
-\brief パラメーターを読み込むためのライブラリ
+\brief �p�����[�^�[��ǂݍ��ނ��߂̃��C�u����
 
-*使い方*
-初期化時にconfInit()を呼び出し、
-使用後にconfEnd()にて終了する。
-パラメーターを読み込むには、
-・ファイルからはconfAddFile()
-・文字列からはconfAddStr()
-パラメーターを取得するには、
-・confGetStr()にてパラメータを指定して文字列を取得する。
-・confSetKey()でパラメーター名を設定直後、
-　confGetVal()にて文字列を取得する。
-・confGetAllKeyVal()にて全パラメータリストを取得する。
-　キーと値データは\tにてセパレートされている。
-confPrint()で画面にパラメーター一覧を表示できる。
+*�g����*
+����������confInit()���Ăяo���A
+�g�p���confEnd()�ɂďI������B
+�p�����[�^�[��ǂݍ��ނɂ́A
+�E�t�@�C�������confAddFile()
+�E�����񂩂��confAddStr()
+�p�����[�^�[���擾����ɂ́A
+�EconfGetStr()�ɂăp�����[�^���w�肵�ĕ�������擾����B
+�EconfSetKey()�Ńp�����[�^�[����ݒ蒼��A
+�@confGetVal()�ɂĕ�������擾����B
+�EconfGetAllKeyVal()�ɂđS�p�����[�^���X�g���擾����B
+�@�L�[�ƒl�f�[�^��\t�ɂăZ�p���[�g����Ă���B
+confPrint()�ŉ�ʂɃp�����[�^�[�ꗗ��\���ł���B
 
-*パラメータの書式*
-・#はこの後の行末までコメントとして無視される。
-・一行１つのパラメーターが設定でき、
-　KEYWORD[空文字(' 'or'\t')]VALUE[\n\r\aEOFのどれか(どれか2つも可)]
-　の書式で記入していなければならない。
-・一行の最大文字数は1024文字であり、超えた場合、超えた分を除外したものを一行として扱う
-・KEYWORDは空文字やダブルコーテーション(")を含んではならない。
-・VALUEは空文字を含んではならない。
-　ただし、VALUEが"で始った場合、VALUE内で２番目の"までの間の値をVALUEに格納し、
-　""の間にある空文字もVALUEに含むことができる。
+*�p�����[�^�̏���*
+�E#�͂��̌�̍s���܂ŃR�����g�Ƃ��Ė��������B
+�E��s�P�̃p�����[�^�[���ݒ�ł��A
+�@KEYWORD[�󕶎�(' 'or'\t')]VALUE[\n\r\aEOF�̂ǂꂩ(�ǂꂩ2����)]
+�@�̏����ŋL�����Ă��Ȃ���΂Ȃ�Ȃ��B
+�E��s�̍ő啶������1024�����ł���A�������ꍇ�A�������������O�������̂���s�Ƃ��Ĉ���
+�EKEYWORD�͋󕶎���_�u���R�[�e�[�V����(")���܂�ł͂Ȃ�Ȃ��B
+�EVALUE�͋󕶎����܂�ł͂Ȃ�Ȃ��B
+�@�������AVALUE��"�Ŏn�����ꍇ�AVALUE���łQ�Ԗڂ�"�܂ł̊Ԃ̒l��VALUE�Ɋi�[���A
+�@""�̊Ԃɂ���󕶎���VALUE�Ɋ܂ނ��Ƃ��ł���B
 */
 
 #ifndef __CONF_H__

@@ -1,0 +1,6 @@
+diff_lag.o
+inverse.o
+sweepout.o
+diff_sp.o
+lagrange.o
+spline.o

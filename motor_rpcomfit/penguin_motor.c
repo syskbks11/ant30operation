@@ -367,8 +367,8 @@ int penguin_motor_getAlarmState(penguin_motor_t* ppenmtr){
 
 int penguin_motor_getModeState(penguin_motor_t* ppenmtr){
   memset(tmpstr, 0x00, MTR_BUFFSIZE);
-  const int len = penguin_motor_sendrecvData(ppenmtr, "M", tmpstr);
-  if(len == 0){
+  const int status = penguin_motor_sendrecvData(ppenmtr, "M", tmpstr);
+  if(strlen(tmpstr) == 0 || status!= 0){
     perror("No data received.\n");
     return -1;
   }

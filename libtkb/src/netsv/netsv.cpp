@@ -41,8 +41,8 @@ typedef struct sNetParam{
   int processMax;              //!< Number of maximum process(connections)
   struct hostent *hostEntry;   //!< 
   int sockListen;              //!< Listen socket
-  int* sock;                   //!< è¤‡æ•°ã®ã‚½ã‚±ãƒƒãƒˆç®¡ç†ã™ã‚‹
-  int sockNo;                  //!< è‡ªåˆ†ã®sockç®¡ç†ç•ªå·ã€‚0:Listen socket  over 1:connection socket
+  int* sock;                   //!< •¡”‚Ìƒ\ƒPƒbƒgŠÇ—‚·‚é
+  int sockNo;                  //!< ©•ª‚ÌsockŠÇ—”Ô†B0:Listen socket  over 1:connection socket
   struct sockaddr_in sockadd;  //!< ip,port,...
   struct sockaddr_in sockFrom; //!< 
   int sock_optval;             //!< 
@@ -50,16 +50,16 @@ typedef struct sNetParam{
 }tNetParam;
 
 /*! \fn const char* netsvVersion()
-\return  netsvã®ãƒãƒ¼ã‚¸ãƒ§ãƒ³æ–‡å­—åˆ—ã‚’è¿”ã™ 
+\return  netsv‚Ìƒo[ƒWƒ‡ƒ“•¶š—ñ‚ğ•Ô‚· 
 */
 const char* netsvVersion(){
   return version;
 }
 
 /*! \fn void* netsvInit(const int serverPort)
-\brief netsvã‚’åˆæœŸåŒ–ã™ã‚‹éš›ã«å‘¼ã³å‡ºã™ã€‚å˜ä¸€ã‚¯ãƒ©ã‚¤ã‚¢ãƒ³ãƒˆã®ã¿å—ä»˜å¯èƒ½ã€‚
-\param[in] serverPort å¾…ã¡ã†ã‘ã™ã‚‹ãƒãƒ¼ãƒˆç•ªå·
-\return NULL:å¤±æ•— other:ãƒ‡ãƒ¼ã‚¿æ§‹é€ ä½“ã®ãƒã‚¤ãƒ³ã‚¿
+\brief netsv‚ğ‰Šú‰»‚·‚éÛ‚ÉŒÄ‚Ño‚·B’PˆêƒNƒ‰ƒCƒAƒ“ƒg‚Ì‚İó•t‰Â”\B
+\param[in] serverPort ‘Ò‚¿‚¤‚¯‚·‚éƒ|[ƒg”Ô†
+\return NULL:¸”s other:ƒf[ƒ^\‘¢‘Ì‚Ìƒ|ƒCƒ“ƒ^
 */
 tNetParam* netsvInit(const int serverPort){
 //void* netsvInit(const int serverPort){
@@ -68,10 +68,10 @@ tNetParam* netsvInit(const int serverPort){
 }
 
 /*! \fn netsvInitWithProcessMax(const int serverPort, const int processMax)
-\brief netsvã‚’åˆæœŸåŒ–ã™ã‚‹éš›ã«å‘¼ã³å‡ºã™ã€‚processMaxã®æ•°ã ã‘ã‚¯ãƒ©ã‚¤ã‚¢ãƒ³ãƒˆã‚’å—ä»˜å¯èƒ½ã€‚
-\param[in] serverPort å¾…ã¡ã†ã‘ã™ã‚‹ãƒãƒ¼ãƒˆç•ªå·
-\param[in] processMax æ¥ç¶šã™ã‚‹ã‚¯ãƒ©ã‚¤ã‚¢ãƒ³ãƒˆã®æœ€å¤§æ•°
-\return NULL:å¤±æ•— other:ãƒ‡ãƒ¼ã‚¿æ§‹é€ ä½“ã®ãƒã‚¤ãƒ³ã‚¿
+\brief netsv‚ğ‰Šú‰»‚·‚éÛ‚ÉŒÄ‚Ño‚·BprocessMax‚Ì”‚¾‚¯ƒNƒ‰ƒCƒAƒ“ƒg‚ğó•t‰Â”\B
+\param[in] serverPort ‘Ò‚¿‚¤‚¯‚·‚éƒ|[ƒg”Ô†
+\param[in] processMax Ú‘±‚·‚éƒNƒ‰ƒCƒAƒ“ƒg‚ÌÅ‘å”
+\return NULL:¸”s other:ƒf[ƒ^\‘¢‘Ì‚Ìƒ|ƒCƒ“ƒ^
 */
 tNetParam* netsvInitWithProcessMax(const int serverPort, const int processMax){
 //void* netsvInitWithProcessMax(const int serverPort, const int processMax){
@@ -101,8 +101,8 @@ tNetParam* netsvInitWithProcessMax(const int serverPort, const int processMax){
   param->sock = (int*) malloc(sizeof(int) * param->processMax);
   memset(param->sock, -1, sizeof(int) * param->processMax);
   param->sockNo = -1;
-  param->waitTimeRead.tv_sec = -1; //!< å¾…ã¡æ™‚é–“sec(-1ã§selectå‡¦ç†ã—ãªã„)
-  param->waitTimeRead.tv_usec = 0; //!< å¾…ã¡æ™‚é–“usec
+  param->waitTimeRead.tv_sec = -1; //!< ‘Ò‚¿ŠÔsec(-1‚Åselectˆ—‚µ‚È‚¢)
+  param->waitTimeRead.tv_usec = 0; //!< ‘Ò‚¿ŠÔusec
   //!Listen Socket Open
   param->sockListen=(unsigned int)socket(AF_INET, SOCK_STREAM, 0);
   if(param->sockListen == -1){
@@ -145,8 +145,8 @@ tNetParam* netsvInitWithProcessMax(const int serverPort, const int processMax){
 }
 
 /*! \fn int netsvEnd(void* _param)
-\brief çµ‚äº†æ™‚ã«å‘¼ã³å‡ºã™ã€‚
-\param[in] _param netsv ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ãƒ¼
+\brief I—¹‚ÉŒÄ‚Ño‚·B
+\param[in] _param netsv ƒpƒ‰ƒ[ƒ^[
 \return 0:Success
 */
 int netsvEnd(tNetParam* _param){
@@ -201,7 +201,7 @@ int netsvWaiting(tNetParam* _param){
   fd_set fdr;
   fd_set fde;
 
-  //! ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆå‡¦ç†
+  //! ƒ^ƒCƒ€ƒAƒEƒgˆ—
   if(param->waitTimeRead.tv_sec >= 0){
     FD_ZERO(&fdr);
     FD_ZERO(&fde);
@@ -209,16 +209,16 @@ int netsvWaiting(tNetParam* _param){
     FD_SET(param->sockListen, &fde);
     select(FD_SETSIZE, &fdr, NULL, &fde, &param->waitTimeRead);
     if(!FD_ISSET(param->sockListen, &fdr)){
-      //! èª­ã¿è¾¼ã¿ä¸èƒ½(ãƒ‡ãƒ¼ã‚¿ãªã—)
+      //! “Ç‚İ‚İ•s”\(ƒf[ƒ^‚È‚µ)
       return -1;
     }
     if(FD_ISSET(param->sockListen, &fde)){
-      //! ä¾‹å¤–ã‚ã‚Š
+      //! —áŠO‚ ‚è
       return -2;
     }
   }
 
-  //! socketç•ªå·ã‚’æ ¼ç´
+  //! socket”Ô†‚ğŠi”[
   int i = 0;
   for(i = 0; i < param->processMax; i++){
     if(param->sock[i] == -1){
@@ -227,11 +227,11 @@ int netsvWaiting(tNetParam* _param){
     }
   }
   if(i == param->processMax){
-    //! æ¥ç¶šæœ€å¤§æ•°ã«é”ã—ã¦ã„ã‚‹ãŸã‚æ¥ç¶šå¾…ã¡æ‹’å¦
+    //! Ú‘±Å‘å”‚É’B‚µ‚Ä‚¢‚é‚½‚ßÚ‘±‘Ò‚¿‹‘”Û
     return -3;
   }
 
-  //! æ¥ç¶šãŒè¡Œã‚ã‚Œã‚‹ã¾ã§å¾…æ©Ÿ
+  //! Ú‘±‚ªs‚í‚ê‚é‚Ü‚Å‘Ò‹@
   int sockFromLen = (int)sizeof(param->sockFrom);
   param->sock[param->sockNo]=accept(param->sockListen, (struct sockaddr*)&param->sockFrom, (socklen_t*)&sockFromLen);
   if(param->sock[param->sockNo]==-1){
@@ -258,8 +258,8 @@ int netsvWaiting(tNetParam* _param){
 }
 
 /*! \fn void* netsvWaitingProcess(void* _param)
-\brief netsvãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã‚’å­ãƒ—ãƒ­ã‚»ã‚¹ç”¨ã«ã‚³ãƒ”ãƒ¼ã™ã‚‹ã€‚æ¥ç¶šã‚’è¤‡æ•°è¡Œã†å ´åˆã«ä½¿ç”¨ã€‚
-\param[in] _param netsvã®ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ãƒ¼
+\brief netsvƒpƒ‰ƒ[ƒ^‚ğqƒvƒƒZƒX—p‚ÉƒRƒs[‚·‚éBÚ‘±‚ğ•¡”s‚¤ê‡‚Ég—pB
+\param[in] _param netsv‚Ìƒpƒ‰ƒ[ƒ^[
 \return NULL:error other:netsv pointer
 */
 tNetParam* netsvWaitingProcess(tNetParam* _param){
@@ -275,24 +275,24 @@ tNetParam* netsvWaitingProcess(tNetParam* _param){
     return NULL;
   }
 
-  //! ã‚³ãƒ”ãƒ¼
+  //! ƒRƒs[
   param2 = (tNetParam*) malloc(sizeof(tNetParam));
   if(!param2){
     uM("netsvProcess(); malloc(); error!!");
     return NULL;
   }
-  memcpy(param2, param, sizeof(tNetParam));       //!< sockç­‰ã¸ã®ã‚¢ãƒ‰ãƒ¬ã‚¹ã‚‚ã‚³ãƒ”ãƒ¼ã—ã¦ä½¿ç”¨ã™ã‚‹
+  memcpy(param2, param, sizeof(tNetParam));       //!< sock“™‚Ö‚ÌƒAƒhƒŒƒX‚àƒRƒs[‚µ‚Äg—p‚·‚é
   param->sockNo = 0;
-  param2->sockListen = -1;                        //!< Listen socketã‚’æ¶ˆã™
+  param2->sockListen = -1;                        //!< Listen socket‚ğÁ‚·
 
 	return param2;
 //  return (void*)param2;
 }
 
 /*! \fn int netsvDisconnect(void* _param)
-\brief ã‚½ã‚±ãƒƒãƒˆã‚’é–‰ã˜ã‚‹
-\param[in] _param netsvã®ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ãƒ¼
-\return 0:æˆåŠŸ
+\brief ƒ\ƒPƒbƒg‚ğ•Â‚¶‚é
+\param[in] _param netsv‚Ìƒpƒ‰ƒ[ƒ^[
+\return 0:¬Œ÷
 */
 int netsvDisconnect(tNetParam* _param){
 //int netsvDisconnect(void* _param){
@@ -317,9 +317,9 @@ int netsvDisconnect(tNetParam* _param){
 }
 
 /*! \fn int int netsvDisconnectProcess(void* _param)
-\brief ã‚½ã‚±ãƒƒãƒˆã‚’é–‰ã˜ã€å­Processã«ç”Ÿæˆã•ã‚ŒãŸparamã‚’å‰Šé™¤
-\param[in] _param netsvã®ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ãƒ¼
-\return 0:æˆåŠŸ
+\brief ƒ\ƒPƒbƒg‚ğ•Â‚¶AqProcess‚É¶¬‚³‚ê‚½param‚ğíœ
+\param[in] _param netsv‚Ìƒpƒ‰ƒ[ƒ^[
+\return 0:¬Œ÷
 */
 int netsvDisconnectProcess(tNetParam* _param){
 //int netsvDisconnectProcess(void* _param){
@@ -329,8 +329,8 @@ int netsvDisconnectProcess(tNetParam* _param){
   ret = netsvDisconnect(param);
 //  ret = netsvDisconnect((void*)param);
   if(!ret){
-    //! æ­£å¸¸ã«Disconnectã•ã‚ŒãŸã‚‰sockListenã‚’æŒãŸãªã„
-    //! netsvWaitingProcess();ã§ç”Ÿæˆã•ã‚ŒãŸparamã‚’å‰Šé™¤
+    //! ³í‚ÉDisconnect‚³‚ê‚½‚çsockListen‚ğ‚½‚È‚¢
+    //! netsvWaitingProcess();‚Å¶¬‚³‚ê‚½param‚ğíœ
     if(param->sockNo != 0){
       free(param);
     }
@@ -343,9 +343,9 @@ int netsvDisconnectProcess(tNetParam* _param){
 }
 
 /*! \fn int int netsvDisconnectListen(void* _param)
-\brief Listenã‚½ã‚±ãƒƒãƒˆã ã‘é–‰ã˜ã‚‹(fork()ç”¨)
-\param[in] _param netsvã®ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ãƒ¼
-\return 0:æˆåŠŸ
+\brief Listenƒ\ƒPƒbƒg‚¾‚¯•Â‚¶‚é(fork()—p)
+\param[in] _param netsv‚Ìƒpƒ‰ƒ[ƒ^[
+\return 0:¬Œ÷
 */
 /*int netsvDisconnectListen(void* _param){
   tNetParam* param=(tNetParam*)_param;
@@ -363,9 +363,9 @@ int netsvDisconnectProcess(tNetParam* _param){
 }*/
 
 /*! \fn void netsvSetTimeOut(void* _param, double t)
-\brief å—ä¿¡æ™‚ã®ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆã‚’å®šç¾©ã™ã‚‹
-\param[in] _param netclãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿
-\param[in] t ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆæ™‚é–“ã€‚-1ãªã‚‰Selectã‚’ã—ãªã„ sec
+\brief óM‚Ìƒ^ƒCƒ€ƒAƒEƒg‚ğ’è‹`‚·‚é
+\param[in] _param netclƒpƒ‰ƒ[ƒ^
+\param[in] t ƒ^ƒCƒ€ƒAƒEƒgŠÔB-1‚È‚çSelect‚ğ‚µ‚È‚¢ sec
 */
 void netsvSetTimeOut(tNetParam* _param, const double t){
 //void netsvSetTimeOut(void* _param, const double t){
@@ -387,9 +387,9 @@ void netsvSetTimeOut(tNetParam* _param, const double t){
 }
 
 /*! \fn int netsvSelectWrite(void* _param)
-\brief ãƒ‡ãƒ¼ã‚¿é€ä¿¡ãŒå¯èƒ½ã‹ã‚’ç¢ºèªã™ã‚‹
-\param[in] _param netsvãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿
-\reutrn 0:é€ä¿¡å¯èƒ½ -1:é€ä¿¡ä¸èƒ½ -2:Error
+\brief ƒf[ƒ^‘—M‚ª‰Â”\‚©‚ğŠm”F‚·‚é
+\param[in] _param netsvƒpƒ‰ƒ[ƒ^
+\reutrn 0:‘—M‰Â”\ -1:‘—M•s”\ -2:Error
 */
 int netsvSelectWrite(tNetParam* _param){
 //int netsvSelectWrite(void* _param){
@@ -403,19 +403,19 @@ int netsvSelectWrite(tNetParam* _param){
   FD_SET(param->sock[param->sockNo], &fde);
   select(FD_SETSIZE, NULL, &fdw, &fde, &param->waitTimeRead);
   if(FD_ISSET(param->sock[param->sockNo], &fde)){
-    //! ä¾‹å¤–ã‚ã‚Š
+    //! —áŠO‚ ‚è
     return -2;
   }
   if(!FD_ISSET(param->sock[param->sockNo], &fdw)){
-    //! æ›¸ãè¾¼ã¿ä¸èƒ½(ãƒ‡ãƒ¼ã‚¿ãªã—)
+    //! ‘‚«‚İ•s”\(ƒf[ƒ^‚È‚µ)
     return -1;
   }
   return 0;
 }
 
 /*! \fn int netsvSelectRead(void* _param)
-\brief ãƒ‡ãƒ¼ã‚¿ãŒå±Šã„ã¦ã„ã‚‹ã‹ã‚’ç¢ºèªã™ã‚‹
-\param[in] _param netsvãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿
+\brief ƒf[ƒ^‚ª“Í‚¢‚Ä‚¢‚é‚©‚ğŠm”F‚·‚é
+\param[in] _param netsvƒpƒ‰ƒ[ƒ^
 \return 0:Success 1:ReciveData -1:Error
 */
 int netsvSelectRead(tNetParam* _param){
@@ -430,22 +430,22 @@ int netsvSelectRead(tNetParam* _param){
   FD_SET(param->sock[param->sockNo], &fde);
   select(FD_SETSIZE, &fdr, NULL, &fde, &param->waitTimeRead);
   if(FD_ISSET(param->sock[param->sockNo], &fde)){
-    //! ä¾‹å¤–ã‚ã‚Š
+    //! —áŠO‚ ‚è
     return -1;
   }
   if(FD_ISSET(param->sock[param->sockNo], &fdr)){
-    //! å—ä¿¡ãƒ‡ãƒ¼ã‚¿ã‚ã‚Š
+    //! óMƒf[ƒ^‚ ‚è
     return 1;
   }
   return 0;
 }
 
 /*! \fn int netsvWrite(void* _param, const unsigned char* buf, const size_t bufSize)
-\brief ãƒ‡ãƒ¼ã‚¿é€ä¿¡ã€‚
-\param[in] _param netsvãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿
-\param[in] buf é€ä¿¡ãƒ‡ãƒ¼ã‚¿
-\param[in] bufSize é€ä¿¡ãƒ‡ãƒ¼ã‚¿ã‚µã‚¤ã‚º
-\return >=0 é€ä¿¡ã—ãŸãƒã‚¤ãƒˆæ•°
+\brief ƒf[ƒ^‘—MB
+\param[in] _param netsvƒpƒ‰ƒ[ƒ^
+\param[in] buf ‘—Mƒf[ƒ^
+\param[in] bufSize ‘—Mƒf[ƒ^ƒTƒCƒY
+\return >=0 ‘—M‚µ‚½ƒoƒCƒg”
 \return <0 Errror
 */
 int netsvWrite(tNetParam* _param, const unsigned char* buf, const size_t bufSize){
@@ -460,7 +460,7 @@ int netsvWrite(tNetParam* _param, const unsigned char* buf, const size_t bufSize
     return -1;
   }
 
-  //! ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆå‡¦ç†
+  //! ƒ^ƒCƒ€ƒAƒEƒgˆ—
   if(param->waitTimeRead.tv_sec >= 0){
     FD_ZERO(&fdw);
     FD_ZERO(&fde);
@@ -468,11 +468,11 @@ int netsvWrite(tNetParam* _param, const unsigned char* buf, const size_t bufSize
     FD_SET(param->sock[param->sockNo], &fde);
     select(FD_SETSIZE, NULL, &fdw, &fde, &param->waitTimeRead);
     if(!FD_ISSET(param->sock[param->sockNo], &fdw)){
-      //! æ›¸ãè¾¼ã¿ä¸èƒ½(ãƒ‡ãƒ¼ã‚¿ãªã—)
+      //! ‘‚«‚İ•s”\(ƒf[ƒ^‚È‚µ)
       //return 0;
     }
     if(FD_ISSET(param->sock[param->sockNo], &fde)){
-      //! ä¾‹å¤–ã‚ã‚Š
+      //! —áŠO‚ ‚è
       return -1;
     }
   }
@@ -498,11 +498,11 @@ int netsvWrite(tNetParam* _param, const unsigned char* buf, const size_t bufSize
 }
 
 /*! \fn int netsvRead(void* _param, unsigned char* buf, size_t bufSize)
-\brief ãƒ‡ãƒ¼ã‚¿ã‚’å—ä¿¡ã™ã‚‹
-\param[in] _param netsvãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿
-\param[in] buf å—ä¿¡ãƒ‡ãƒ¼ã‚¿
-\param[in] bufSize å—ä¿¡ãƒ‡ãƒ¼ã‚¿æ ¼ç´é ˜åŸŸã‚µã‚¤ã‚º
-\return >=0 å—ä¿¡ã—ãŸãƒã‚¤ãƒˆæ•°
+\brief ƒf[ƒ^‚ğóM‚·‚é
+\param[in] _param netsvƒpƒ‰ƒ[ƒ^
+\param[in] buf óMƒf[ƒ^
+\param[in] bufSize óMƒf[ƒ^Ši”[—ÌˆæƒTƒCƒY
+\return >=0 óM‚µ‚½ƒoƒCƒg”
 \return <0 Error
 */
 int netsvRead(tNetParam* _param, unsigned char* buf, size_t bufSize){
@@ -517,7 +517,7 @@ int netsvRead(tNetParam* _param, unsigned char* buf, size_t bufSize){
     return -1;
   }
 
-  //! ã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆå‡¦ç†
+  //! ƒ^ƒCƒ€ƒAƒEƒgˆ—
   if(param->waitTimeRead.tv_sec >= 0){
     FD_ZERO(&fdr);
     FD_ZERO(&fde);
@@ -525,11 +525,11 @@ int netsvRead(tNetParam* _param, unsigned char* buf, size_t bufSize){
     FD_SET(param->sock[param->sockNo], &fde);
     select(FD_SETSIZE, &fdr, NULL, &fde, &param->waitTimeRead);
     if(!FD_ISSET(param->sock[param->sockNo], &fdr)){
-      //! èª­ã¿è¾¼ã¿ä¸èƒ½(ãƒ‡ãƒ¼ã‚¿ãªã—)
+      //! “Ç‚İ‚İ•s”\(ƒf[ƒ^‚È‚µ)
       return 0;
     }
     if(FD_ISSET(param->sock[param->sockNo], &fde)){
-      //! ä¾‹å¤–ã‚ã‚Š
+      //! —áŠO‚ ‚è
       return -1;
     }
   }
