@@ -1,0 +1,23 @@
+# Source Table Version #
+SourceVersion	0.1.1
+# Source Flag  OutsideSolarSystem=0 #
+SourceFlag	0
+# Source Name #
+SourceName	Arcturus
+# Coordinate  (RA,Dec)=1 (L,B)=2 #
+Coordinate	1
+# Epoch  B1950=1 J2000=2 #
+Epoch	2
+# (RA,Dec) or (L,B) [hh/dddmmss.sss,+-ddmmss.sss] #
+X_HorD	14
+X_Min	16
+X_Sec	47.200000
+Y_Deg	19
+Y_Min	3
+Y_Sec	25.600000
+# Frame  LSR=1 Heliocentric=2 #
+Frame	1
+# Definition  Radio=1 Optical=2 #
+Definition	1
+# Velocity [+-km/s]  +:recession -:approach #
+Velocity	1.000000

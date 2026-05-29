@@ -1,0 +1,52 @@
+# Scan Table Version #
+ScanVersion	0.1.1
+# Scan Flag  Raster-Scan/OTF=6 #
+ScanFlag	6
+# ON-Point Coordinate  (RA,Dec)=1 (L,B)=2 (AZ,EL)=3 #
+OnCoord	3
+# ON-Point Position Angle [+-deg]  +:CCW #
+PosAngle	0.000000
+# ON-Point Path Length [+-ddd,+-mm,+-ss.s] #
+OnPathLn_Deg	1
+OnPathLn_Min	0
+OnPathLn_Sec	0.000000
+# ON-Point Path Spacing [sec] #
+OnPathSp	300
+# ON-Point Path Number #
+OnPathNo	13
+# ON-Point Start Corner [+-sec] #
+OnStartX	-1800
+OnStartY	-1800
+# OFF-Point Mode  OffsetFromCenter=1 AbsoluteValue=2 #
+OffMode	1
+# OFF-Point Coordinate  (RA,Dec)=1 (L,B)=2 (AZ,EL)=3 #
+OffCoord	3
+# OFF-Point Position [hh/+-dddmmss.s,+-ddmmss.s] #
+OffX1_HorD	0
+OffX1_Min	0
+OffX1_Sec	0.000000
+OffY1_Deg	0
+OffY1_Min	0
+OffY1_Sec	0.000000
+OffX2_HorD	0
+OffX2_Min	0
+OffX2_Sec	0.000000
+OffY2_Deg	0
+OffY2_Min	0
+OffY2_Sec	0.000000
+# Approach Time [sec] #
+TimeApp	2
+# Scan Time [sec] #
+TimeScan	30
+# OFF-Point Selection  unused=-1 OFF1(A)only=1 OFF1(A)&OFF2(B)=2 #
+OffNumber	1
+# OFF-Point Time [sec] #
+OnOffTime	4
+# R-Sky Integration Time [sec] #
+RSkyTime	5
+# Dump Time for Backend [sec] #
+TimeDump	0.100000
+# Set Pattern  R=R, OFF=A,B ON=1,2,... #
+SetPattern	R,A,1,A,2,A,3,A,4,A,5,A,6,A,7,A,8,A,9,A,10,A,11,A,12,A,13
+# Number of Set #
+SetNumber	1

@@ -1,0 +1,8 @@
+南極ドームふじ基地のant_err.dat
+
+user@ant30op:~/enohi/java$ java -jar inubuyo-earth-0.0.jar 39.6439 -77.3611 3810
+Input: (longtitude = 39.6439 [deg], latitude = -77.3611 [deg], height = 3810.0 [m])
+Output: (X = 1078708.8833517698 [m], Y = 893778.6299911214 [m], Z = -6205435.47599945 [m])
+
+* ANTENNA POSITION
+   1078708.8833517698  893778.6299911214  -6205435.47599945

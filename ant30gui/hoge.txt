@@ -1,0 +1,40 @@
+  --enable-dependency-tracking   do not reject slow dependency extractors])
+    # Reject names that are not valid shell variable names.
+    # Reject names that are not valid shell variable names.
+    # Reject names that are not valid shell variable names.
+    # Reject names that are not valid shell variable names.
+    # Reject names that are not valid shell variable names.
+  --enable-dependency-tracking   do not reject slow dependency extractors
+  ac_prog_rejected=no
+       ac_prog_rejected=yes
+if test $ac_prog_rejected = yes; then
+  ac_prog_rejected=no
+       ac_prog_rejected=yes
+if test $ac_prog_rejected = yes; then
+  ac_prog_rejected=no
+       ac_prog_rejected=yes
+if test $ac_prog_rejected = yes; then
+    { echo "$as_me:$LINENO: WARNING: $ac_header: accepted by the compiler, rejected by the preprocessor!" >&5
+echo "$as_me: WARNING: $ac_header: accepted by the compiler, rejected by the preprocessor!" >&2;}
+    { echo "$as_me:$LINENO: WARNING: libintl.h: accepted by the compiler, rejected by the preprocessor!" >&5
+echo "$as_me: WARNING: libintl.h: accepted by the compiler, rejected by the preprocessor!" >&2;}
+  --enable-dependency-tracking   do not reject slow dependency extractors])
+    # Reject names that are not valid shell variable names.
+    # Reject names that are not valid shell variable names.
+    # Reject names that are not valid shell variable names.
+    # Reject names that are not valid shell variable names.
+    # Reject names that are not valid shell variable names.
+  --enable-dependency-tracking   do not reject slow dependency extractors
+  ac_prog_rejected=no
+       ac_prog_rejected=yes
+if test $ac_prog_rejected = yes; then
+  ac_prog_rejected=no
+       ac_prog_rejected=yes
+if test $ac_prog_rejected = yes; then
+  ac_prog_rejected=no
+       ac_prog_rejected=yes
+if test $ac_prog_rejected = yes; then
+    { echo "$as_me:$LINENO: WARNING: $ac_header: accepted by the compiler, rejected by the preprocessor!" >&5
+echo "$as_me: WARNING: $ac_header: accepted by the compiler, rejected by the preprocessor!" >&2;}
+    { echo "$as_me:$LINENO: WARNING: libintl.h: accepted by the compiler, rejected by the preprocessor!" >&5
+echo "$as_me: WARNING: libintl.h: accepted by the compiler, rejected by the preprocessor!" >&2;}

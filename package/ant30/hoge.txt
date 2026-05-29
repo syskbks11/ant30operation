@@ -1,0 +1,142 @@
+
+Makefile
+Makefile.30cm
+acu.cpp
+acu.h
+acu.o
+be.cpp
+      e = BE_REJECT;
+      e = BE_REJECT;
+      //return BE_REJECT;
+      e = BE_REJECT;
+      //return BE_REJECT;
+  ¥param[out] endExeFlag 実行状態 -1:FAILED 1:SUCCESS 2:STANDBY 3:EXECUTION 4:ACCEPT 5:REJECT
+be.h
+be.o
+beProtocol.h
+  int endExeFlag;         //!< -1:FAILED 1:SUCCESS 2:STANDBY 3:EXECUTION 4:ACCEPT 5:REJECT
+calcBoth.cpp
+calcBoth.h
+calcBoth.o
+celestialObject.cpp
+celestialObject.h
+celestialObject.o
+chop.cpp
+chop.h
+chop.o
+compileDate.h
+configuration.h
+controlBoard.cpp
+controlBoard.h
+controlBoard.o
+errno.cpp
+  {SAACQ_REJECT, "SaacqReject"},
+  {BE_REJECT, "BackendReject"},
+  //! 0:None -1:FAILED(積分失敗) 1:SUCCESS 2:STANDBY 3:EXECUTION 4:ACCEPT(通信) 5:REJECT(通信)
+    sprintf(e, "REJECT");
+errno.h
+#define SAACQ_REJECT -70
+#define BE_REJECT -70
+errno.o
+バイナリー・ファイルerrno.oは一致しました
+fe.cpp
+fe.h
+fe.o
+fitprot.c
+fitprot.h
+fitprot.o
+hoge.txt
+      e = BE_REJECT;
+      e = BE_REJECT;
+      //return BE_REJECT;
+      e = BE_REJECT;
+      //return BE_REJECT;
+  ¥param[out] endExeFlag 実行状態 -1:FAILED 1:SUCCESS 2:STANDBY 3:EXECUTION 4:ACCEPT 5:REJECT
+  int endExeFlag;         //!< -1:FAILED 1:SUCCESS 2:STANDBY 3:EXECUTION 4:ACCEPT 5:REJECT
+  {SAACQ_REJECT, "SaacqReject"},
+  {BE_REJECT, "BackendReject"},
+  //! 0:None -1:FAILED(積分失敗) 1:SUCCESS 2:STANDBY 3:EXECUTION 4:ACCEPT(通信) 5:REJECT(通信)
+    sprintf(e, "REJECT");
+#define SAACQ_REJECT -70
+#define BE_REJECT -70
+if.cpp
+if.h
+if.o
+ifCalcBoth.h
+ifTest.cpp
+instrument.cpp
+instrument.cpp_20121020
+instrument.h
+instrument.o
+instrumentTest
+instrumentTest.cpp
+instrument_2009.cpp
+instrument_20101008.cpp
+instrument_nagai.cpp
+makeSch
+makeSch.cpp
+makeSch.o
+makeSch.ti
+makeSch_20121020.cpp
+netProt.h
+saacqTest.cpp
+scanTable.cpp
+scanTable.h
+scanTable.o
+test.c
+testAcu
+testAcu.cpp
+testRS232.c
+thread.h
+tkb32
+バイナリー・ファイルtkb32は一致しました
+tkb32.20110126
+バイナリー・ファイルtkb32.20110126は一致しました
+tkb32.cpp
+tkb32.o
+tkb32Func.cpp
+      //!< -1:Failed 1:Success 2:Standby 3:Execution 4:Accept 5:Reject
+    //!< -1:Failed 1:Success 2:Standby 3:Execution 4:Accept 5:Reject
+  uM("Reject Alreqdy Startobs");
+  uM("Reject  Already startobs");
+  //uM("Reject  Already startobs");
+      uM("Reject  Already startobs");
+      uM("Reject Not initialized");
+      uM("Reject Alreqdy Startobs");
+      uM("Reject  Not initialized");
+      uM("Reject  Not Startobs");
+      uM("Reject  Not Initialized");
+tkb32Func.h
+tkb32Func.o
+tkb32Parser.cpp
+      uM("Reject Alreqdy Startobs");
+	uM("Reject  Already startobs");
+      //uM("Reject  Already startobs");
+	uM("Reject  Already startobs");
+      uM("Reject Not initialized");
+      uM("Reject Alreqdy Startobs");
+      uM("Reject  Not initialized");
+      uM("Reject  Not Startobs");
+      uM("Reject  Not Initialized");
+	uM("Reject  Already startobs");
+      //uM("Reject  Already startobs");
+	uM("Reject  Already startobs");
+tkb32Parser.h
+tkb32Parser.o
+バイナリー・ファイルtkb32Parser.oは一致しました
+tkb32ParserTkb32Func.h
+tkb32Protocol.h
+tkb32Test.cpp
+trk.cpp
+trk.h
+trk.o
+trk45Sub.h
+trkCalc.h
+trkTest.cpp
+weath.cpp
+weath.h
+weath.o
+weath_old.cpp
+weatherMonitor.cpp
+weatherMonitor.h
+weatherMonitor.o

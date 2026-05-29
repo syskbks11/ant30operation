@@ -1,0 +1,20 @@
+# Device Table Version #
+DeviceVersion	0.1.1
+# Tracking Frequency [GHz] #
+Ftrack	461.0407682
+# Intermediate Frequency [GHz] #
+FifL	-7.200000
+# Attenuator [dB] #
+# Attenuator Decrement for R [dB] #
+IfAtt	0
+IfAttDecR	0
+# Spectrometer Selection  NotUse=0 Use=1 #
+# H:01-08 S:09-16 D:17-24 #
+BeUse01	0
+BeUse02	0
+BeUse17	0
+BeUse18	0
+# Mode (Hardware) [MHz]  1000/500/250/125 #
+# Spectrometer Frequency (Hardware) [GHz] #
+Mode_H	1000
+FsaL_H	0.000000

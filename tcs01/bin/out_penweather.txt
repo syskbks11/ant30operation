@@ -1,0 +1,910 @@
+16:06:48.72 Use logfile(../log/server/srvWeather-20250416160648.log)
+16:06:48.72 This program is Compiled at Feb 10 2025 12:07:40
+16:06:48.73 /dev/serial/by-id/usb-FTDI_USB_HS_SERIAL_CONVERTER_FTRTK9ES-if00-port0 opened as a penguin_weather.
+
+16:06:48.78 netsvInitWithProcessMax(); Socket open port 10102
+penguin_weather_receive(); timeout.
+penguin_weather_getData(); received data size (27) is not expected value(26).
+16:07:18.789 bad penguin_weather temperature = 5992.800000.
+16:07:18.789 bad penguin_weather temperature = 6016.600000.
+16:07:18.789 bad penguin_weather pressure = 75.000000.
+16:07:18.794 ERROR:: weathGetData has invalid status (14)
+16:07:18.829 bad penguin_weather temperature = 6016.600000.
+16:07:18.829 bad penguin_weather temperature = 6016.600000.
+16:07:18.835 ERROR:: weathGetData has invalid status (6)
+16:07:19.857 bad penguin_weather temperature = 6016.600000.
+16:07:19.857 bad penguin_weather temperature = 6016.600000.
+16:07:19.862 ERROR:: weathGetData has invalid status (6)
+16:07:20.886 bad penguin_weather temperature = 6016.600000.
+16:07:20.886 bad penguin_weather temperature = 6016.600000.
+16:07:20.891 ERROR:: weathGetData has invalid status (6)
+16:07:21.915 bad penguin_weather temperature = 6016.600000.
+16:07:21.915 bad penguin_weather temperature = 6016.600000.
+16:07:21.920 ERROR:: weathGetData has invalid status (6)
+16:07:22.942 bad penguin_weather temperature = 6016.600000.
+16:07:22.942 bad penguin_weather temperature = 6016.600000.
+16:07:22.947 ERROR:: weathGetData has invalid status (6)
+16:07:23.972 bad penguin_weather temperature = 6016.600000.
+16:07:23.972 bad penguin_weather temperature = 6016.600000.
+16:07:23.977 ERROR:: weathGetData has invalid status (6)
+16:07:24.996 bad penguin_weather temperature = 6016.600000.
+16:07:24.996 bad penguin_weather temperature = 6016.600000.
+16:07:25.1 ERROR:: weathGetData has invalid status (6)
+16:07:26.24 bad penguin_weather temperature = 6016.600000.
+16:07:26.24 bad penguin_weather temperature = 6016.600000.
+16:07:26.29 ERROR:: weathGetData has invalid status (6)
+16:07:27.48 bad penguin_weather temperature = 6016.600000.
+16:07:27.48 bad penguin_weather temperature = 6016.600000.
+16:07:27.53 ERROR:: weathGetData has invalid status (6)
+16:07:28.70 bad penguin_weather temperature = 6016.600000.
+16:07:28.70 bad penguin_weather temperature = 6016.600000.
+16:07:28.75 ERROR:: weathGetData has invalid status (6)
+16:07:29.95 bad penguin_weather temperature = 6016.600000.
+16:07:29.95 bad penguin_weather temperature = 6016.600000.
+16:07:29.100 ERROR:: weathGetData has invalid status (6)
+16:07:30.120 bad penguin_weather temperature = 6016.600000.
+16:07:30.120 bad penguin_weather temperature = 6016.600000.
+16:07:30.125 ERROR:: weathGetData has invalid status (6)
+16:07:31.146 bad penguin_weather temperature = 6016.600000.
+16:07:31.146 bad penguin_weather temperature = 6016.600000.
+16:07:31.150 ERROR:: weathGetData has invalid status (6)
+16:07:32.170 bad penguin_weather temperature = 6016.600000.
+16:07:32.170 bad penguin_weather temperature = 6016.600000.
+16:07:32.175 ERROR:: weathGetData has invalid status (6)
+16:07:33.193 bad penguin_weather temperature = 6016.600000.
+16:07:33.193 bad penguin_weather temperature = 6016.600000.
+16:07:33.198 ERROR:: weathGetData has invalid status (6)
+16:07:34.217 bad penguin_weather temperature = 6016.600000.
+16:07:34.218 bad penguin_weather temperature = 6016.600000.
+16:07:34.222 ERROR:: weathGetData has invalid status (6)
+16:07:35.247 bad penguin_weather temperature = 6016.600000.
+16:07:35.247 bad penguin_weather temperature = 6016.600000.
+16:07:35.251 ERROR:: weathGetData has invalid status (6)
+16:07:36.274 bad penguin_weather temperature = 6016.600000.
+16:07:36.274 bad penguin_weather temperature = 6016.600000.
+16:07:36.279 ERROR:: weathGetData has invalid status (6)
+16:07:37.299 bad penguin_weather temperature = 6016.600000.
+16:07:37.299 bad penguin_weather temperature = 6016.600000.
+16:07:37.303 ERROR:: weathGetData has invalid status (6)
+16:07:38.327 bad penguin_weather temperature = 6016.600000.
+16:07:38.327 bad penguin_weather temperature = 6016.600000.
+16:07:38.332 ERROR:: weathGetData has invalid status (6)
+16:07:39.353 bad penguin_weather temperature = 6016.600000.
+16:07:39.353 bad penguin_weather temperature = 6016.600000.
+16:07:39.357 ERROR:: weathGetData has invalid status (6)
+16:07:40.380 bad penguin_weather temperature = 6016.600000.
+16:07:40.380 bad penguin_weather temperature = 6016.600000.
+16:07:40.384 ERROR:: weathGetData has invalid status (6)
+16:07:41.407 bad penguin_weather temperature = 6016.600000.
+16:07:41.407 bad penguin_weather temperature = 6016.600000.
+16:07:41.411 ERROR:: weathGetData has invalid status (6)
+16:07:42.437 bad penguin_weather temperature = 6016.600000.
+16:07:42.437 bad penguin_weather temperature = 6016.600000.
+16:07:42.442 ERROR:: weathGetData has invalid status (6)
+16:07:43.463 bad penguin_weather temperature = 6016.600000.
+16:07:43.463 bad penguin_weather temperature = 6016.600000.
+16:07:43.468 ERROR:: weathGetData has invalid status (6)
+16:07:44.491 bad penguin_weather temperature = 6016.600000.
+16:07:44.491 bad penguin_weather temperature = 6016.600000.
+16:07:44.495 ERROR:: weathGetData has invalid status (6)
+16:07:45.520 bad penguin_weather temperature = 6016.600000.
+16:07:45.520 bad penguin_weather temperature = 6016.600000.
+16:07:45.525 ERROR:: weathGetData has invalid status (6)
+16:07:46.550 bad penguin_weather temperature = 6016.600000.
+16:07:46.550 bad penguin_weather temperature = 6016.600000.
+16:07:46.554 ERROR:: weathGetData has invalid status (6)
+16:07:47.576 bad penguin_weather temperature = 6016.600000.
+16:07:47.576 bad penguin_weather temperature = 6016.600000.
+16:07:47.580 ERROR:: weathGetData has invalid status (6)
+16:07:48.604 bad penguin_weather temperature = 6016.600000.
+16:07:48.604 bad penguin_weather temperature = 6016.600000.
+16:07:48.609 ERROR:: weathGetData has invalid status (6)
+16:07:49.633 bad penguin_weather temperature = 6016.600000.
+16:07:49.633 bad penguin_weather temperature = 6016.600000.
+16:07:49.638 ERROR:: weathGetData has invalid status (6)
+16:07:50.660 bad penguin_weather temperature = 6016.600000.
+16:07:50.660 bad penguin_weather temperature = 6016.600000.
+16:07:50.664 ERROR:: weathGetData has invalid status (6)
+16:07:51.687 bad penguin_weather temperature = 6016.600000.
+16:07:51.687 bad penguin_weather temperature = 6016.600000.
+16:07:51.691 ERROR:: weathGetData has invalid status (6)
+16:07:52.716 bad penguin_weather temperature = 6016.600000.
+16:07:52.716 bad penguin_weather temperature = 6016.600000.
+16:07:52.721 ERROR:: weathGetData has invalid status (6)
+16:07:53.736 bad penguin_weather temperature = 6016.600000.
+16:07:53.736 bad penguin_weather temperature = 6016.600000.
+16:07:53.741 ERROR:: weathGetData has invalid status (6)
+16:07:54.757 bad penguin_weather temperature = 6016.600000.
+16:07:54.757 bad penguin_weather temperature = 6016.600000.
+16:07:54.761 ERROR:: weathGetData has invalid status (6)
+16:07:55.777 bad penguin_weather temperature = 6016.600000.
+16:07:55.777 bad penguin_weather temperature = 6016.600000.
+16:07:55.782 ERROR:: weathGetData has invalid status (6)
+16:07:56.797 bad penguin_weather temperature = 6016.600000.
+16:07:56.797 bad penguin_weather temperature = 6016.600000.
+16:07:56.801 ERROR:: weathGetData has invalid status (6)
+16:07:57.827 bad penguin_weather temperature = 6016.600000.
+16:07:57.827 bad penguin_weather temperature = 6016.600000.
+16:07:57.831 ERROR:: weathGetData has invalid status (6)
+16:07:58.855 bad penguin_weather temperature = 6016.600000.
+16:07:58.855 bad penguin_weather temperature = 6016.600000.
+16:07:58.859 ERROR:: weathGetData has invalid status (6)
+16:07:59.874 bad penguin_weather temperature = 6016.600000.
+16:07:59.874 bad penguin_weather temperature = 6016.600000.
+16:07:59.879 ERROR:: weathGetData has invalid status (6)
+16:08:00.895 bad penguin_weather temperature = 6016.600000.
+16:08:00.895 bad penguin_weather temperature = 6016.600000.
+16:08:00.899 ERROR:: weathGetData has invalid status (6)
+16:08:01.916 bad penguin_weather temperature = 6016.600000.
+16:08:01.916 bad penguin_weather temperature = 6016.600000.
+16:08:01.920 ERROR:: weathGetData has invalid status (6)
+16:08:02.937 bad penguin_weather temperature = 6016.600000.
+16:08:02.937 bad penguin_weather temperature = 6016.600000.
+16:08:02.941 ERROR:: weathGetData has invalid status (6)
+16:08:03.966 bad penguin_weather temperature = 6016.600000.
+16:08:03.966 bad penguin_weather temperature = 6016.600000.
+16:08:03.970 ERROR:: weathGetData has invalid status (6)
+16:08:04.994 bad penguin_weather temperature = 6016.600000.
+16:08:04.994 bad penguin_weather temperature = 6016.600000.
+16:08:04.998 ERROR:: weathGetData has invalid status (6)
+16:08:06.24 bad penguin_weather temperature = 6016.600000.
+16:08:06.24 bad penguin_weather temperature = 6016.600000.
+16:08:06.28 ERROR:: weathGetData has invalid status (6)
+16:08:07.43 bad penguin_weather temperature = 6016.600000.
+16:08:07.43 bad penguin_weather temperature = 6016.600000.
+16:08:07.48 ERROR:: weathGetData has invalid status (6)
+16:08:08.72 bad penguin_weather temperature = 6016.600000.
+16:08:08.72 bad penguin_weather temperature = 6016.600000.
+16:08:08.77 ERROR:: weathGetData has invalid status (6)
+16:08:09.100 bad penguin_weather temperature = 6016.600000.
+16:08:09.100 bad penguin_weather temperature = 6016.600000.
+16:08:09.104 ERROR:: weathGetData has invalid status (6)
+16:08:10.125 bad penguin_weather temperature = 6016.600000.
+16:08:10.125 bad penguin_weather temperature = 6016.600000.
+16:08:10.129 ERROR:: weathGetData has invalid status (6)
+16:08:11.149 bad penguin_weather temperature = 6016.600000.
+16:08:11.149 bad penguin_weather temperature = 6016.600000.
+16:08:11.154 ERROR:: weathGetData has invalid status (6)
+16:08:12.178 bad penguin_weather temperature = 6016.600000.
+16:08:12.178 bad penguin_weather temperature = 6016.600000.
+16:08:12.182 ERROR:: weathGetData has invalid status (6)
+16:08:13.207 bad penguin_weather temperature = 6016.600000.
+16:08:13.207 bad penguin_weather temperature = 6016.600000.
+16:08:13.211 ERROR:: weathGetData has invalid status (6)
+16:08:14.232 bad penguin_weather temperature = 6016.600000.
+16:08:14.232 bad penguin_weather temperature = 6016.600000.
+16:08:14.236 ERROR:: weathGetData has invalid status (6)
+16:08:15.260 bad penguin_weather temperature = 6016.600000.
+16:08:15.260 bad penguin_weather temperature = 6016.600000.
+16:08:15.264 ERROR:: weathGetData has invalid status (6)
+16:08:16.280 bad penguin_weather temperature = 6016.600000.
+16:08:16.280 bad penguin_weather temperature = 6016.600000.
+16:08:16.284 ERROR:: weathGetData has invalid status (6)
+16:08:17.308 bad penguin_weather temperature = 6016.600000.
+16:08:17.308 bad penguin_weather temperature = 6016.600000.
+16:08:17.312 ERROR:: weathGetData has invalid status (6)
+16:08:18.335 bad penguin_weather temperature = 6016.600000.
+16:08:18.335 bad penguin_weather temperature = 6016.600000.
+16:08:18.339 ERROR:: weathGetData has invalid status (6)
+16:08:19.362 bad penguin_weather temperature = 6016.600000.
+16:08:19.362 bad penguin_weather temperature = 6016.600000.
+16:08:19.366 ERROR:: weathGetData has invalid status (6)
+16:08:20.387 bad penguin_weather temperature = 6016.600000.
+16:08:20.387 bad penguin_weather temperature = 6016.600000.
+16:08:20.391 ERROR:: weathGetData has invalid status (6)
+16:08:21.412 bad penguin_weather temperature = 6016.600000.
+16:08:21.412 bad penguin_weather temperature = 6016.600000.
+16:08:21.417 ERROR:: weathGetData has invalid status (6)
+16:08:22.440 bad penguin_weather temperature = 6016.600000.
+16:08:22.440 bad penguin_weather temperature = 6016.600000.
+16:08:22.445 ERROR:: weathGetData has invalid status (6)
+16:08:23.461 bad penguin_weather temperature = 6016.600000.
+16:08:23.461 bad penguin_weather temperature = 6016.600000.
+16:08:23.466 ERROR:: weathGetData has invalid status (6)
+16:08:24.482 bad penguin_weather temperature = 6016.600000.
+16:08:24.482 bad penguin_weather temperature = 6016.600000.
+16:08:24.486 ERROR:: weathGetData has invalid status (6)
+16:08:25.508 bad penguin_weather temperature = 6016.600000.
+16:08:25.509 bad penguin_weather temperature = 6016.600000.
+16:08:25.513 ERROR:: weathGetData has invalid status (6)
+16:08:26.536 bad penguin_weather temperature = 6016.600000.
+16:08:26.536 bad penguin_weather temperature = 6016.600000.
+16:08:26.540 ERROR:: weathGetData has invalid status (6)
+16:08:27.564 bad penguin_weather temperature = 6016.600000.
+16:08:27.564 bad penguin_weather temperature = 6016.600000.
+16:08:27.569 ERROR:: weathGetData has invalid status (6)
+16:08:28.591 bad penguin_weather temperature = 6016.600000.
+16:08:28.592 bad penguin_weather temperature = 6016.600000.
+16:08:28.596 ERROR:: weathGetData has invalid status (6)
+16:08:29.620 bad penguin_weather temperature = 6016.600000.
+16:08:29.620 bad penguin_weather temperature = 6016.600000.
+16:08:29.625 ERROR:: weathGetData has invalid status (6)
+16:08:30.650 bad penguin_weather temperature = 6016.600000.
+16:08:30.650 bad penguin_weather temperature = 6016.600000.
+16:08:30.655 ERROR:: weathGetData has invalid status (6)
+16:08:31.677 bad penguin_weather temperature = 6016.600000.
+16:08:31.677 bad penguin_weather temperature = 6016.600000.
+16:08:31.682 ERROR:: weathGetData has invalid status (6)
+16:08:32.702 bad penguin_weather temperature = 6016.600000.
+16:08:32.702 bad penguin_weather temperature = 6016.600000.
+16:08:32.706 ERROR:: weathGetData has invalid status (6)
+16:08:33.725 bad penguin_weather temperature = 6016.600000.
+16:08:33.725 bad penguin_weather temperature = 6016.600000.
+16:08:33.729 ERROR:: weathGetData has invalid status (6)
+16:08:34.752 bad penguin_weather temperature = 6016.600000.
+16:08:34.752 bad penguin_weather temperature = 6016.600000.
+16:08:34.756 ERROR:: weathGetData has invalid status (6)
+16:08:35.776 bad penguin_weather temperature = 6016.600000.
+16:08:35.776 bad penguin_weather temperature = 6016.600000.
+16:08:35.780 ERROR:: weathGetData has invalid status (6)
+16:08:36.804 bad penguin_weather temperature = 6016.600000.
+16:08:36.804 bad penguin_weather temperature = 6016.600000.
+16:08:36.809 ERROR:: weathGetData has invalid status (6)
+16:08:37.832 bad penguin_weather temperature = 6016.600000.
+16:08:37.832 bad penguin_weather temperature = 6016.600000.
+16:08:37.837 ERROR:: weathGetData has invalid status (6)
+16:08:38.862 bad penguin_weather temperature = 6016.600000.
+16:08:38.862 bad penguin_weather temperature = 6016.600000.
+16:08:38.867 ERROR:: weathGetData has invalid status (6)
+16:08:39.889 bad penguin_weather temperature = 6016.600000.
+16:08:39.889 bad penguin_weather temperature = 6016.600000.
+16:08:39.894 ERROR:: weathGetData has invalid status (6)
+16:08:40.916 bad penguin_weather temperature = 6016.600000.
+16:08:40.916 bad penguin_weather temperature = 6016.600000.
+16:08:40.921 ERROR:: weathGetData has invalid status (6)
+16:08:41.941 bad penguin_weather temperature = 6016.600000.
+16:08:41.941 bad penguin_weather temperature = 6016.600000.
+16:08:41.945 ERROR:: weathGetData has invalid status (6)
+16:08:42.967 bad penguin_weather temperature = 6016.600000.
+16:08:42.967 bad penguin_weather temperature = 6016.600000.
+16:08:42.972 ERROR:: weathGetData has invalid status (6)
+16:08:43.994 bad penguin_weather temperature = 6016.600000.
+16:08:43.994 bad penguin_weather temperature = 6016.600000.
+16:08:43.999 ERROR:: weathGetData has invalid status (6)
+16:08:45.19 bad penguin_weather temperature = 6016.600000.
+16:08:45.19 bad penguin_weather temperature = 6016.600000.
+16:08:45.23 ERROR:: weathGetData has invalid status (6)
+16:08:46.44 bad penguin_weather temperature = 6016.600000.
+16:08:46.44 bad penguin_weather temperature = 6016.600000.
+16:08:46.48 ERROR:: weathGetData has invalid status (6)
+16:08:47.72 bad penguin_weather temperature = 6016.600000.
+16:08:47.72 bad penguin_weather temperature = 6016.600000.
+16:08:47.76 ERROR:: weathGetData has invalid status (6)
+16:08:48.99 bad penguin_weather temperature = 6016.600000.
+16:08:48.99 bad penguin_weather temperature = 6016.600000.
+16:08:48.104 ERROR:: weathGetData has invalid status (6)
+16:08:49.127 bad penguin_weather temperature = 6016.600000.
+16:08:49.127 bad penguin_weather temperature = 6016.600000.
+16:08:49.132 ERROR:: weathGetData has invalid status (6)
+16:08:50.148 bad penguin_weather temperature = 6016.600000.
+16:08:50.148 bad penguin_weather temperature = 6016.600000.
+16:08:50.153 ERROR:: weathGetData has invalid status (6)
+16:08:51.169 bad penguin_weather temperature = 6016.600000.
+16:08:51.169 bad penguin_weather temperature = 6016.600000.
+16:08:51.174 ERROR:: weathGetData has invalid status (6)
+16:08:52.199 bad penguin_weather temperature = 6016.600000.
+16:08:52.199 bad penguin_weather temperature = 6016.600000.
+16:08:52.204 ERROR:: weathGetData has invalid status (6)
+16:08:53.227 bad penguin_weather temperature = 6016.600000.
+16:08:53.228 bad penguin_weather temperature = 6016.600000.
+16:08:53.232 ERROR:: weathGetData has invalid status (6)
+16:08:54.256 bad penguin_weather temperature = 6016.600000.
+16:08:54.256 bad penguin_weather temperature = 6016.600000.
+16:08:54.261 ERROR:: weathGetData has invalid status (6)
+16:08:55.285 bad penguin_weather temperature = 6016.600000.
+16:08:55.285 bad penguin_weather temperature = 6016.600000.
+16:08:55.289 ERROR:: weathGetData has invalid status (6)
+16:08:56.311 bad penguin_weather temperature = 6016.600000.
+16:08:56.311 bad penguin_weather temperature = 6016.600000.
+16:08:56.315 ERROR:: weathGetData has invalid status (6)
+16:08:57.336 bad penguin_weather temperature = 6016.600000.
+16:08:57.336 bad penguin_weather temperature = 6016.600000.
+16:08:57.340 ERROR:: weathGetData has invalid status (6)
+16:08:58.364 bad penguin_weather temperature = 6016.600000.
+16:08:58.364 bad penguin_weather temperature = 6016.600000.
+16:08:58.368 ERROR:: weathGetData has invalid status (6)
+16:08:59.391 bad penguin_weather temperature = 6016.600000.
+16:08:59.391 bad penguin_weather temperature = 6016.600000.
+16:08:59.396 ERROR:: weathGetData has invalid status (6)
+16:09:00.420 bad penguin_weather temperature = 6016.600000.
+16:09:00.420 bad penguin_weather temperature = 6016.600000.
+16:09:00.425 ERROR:: weathGetData has invalid status (6)
+16:09:01.448 bad penguin_weather temperature = 6016.600000.
+16:09:01.448 bad penguin_weather temperature = 6016.600000.
+16:09:01.453 ERROR:: weathGetData has invalid status (6)
+16:09:02.478 bad penguin_weather temperature = 6016.600000.
+16:09:02.478 bad penguin_weather temperature = 6016.600000.
+16:09:02.483 ERROR:: weathGetData has invalid status (6)
+16:09:03.507 bad penguin_weather temperature = 6016.600000.
+16:09:03.507 bad penguin_weather temperature = 6016.600000.
+16:09:03.511 ERROR:: weathGetData has invalid status (6)
+16:09:04.533 bad penguin_weather temperature = 6016.600000.
+16:09:04.533 bad penguin_weather temperature = 6016.600000.
+16:09:04.538 ERROR:: weathGetData has invalid status (6)
+16:09:05.559 bad penguin_weather temperature = 6016.600000.
+16:09:05.559 bad penguin_weather temperature = 6016.600000.
+16:09:05.564 ERROR:: weathGetData has invalid status (6)
+16:09:06.584 bad penguin_weather temperature = 6016.600000.
+16:09:06.584 bad penguin_weather temperature = 6016.600000.
+16:09:06.588 ERROR:: weathGetData has invalid status (6)
+16:09:07.610 bad penguin_weather temperature = 6016.600000.
+16:09:07.610 bad penguin_weather temperature = 6016.600000.
+16:09:07.614 ERROR:: weathGetData has invalid status (6)
+16:09:08.635 bad penguin_weather temperature = 6016.600000.
+16:09:08.635 bad penguin_weather temperature = 6016.600000.
+16:09:08.639 ERROR:: weathGetData has invalid status (6)
+16:09:09.664 bad penguin_weather temperature = 6016.600000.
+16:09:09.664 bad penguin_weather temperature = 6016.600000.
+16:09:09.668 ERROR:: weathGetData has invalid status (6)
+16:09:10.693 bad penguin_weather temperature = 6016.600000.
+16:09:10.693 bad penguin_weather temperature = 6016.600000.
+16:09:10.698 ERROR:: weathGetData has invalid status (6)
+16:09:11.723 bad penguin_weather temperature = 6016.600000.
+16:09:11.723 bad penguin_weather temperature = 6016.600000.
+16:09:11.728 ERROR:: weathGetData has invalid status (6)
+16:09:12.751 bad penguin_weather temperature = 6016.600000.
+16:09:12.751 bad penguin_weather temperature = 6016.600000.
+16:09:12.755 ERROR:: weathGetData has invalid status (6)
+16:09:13.780 bad penguin_weather temperature = 6016.600000.
+16:09:13.780 bad penguin_weather temperature = 6016.600000.
+16:09:13.784 ERROR:: weathGetData has invalid status (6)
+16:09:14.810 bad penguin_weather temperature = 6016.600000.
+16:09:14.810 bad penguin_weather temperature = 6016.600000.
+16:09:14.814 ERROR:: weathGetData has invalid status (6)
+16:09:15.839 bad penguin_weather temperature = 6016.600000.
+16:09:15.839 bad penguin_weather temperature = 6016.600000.
+16:09:15.844 ERROR:: weathGetData has invalid status (6)
+16:09:16.866 bad penguin_weather temperature = 6016.600000.
+16:09:16.866 bad penguin_weather temperature = 6016.600000.
+16:09:16.870 ERROR:: weathGetData has invalid status (6)
+16:09:17.892 bad penguin_weather temperature = 6016.600000.
+16:09:17.892 bad penguin_weather temperature = 6016.600000.
+16:09:17.896 ERROR:: weathGetData has invalid status (6)
+16:09:18.917 bad penguin_weather temperature = 6016.600000.
+16:09:18.917 bad penguin_weather temperature = 6016.600000.
+16:09:18.921 ERROR:: weathGetData has invalid status (6)
+16:09:19.940 bad penguin_weather temperature = 6016.600000.
+16:09:19.940 bad penguin_weather temperature = 6016.600000.
+16:09:19.945 ERROR:: weathGetData has invalid status (6)
+16:09:20.967 bad penguin_weather temperature = 6016.600000.
+16:09:20.967 bad penguin_weather temperature = 6016.600000.
+16:09:20.972 ERROR:: weathGetData has invalid status (6)
+16:09:21.997 bad penguin_weather temperature = 6016.600000.
+16:09:21.997 bad penguin_weather temperature = 6016.600000.
+16:09:22.2 ERROR:: weathGetData has invalid status (6)
+16:09:23.26 bad penguin_weather temperature = 6016.600000.
+16:09:23.26 bad penguin_weather temperature = 6016.600000.
+16:09:23.30 ERROR:: weathGetData has invalid status (6)
+16:09:24.55 bad penguin_weather temperature = 6016.600000.
+16:09:24.55 bad penguin_weather temperature = 6016.600000.
+16:09:24.60 ERROR:: weathGetData has invalid status (6)
+16:09:25.84 bad penguin_weather temperature = 6016.600000.
+16:09:25.84 bad penguin_weather temperature = 6016.600000.
+16:09:25.89 ERROR:: weathGetData has invalid status (6)
+16:09:26.106 bad penguin_weather temperature = 6016.600000.
+16:09:26.106 bad penguin_weather temperature = 6016.600000.
+16:09:26.111 ERROR:: weathGetData has invalid status (6)
+16:09:27.128 bad penguin_weather temperature = 6016.600000.
+16:09:27.128 bad penguin_weather temperature = 6016.600000.
+16:09:27.133 ERROR:: weathGetData has invalid status (6)
+16:09:28.151 bad penguin_weather temperature = 6016.600000.
+16:09:28.151 bad penguin_weather temperature = 6016.600000.
+16:09:28.156 ERROR:: weathGetData has invalid status (6)
+16:09:29.173 bad penguin_weather temperature = 6016.600000.
+16:09:29.173 bad penguin_weather temperature = 6016.600000.
+16:09:29.177 ERROR:: weathGetData has invalid status (6)
+16:09:30.202 bad penguin_weather temperature = 6016.600000.
+16:09:30.202 bad penguin_weather temperature = 6016.600000.
+16:09:30.206 ERROR:: weathGetData has invalid status (6)
+16:09:31.227 bad penguin_weather temperature = 6016.600000.
+16:09:31.227 bad penguin_weather temperature = 6016.600000.
+16:09:31.232 ERROR:: weathGetData has invalid status (6)
+16:09:32.254 bad penguin_weather temperature = 6016.600000.
+16:09:32.254 bad penguin_weather temperature = 6016.600000.
+16:09:32.258 ERROR:: weathGetData has invalid status (6)
+16:09:33.284 bad penguin_weather temperature = 6016.600000.
+16:09:33.284 bad penguin_weather temperature = 6016.600000.
+16:09:33.289 ERROR:: weathGetData has invalid status (6)
+16:09:34.314 bad penguin_weather temperature = 6016.600000.
+16:09:34.314 bad penguin_weather temperature = 6016.600000.
+16:09:34.318 ERROR:: weathGetData has invalid status (6)
+16:09:35.343 bad penguin_weather temperature = 6016.600000.
+16:09:35.343 bad penguin_weather temperature = 6016.600000.
+16:09:35.347 ERROR:: weathGetData has invalid status (6)
+16:09:36.371 bad penguin_weather temperature = 6016.600000.
+16:09:36.371 bad penguin_weather temperature = 6016.600000.
+16:09:36.375 ERROR:: weathGetData has invalid status (6)
+16:09:37.400 bad penguin_weather temperature = 6016.600000.
+16:09:37.400 bad penguin_weather temperature = 6016.600000.
+16:09:37.405 ERROR:: weathGetData has invalid status (6)
+16:09:38.429 bad penguin_weather temperature = 6016.600000.
+16:09:38.429 bad penguin_weather temperature = 6016.600000.
+16:09:38.433 ERROR:: weathGetData has invalid status (6)
+16:09:39.458 bad penguin_weather temperature = 6016.600000.
+16:09:39.458 bad penguin_weather temperature = 6016.600000.
+16:09:39.462 ERROR:: weathGetData has invalid status (6)
+16:09:40.487 bad penguin_weather temperature = 6016.600000.
+16:09:40.487 bad penguin_weather temperature = 6016.600000.
+16:09:40.491 ERROR:: weathGetData has invalid status (6)
+16:09:41.517 bad penguin_weather temperature = 6016.600000.
+16:09:41.517 bad penguin_weather temperature = 6016.600000.
+16:09:41.521 ERROR:: weathGetData has invalid status (6)
+16:09:42.541 bad penguin_weather temperature = 6016.600000.
+16:09:42.541 bad penguin_weather temperature = 6016.600000.
+16:09:42.546 ERROR:: weathGetData has invalid status (6)
+16:09:43.567 bad penguin_weather temperature = 6016.600000.
+16:09:43.567 bad penguin_weather temperature = 6016.600000.
+16:09:43.572 ERROR:: weathGetData has invalid status (6)
+16:09:44.594 bad penguin_weather temperature = 6016.600000.
+16:09:44.595 bad penguin_weather temperature = 6016.600000.
+16:09:44.599 ERROR:: weathGetData has invalid status (6)
+16:09:45.623 bad penguin_weather temperature = 6016.600000.
+16:09:45.623 bad penguin_weather temperature = 6016.600000.
+16:09:45.628 ERROR:: weathGetData has invalid status (6)
+16:09:46.643 bad penguin_weather temperature = 6016.600000.
+16:09:46.643 bad penguin_weather temperature = 6016.600000.
+16:09:46.648 ERROR:: weathGetData has invalid status (6)
+16:09:47.664 bad penguin_weather temperature = 6016.600000.
+16:09:47.664 bad penguin_weather temperature = 6016.600000.
+16:09:47.669 ERROR:: weathGetData has invalid status (6)
+16:09:48.684 bad penguin_weather temperature = 6016.600000.
+16:09:48.684 bad penguin_weather temperature = 6016.600000.
+16:09:48.689 ERROR:: weathGetData has invalid status (6)
+16:09:49.714 bad penguin_weather temperature = 6016.600000.
+16:09:49.714 bad penguin_weather temperature = 6016.600000.
+16:09:49.718 ERROR:: weathGetData has invalid status (6)
+16:09:50.743 bad penguin_weather temperature = 6016.600000.
+16:09:50.743 bad penguin_weather temperature = 6016.600000.
+16:09:50.747 ERROR:: weathGetData has invalid status (6)
+16:09:51.773 bad penguin_weather temperature = 6016.600000.
+16:09:51.773 bad penguin_weather temperature = 6016.600000.
+16:09:51.777 ERROR:: weathGetData has invalid status (6)
+16:09:52.803 bad penguin_weather temperature = 6016.600000.
+16:09:52.803 bad penguin_weather temperature = 6016.600000.
+16:09:52.808 ERROR:: weathGetData has invalid status (6)
+16:09:53.831 bad penguin_weather temperature = 6016.600000.
+16:09:53.831 bad penguin_weather temperature = 6016.600000.
+16:09:53.836 ERROR:: weathGetData has invalid status (6)
+16:09:54.859 bad penguin_weather temperature = 6016.600000.
+16:09:54.859 bad penguin_weather temperature = 6016.600000.
+16:09:54.864 ERROR:: weathGetData has invalid status (6)
+16:09:55.882 bad penguin_weather temperature = 6016.600000.
+16:09:55.883 bad penguin_weather temperature = 6016.600000.
+16:09:55.887 ERROR:: weathGetData has invalid status (6)
+16:09:56.907 bad penguin_weather temperature = 6016.600000.
+16:09:56.907 bad penguin_weather temperature = 6016.600000.
+16:09:56.912 ERROR:: weathGetData has invalid status (6)
+16:09:57.931 bad penguin_weather temperature = 6016.600000.
+16:09:57.931 bad penguin_weather temperature = 6016.600000.
+16:09:57.936 ERROR:: weathGetData has invalid status (6)
+16:09:58.954 bad penguin_weather temperature = 6016.600000.
+16:09:58.954 bad penguin_weather temperature = 6016.600000.
+16:09:58.958 ERROR:: weathGetData has invalid status (6)
+16:09:59.976 bad penguin_weather temperature = 6016.600000.
+16:09:59.976 bad penguin_weather temperature = 6016.600000.
+16:09:59.981 ERROR:: weathGetData has invalid status (6)
+16:10:00.999 bad penguin_weather temperature = 6016.600000.
+16:10:00.999 bad penguin_weather temperature = 6016.600000.
+16:10:01.3 ERROR:: weathGetData has invalid status (6)
+16:10:02.21 bad penguin_weather temperature = 6016.600000.
+16:10:02.21 bad penguin_weather temperature = 6016.600000.
+16:10:02.25 ERROR:: weathGetData has invalid status (6)
+16:10:03.49 bad penguin_weather temperature = 6016.600000.
+16:10:03.50 bad penguin_weather temperature = 6016.600000.
+16:10:03.54 ERROR:: weathGetData has invalid status (6)
+16:10:04.77 bad penguin_weather temperature = 6016.600000.
+16:10:04.77 bad penguin_weather temperature = 6016.600000.
+16:10:04.82 ERROR:: weathGetData has invalid status (6)
+16:10:05.106 bad penguin_weather temperature = 6016.600000.
+16:10:05.106 bad penguin_weather temperature = 6016.600000.
+16:10:05.111 ERROR:: weathGetData has invalid status (6)
+16:10:06.132 bad penguin_weather temperature = 6016.600000.
+16:10:06.132 bad penguin_weather temperature = 6016.600000.
+16:10:06.136 ERROR:: weathGetData has invalid status (6)
+16:10:07.161 bad penguin_weather temperature = 6016.600000.
+16:10:07.161 bad penguin_weather temperature = 6016.600000.
+16:10:07.166 ERROR:: weathGetData has invalid status (6)
+16:10:08.181 bad penguin_weather temperature = 6016.600000.
+16:10:08.181 bad penguin_weather temperature = 6016.600000.
+16:10:08.185 ERROR:: weathGetData has invalid status (6)
+16:10:09.201 bad penguin_weather temperature = 6016.600000.
+16:10:09.201 bad penguin_weather temperature = 6016.600000.
+16:10:09.205 ERROR:: weathGetData has invalid status (6)
+16:10:10.230 bad penguin_weather temperature = 6016.600000.
+16:10:10.230 bad penguin_weather temperature = 6016.600000.
+16:10:10.235 ERROR:: weathGetData has invalid status (6)
+16:10:11.260 bad penguin_weather temperature = 6016.600000.
+16:10:11.260 bad penguin_weather temperature = 6016.600000.
+16:10:11.264 ERROR:: weathGetData has invalid status (6)
+16:10:12.289 bad penguin_weather temperature = 6016.600000.
+16:10:12.289 bad penguin_weather temperature = 6016.600000.
+16:10:12.293 ERROR:: weathGetData has invalid status (6)
+16:10:13.318 bad penguin_weather temperature = 6016.600000.
+16:10:13.318 bad penguin_weather temperature = 6016.600000.
+16:10:13.322 ERROR:: weathGetData has invalid status (6)
+16:10:14.346 bad penguin_weather temperature = 6016.600000.
+16:10:14.347 bad penguin_weather temperature = 6016.600000.
+16:10:14.351 ERROR:: weathGetData has invalid status (6)
+16:10:15.377 bad penguin_weather temperature = 6016.600000.
+16:10:15.377 bad penguin_weather temperature = 6016.600000.
+16:10:15.382 ERROR:: weathGetData has invalid status (6)
+16:10:16.406 bad penguin_weather temperature = 6016.600000.
+16:10:16.407 bad penguin_weather temperature = 6016.600000.
+16:10:16.411 ERROR:: weathGetData has invalid status (6)
+16:10:17.432 bad penguin_weather temperature = 6016.600000.
+16:10:17.432 bad penguin_weather temperature = 6016.600000.
+16:10:17.437 ERROR:: weathGetData has invalid status (6)
+16:10:18.460 bad penguin_weather temperature = 6016.600000.
+16:10:18.460 bad penguin_weather temperature = 6016.600000.
+16:10:18.465 ERROR:: weathGetData has invalid status (6)
+16:10:19.490 bad penguin_weather temperature = 6016.600000.
+16:10:19.490 bad penguin_weather temperature = 6016.600000.
+16:10:19.494 ERROR:: weathGetData has invalid status (6)
+16:10:20.509 bad penguin_weather temperature = 6016.600000.
+16:10:20.509 bad penguin_weather temperature = 6016.600000.
+16:10:20.514 ERROR:: weathGetData has invalid status (6)
+16:10:21.538 bad penguin_weather temperature = 6016.600000.
+16:10:21.538 bad penguin_weather temperature = 6016.600000.
+16:10:21.542 ERROR:: weathGetData has invalid status (6)
+16:10:22.563 bad penguin_weather temperature = 6016.600000.
+16:10:22.563 bad penguin_weather temperature = 6016.600000.
+16:10:22.567 ERROR:: weathGetData has invalid status (6)
+16:10:23.589 bad penguin_weather temperature = 6016.600000.
+16:10:23.589 bad penguin_weather temperature = 6016.600000.
+16:10:23.593 ERROR:: weathGetData has invalid status (6)
+16:10:24.615 bad penguin_weather temperature = 6016.600000.
+16:10:24.615 bad penguin_weather temperature = 6016.600000.
+16:10:24.619 ERROR:: weathGetData has invalid status (6)
+16:10:25.644 bad penguin_weather temperature = 6016.600000.
+16:10:25.644 bad penguin_weather temperature = 6016.600000.
+16:10:25.648 ERROR:: weathGetData has invalid status (6)
+16:10:26.667 bad penguin_weather temperature = 6016.600000.
+16:10:26.667 bad penguin_weather temperature = 6016.600000.
+16:10:26.672 ERROR:: weathGetData has invalid status (6)
+16:10:27.697 bad penguin_weather temperature = 6016.600000.
+16:10:27.697 bad penguin_weather temperature = 6016.600000.
+16:10:27.702 ERROR:: weathGetData has invalid status (6)
+16:10:28.723 bad penguin_weather temperature = 6016.600000.
+16:10:28.723 bad penguin_weather temperature = 6016.600000.
+16:10:28.727 ERROR:: weathGetData has invalid status (6)
+16:10:29.750 bad penguin_weather temperature = 6016.600000.
+16:10:29.750 bad penguin_weather temperature = 6016.600000.
+16:10:29.754 ERROR:: weathGetData has invalid status (6)
+16:10:30.779 bad penguin_weather temperature = 6016.600000.
+16:10:30.779 bad penguin_weather temperature = 6016.600000.
+16:10:30.784 ERROR:: weathGetData has invalid status (6)
+16:10:31.809 bad penguin_weather temperature = 6016.600000.
+16:10:31.809 bad penguin_weather temperature = 6016.600000.
+16:10:31.814 ERROR:: weathGetData has invalid status (6)
+16:10:32.839 bad penguin_weather temperature = 6016.600000.
+16:10:32.839 bad penguin_weather temperature = 6016.600000.
+16:10:32.843 ERROR:: weathGetData has invalid status (6)
+16:10:33.868 bad penguin_weather temperature = 6016.600000.
+16:10:33.868 bad penguin_weather temperature = 6016.600000.
+16:10:33.872 ERROR:: weathGetData has invalid status (6)
+16:10:34.898 bad penguin_weather temperature = 6016.600000.
+16:10:34.898 bad penguin_weather temperature = 6016.600000.
+16:10:34.903 ERROR:: weathGetData has invalid status (6)
+16:10:35.918 bad penguin_weather temperature = 6016.600000.
+16:10:35.918 bad penguin_weather temperature = 6016.600000.
+16:10:35.923 ERROR:: weathGetData has invalid status (6)
+16:10:36.939 bad penguin_weather temperature = 6016.600000.
+16:10:36.939 bad penguin_weather temperature = 6016.600000.
+16:10:36.944 ERROR:: weathGetData has invalid status (6)
+16:10:37.959 bad penguin_weather temperature = 6016.600000.
+16:10:37.960 bad penguin_weather temperature = 6016.600000.
+16:10:37.964 ERROR:: weathGetData has invalid status (6)
+16:10:38.980 bad penguin_weather temperature = 6016.600000.
+16:10:38.980 bad penguin_weather temperature = 6016.600000.
+16:10:38.985 ERROR:: weathGetData has invalid status (6)
+16:10:40.9 bad penguin_weather temperature = 6016.600000.
+16:10:40.9 bad penguin_weather temperature = 6016.600000.
+16:10:40.13 ERROR:: weathGetData has invalid status (6)
+16:10:41.34 bad penguin_weather temperature = 6016.600000.
+16:10:41.34 bad penguin_weather temperature = 6016.600000.
+16:10:41.38 ERROR:: weathGetData has invalid status (6)
+16:10:42.60 bad penguin_weather temperature = 6016.600000.
+16:10:42.60 bad penguin_weather temperature = 6016.600000.
+16:10:42.65 ERROR:: weathGetData has invalid status (6)
+16:10:43.88 bad penguin_weather temperature = 6016.600000.
+16:10:43.88 bad penguin_weather temperature = 6016.600000.
+16:10:43.92 ERROR:: weathGetData has invalid status (6)
+16:10:44.114 bad penguin_weather temperature = 6016.600000.
+16:10:44.114 bad penguin_weather temperature = 6016.600000.
+16:10:44.118 ERROR:: weathGetData has invalid status (6)
+16:10:45.141 bad penguin_weather temperature = 6016.600000.
+16:10:45.141 bad penguin_weather temperature = 6016.600000.
+16:10:45.145 ERROR:: weathGetData has invalid status (6)
+16:10:46.161 bad penguin_weather temperature = 6016.600000.
+16:10:46.161 bad penguin_weather temperature = 6016.600000.
+16:10:46.166 ERROR:: weathGetData has invalid status (6)
+16:10:47.183 bad penguin_weather temperature = 6016.600000.
+16:10:47.183 bad penguin_weather temperature = 6016.600000.
+16:10:47.188 ERROR:: weathGetData has invalid status (6)
+16:10:48.212 bad penguin_weather temperature = 6016.600000.
+16:10:48.212 bad penguin_weather temperature = 6016.600000.
+16:10:48.217 ERROR:: weathGetData has invalid status (6)
+16:10:49.239 bad penguin_weather temperature = 6016.600000.
+16:10:49.239 bad penguin_weather temperature = 6016.600000.
+16:10:49.244 ERROR:: weathGetData has invalid status (6)
+16:10:50.267 bad penguin_weather temperature = 6016.600000.
+16:10:50.267 bad penguin_weather temperature = 6016.600000.
+16:10:50.272 ERROR:: weathGetData has invalid status (6)
+16:10:51.295 bad penguin_weather temperature = 6016.600000.
+16:10:51.295 bad penguin_weather temperature = 6016.600000.
+16:10:51.299 ERROR:: weathGetData has invalid status (6)
+16:10:52.317 bad penguin_weather temperature = 6016.600000.
+16:10:52.317 bad penguin_weather temperature = 6016.600000.
+16:10:52.322 ERROR:: weathGetData has invalid status (6)
+16:10:53.342 bad penguin_weather temperature = 6016.600000.
+16:10:53.342 bad penguin_weather temperature = 6016.600000.
+16:10:53.346 ERROR:: weathGetData has invalid status (6)
+16:10:54.368 bad penguin_weather temperature = 6016.600000.
+16:10:54.368 bad penguin_weather temperature = 6016.600000.
+16:10:54.372 ERROR:: weathGetData has invalid status (6)
+16:10:55.394 bad penguin_weather temperature = 6016.600000.
+16:10:55.394 bad penguin_weather temperature = 6016.600000.
+16:10:55.398 ERROR:: weathGetData has invalid status (6)
+16:10:56.420 bad penguin_weather temperature = 6016.600000.
+16:10:56.420 bad penguin_weather temperature = 6016.600000.
+16:10:56.424 ERROR:: weathGetData has invalid status (6)
+16:10:57.447 bad penguin_weather temperature = 6016.600000.
+16:10:57.447 bad penguin_weather temperature = 6016.600000.
+16:10:57.451 ERROR:: weathGetData has invalid status (6)
+16:10:58.475 bad penguin_weather temperature = 6016.600000.
+16:10:58.475 bad penguin_weather temperature = 6016.600000.
+16:10:58.480 ERROR:: weathGetData has invalid status (6)
+16:10:59.497 bad penguin_weather temperature = 6016.600000.
+16:10:59.497 bad penguin_weather temperature = 6016.600000.
+16:10:59.502 ERROR:: weathGetData has invalid status (6)
+16:11:00.525 bad penguin_weather temperature = 6016.600000.
+16:11:00.525 bad penguin_weather temperature = 6016.600000.
+16:11:00.529 ERROR:: weathGetData has invalid status (6)
+16:11:01.554 bad penguin_weather temperature = 6016.600000.
+16:11:01.554 bad penguin_weather temperature = 6016.600000.
+16:11:01.558 ERROR:: weathGetData has invalid status (6)
+16:11:02.584 bad penguin_weather temperature = 6016.600000.
+16:11:02.584 bad penguin_weather temperature = 6016.600000.
+16:11:02.588 ERROR:: weathGetData has invalid status (6)
+16:11:03.607 bad penguin_weather temperature = 6016.600000.
+16:11:03.607 bad penguin_weather temperature = 6016.600000.
+16:11:03.612 ERROR:: weathGetData has invalid status (6)
+16:11:04.634 bad penguin_weather temperature = 6016.600000.
+16:11:04.634 bad penguin_weather temperature = 6016.600000.
+16:11:04.638 ERROR:: weathGetData has invalid status (6)
+16:11:05.663 bad penguin_weather temperature = 6016.600000.
+16:11:05.663 bad penguin_weather temperature = 6016.600000.
+16:11:05.667 ERROR:: weathGetData has invalid status (6)
+16:11:06.689 bad penguin_weather temperature = 6016.600000.
+16:11:06.689 bad penguin_weather temperature = 6016.600000.
+16:11:06.693 ERROR:: weathGetData has invalid status (6)
+16:11:07.715 bad penguin_weather temperature = 6016.600000.
+16:11:07.715 bad penguin_weather temperature = 6016.600000.
+16:11:07.720 ERROR:: weathGetData has invalid status (6)
+16:11:08.743 bad penguin_weather temperature = 6016.600000.
+16:11:08.743 bad penguin_weather temperature = 6016.600000.
+16:11:08.748 ERROR:: weathGetData has invalid status (6)
+16:11:09.773 bad penguin_weather temperature = 6016.600000.
+16:11:09.773 bad penguin_weather temperature = 6016.600000.
+16:11:09.778 ERROR:: weathGetData has invalid status (6)
+16:11:10.801 bad penguin_weather temperature = 6016.600000.
+16:11:10.801 bad penguin_weather temperature = 6016.600000.
+16:11:10.806 ERROR:: weathGetData has invalid status (6)
+16:11:11.830 bad penguin_weather temperature = 6016.600000.
+16:11:11.830 bad penguin_weather temperature = 6016.600000.
+16:11:11.834 ERROR:: weathGetData has invalid status (6)
+16:11:12.859 bad penguin_weather temperature = 6016.600000.
+16:11:12.859 bad penguin_weather temperature = 6016.600000.
+16:11:12.863 ERROR:: weathGetData has invalid status (6)
+16:11:13.885 bad penguin_weather temperature = 6016.600000.
+16:11:13.885 bad penguin_weather temperature = 6016.600000.
+16:11:13.890 ERROR:: weathGetData has invalid status (6)
+16:11:14.911 bad penguin_weather temperature = 6016.600000.
+16:11:14.911 bad penguin_weather temperature = 6016.600000.
+16:11:14.916 ERROR:: weathGetData has invalid status (6)
+16:11:15.941 bad penguin_weather temperature = 6016.600000.
+16:11:15.941 bad penguin_weather temperature = 6016.600000.
+16:11:15.946 ERROR:: weathGetData has invalid status (6)
+16:11:16.962 bad penguin_weather temperature = 6016.600000.
+16:11:16.962 bad penguin_weather temperature = 6016.600000.
+16:11:16.967 ERROR:: weathGetData has invalid status (6)
+16:11:17.983 bad penguin_weather temperature = 6016.600000.
+16:11:17.983 bad penguin_weather temperature = 6016.600000.
+16:11:17.988 ERROR:: weathGetData has invalid status (6)
+16:11:19.11 bad penguin_weather temperature = 6016.600000.
+16:11:19.11 bad penguin_weather temperature = 6016.600000.
+16:11:19.15 ERROR:: weathGetData has invalid status (6)
+16:11:20.40 bad penguin_weather temperature = 6016.600000.
+16:11:20.40 bad penguin_weather temperature = 6016.600000.
+16:11:20.45 ERROR:: weathGetData has invalid status (6)
+16:11:21.68 bad penguin_weather temperature = 6016.600000.
+16:11:21.68 bad penguin_weather temperature = 6016.600000.
+16:11:21.73 ERROR:: weathGetData has invalid status (6)
+16:11:22.97 bad penguin_weather temperature = 6016.600000.
+16:11:22.97 bad penguin_weather temperature = 6016.600000.
+16:11:22.101 ERROR:: weathGetData has invalid status (6)
+16:11:23.123 bad penguin_weather temperature = 6016.600000.
+16:11:23.123 bad penguin_weather temperature = 6016.600000.
+16:11:23.127 ERROR:: weathGetData has invalid status (6)
+16:11:24.148 bad penguin_weather temperature = 6016.600000.
+16:11:24.148 bad penguin_weather temperature = 6016.600000.
+16:11:24.152 ERROR:: weathGetData has invalid status (6)
+16:11:25.174 bad penguin_weather temperature = 6016.600000.
+16:11:25.174 bad penguin_weather temperature = 6016.600000.
+16:11:25.179 ERROR:: weathGetData has invalid status (6)
+16:11:26.199 bad penguin_weather temperature = 6016.600000.
+16:11:26.199 bad penguin_weather temperature = 6016.600000.
+16:11:26.203 ERROR:: weathGetData has invalid status (6)
+16:11:27.222 bad penguin_weather temperature = 6016.600000.
+16:11:27.222 bad penguin_weather temperature = 6016.600000.
+16:11:27.226 ERROR:: weathGetData has invalid status (6)
+16:11:28.248 bad penguin_weather temperature = 6016.600000.
+16:11:28.248 bad penguin_weather temperature = 6016.600000.
+16:11:28.253 ERROR:: weathGetData has invalid status (6)
+16:11:29.278 bad penguin_weather temperature = 6016.600000.
+16:11:29.278 bad penguin_weather temperature = 6016.600000.
+16:11:29.282 ERROR:: weathGetData has invalid status (6)
+16:11:30.306 bad penguin_weather temperature = 6016.600000.
+16:11:30.306 bad penguin_weather temperature = 6016.600000.
+16:11:30.311 ERROR:: weathGetData has invalid status (6)
+16:11:31.335 bad penguin_weather temperature = 6016.600000.
+16:11:31.335 bad penguin_weather temperature = 6016.600000.
+16:11:31.340 ERROR:: weathGetData has invalid status (6)
+16:11:32.365 bad penguin_weather temperature = 6016.600000.
+16:11:32.365 bad penguin_weather temperature = 6016.600000.
+16:11:32.369 ERROR:: weathGetData has invalid status (6)
+16:11:33.394 bad penguin_weather temperature = 6016.600000.
+16:11:33.394 bad penguin_weather temperature = 6016.600000.
+16:11:33.398 ERROR:: weathGetData has invalid status (6)
+16:11:34.423 bad penguin_weather temperature = 6016.600000.
+16:11:34.423 bad penguin_weather temperature = 6016.600000.
+16:11:34.427 ERROR:: weathGetData has invalid status (6)
+16:11:35.451 bad penguin_weather temperature = 6016.600000.
+16:11:35.452 bad penguin_weather temperature = 6016.600000.
+16:11:35.456 ERROR:: weathGetData has invalid status (6)
+16:11:36.479 bad penguin_weather temperature = 6016.600000.
+16:11:36.479 bad penguin_weather temperature = 6016.600000.
+16:11:36.484 ERROR:: weathGetData has invalid status (6)
+16:11:37.508 bad penguin_weather temperature = 6016.600000.
+16:11:37.508 bad penguin_weather temperature = 6016.600000.
+16:11:37.512 ERROR:: weathGetData has invalid status (6)
+16:11:38.530 bad penguin_weather temperature = 6016.600000.
+16:11:38.530 bad penguin_weather temperature = 6016.600000.
+16:11:38.535 ERROR:: weathGetData has invalid status (6)
+16:11:39.558 bad penguin_weather temperature = 6016.600000.
+16:11:39.558 bad penguin_weather temperature = 6016.600000.
+16:11:39.563 ERROR:: weathGetData has invalid status (6)
+16:11:40.587 bad penguin_weather temperature = 6016.600000.
+16:11:40.587 bad penguin_weather temperature = 6016.600000.
+16:11:40.592 ERROR:: weathGetData has invalid status (6)
+16:11:41.617 bad penguin_weather temperature = 6016.600000.
+16:11:41.617 bad penguin_weather temperature = 6016.600000.
+16:11:41.622 ERROR:: weathGetData has invalid status (6)
+16:11:42.645 bad penguin_weather temperature = 6016.600000.
+16:11:42.645 bad penguin_weather temperature = 6016.600000.
+16:11:42.649 ERROR:: weathGetData has invalid status (6)
+16:11:43.672 bad penguin_weather temperature = 6016.600000.
+16:11:43.672 bad penguin_weather temperature = 6016.600000.
+16:11:43.676 ERROR:: weathGetData has invalid status (6)
+16:11:44.699 bad penguin_weather temperature = 6016.600000.
+16:11:44.699 bad penguin_weather temperature = 6016.600000.
+16:11:44.703 ERROR:: weathGetData has invalid status (6)
+16:11:45.725 bad penguin_weather temperature = 6016.600000.
+16:11:45.725 bad penguin_weather temperature = 6016.600000.
+16:11:45.729 ERROR:: weathGetData has invalid status (6)
+16:11:46.752 bad penguin_weather temperature = 6016.600000.
+16:11:46.752 bad penguin_weather temperature = 6016.600000.
+16:11:46.757 ERROR:: weathGetData has invalid status (6)
+16:11:47.780 bad penguin_weather temperature = 6016.600000.
+16:11:47.780 bad penguin_weather temperature = 6016.600000.
+16:11:47.785 ERROR:: weathGetData has invalid status (6)
+16:11:48.809 bad penguin_weather temperature = 6016.600000.
+16:11:48.809 bad penguin_weather temperature = 6016.600000.
+16:11:48.813 ERROR:: weathGetData has invalid status (6)
+16:11:49.834 bad penguin_weather temperature = 6016.600000.
+16:11:49.834 bad penguin_weather temperature = 6016.600000.
+16:11:49.838 ERROR:: weathGetData has invalid status (6)
+16:11:50.860 bad penguin_weather temperature = 6016.600000.
+16:11:50.860 bad penguin_weather temperature = 6016.600000.
+16:11:50.864 ERROR:: weathGetData has invalid status (6)
+16:11:51.888 bad penguin_weather temperature = 6016.600000.
+16:11:51.888 bad penguin_weather temperature = 6016.600000.
+16:11:51.893 ERROR:: weathGetData has invalid status (6)
+16:11:52.918 bad penguin_weather temperature = 6016.600000.
+16:11:52.918 bad penguin_weather temperature = 6016.600000.
+16:11:52.922 ERROR:: weathGetData has invalid status (6)
+16:11:53.946 bad penguin_weather temperature = 6016.600000.
+16:11:53.946 bad penguin_weather temperature = 6016.600000.
+16:11:53.950 ERROR:: weathGetData has invalid status (6)
+16:11:54.975 bad penguin_weather temperature = 6016.600000.
+16:11:54.975 bad penguin_weather temperature = 6016.600000.
+16:11:54.979 ERROR:: weathGetData has invalid status (6)
+16:11:56.4 bad penguin_weather temperature = 6016.600000.
+16:11:56.4 bad penguin_weather temperature = 6016.600000.
+16:11:56.8 ERROR:: weathGetData has invalid status (6)
+16:11:57.33 bad penguin_weather temperature = 6016.600000.
+16:11:57.33 bad penguin_weather temperature = 6016.600000.
+16:11:57.37 ERROR:: weathGetData has invalid status (6)
+16:11:58.62 bad penguin_weather temperature = 6016.600000.
+16:11:58.62 bad penguin_weather temperature = 6016.600000.
+16:11:58.67 ERROR:: weathGetData has invalid status (6)
+16:11:59.92 bad penguin_weather temperature = 6016.600000.
+16:11:59.92 bad penguin_weather temperature = 6016.600000.
+16:11:59.97 ERROR:: weathGetData has invalid status (6)
+16:12:00.111 bad penguin_weather temperature = 6016.600000.
+16:12:00.111 bad penguin_weather temperature = 6016.600000.
+16:12:00.116 ERROR:: weathGetData has invalid status (6)
+16:12:01.137 bad penguin_weather temperature = 6016.600000.
+16:12:01.137 bad penguin_weather temperature = 6016.600000.
+16:12:01.142 ERROR:: weathGetData has invalid status (6)
+16:12:02.162 bad penguin_weather temperature = 6016.600000.
+16:12:02.162 bad penguin_weather temperature = 6016.600000.
+16:12:02.167 ERROR:: weathGetData has invalid status (6)
+16:12:03.183 bad penguin_weather temperature = 6016.600000.
+16:12:03.183 bad penguin_weather temperature = 6016.600000.
+16:12:03.188 ERROR:: weathGetData has invalid status (6)
+16:12:04.203 bad penguin_weather temperature = 6016.600000.
+16:12:04.203 bad penguin_weather temperature = 6016.600000.
+16:12:04.208 ERROR:: weathGetData has invalid status (6)
+16:12:05.231 bad penguin_weather temperature = 6016.600000.
+16:12:05.231 bad penguin_weather temperature = 6016.600000.
+16:12:05.236 ERROR:: weathGetData has invalid status (6)
+16:12:06.259 bad penguin_weather temperature = 6016.600000.
+16:12:06.259 bad penguin_weather temperature = 6016.600000.
+16:12:06.263 ERROR:: weathGetData has invalid status (6)
+16:12:07.281 bad penguin_weather temperature = 6016.600000.
+16:12:07.281 bad penguin_weather temperature = 6016.600000.
+16:12:07.286 ERROR:: weathGetData has invalid status (6)
+16:12:08.302 bad penguin_weather temperature = 6016.600000.
+16:12:08.302 bad penguin_weather temperature = 6016.600000.
+16:12:08.307 ERROR:: weathGetData has invalid status (6)
+16:12:09.332 bad penguin_weather temperature = 6016.600000.
+16:12:09.332 bad penguin_weather temperature = 6016.600000.
+16:12:09.337 ERROR:: weathGetData has invalid status (6)
+16:12:10.353 bad penguin_weather temperature = 6016.600000.
+16:12:10.353 bad penguin_weather temperature = 6016.600000.
+16:12:10.358 ERROR:: weathGetData has invalid status (6)
+16:12:11.383 bad penguin_weather temperature = 6016.600000.
+16:12:11.384 bad penguin_weather temperature = 6016.600000.
+16:12:11.388 ERROR:: weathGetData has invalid status (6)
+16:12:12.408 bad penguin_weather temperature = 6016.600000.
+16:12:12.408 bad penguin_weather temperature = 6016.600000.
+16:12:12.413 ERROR:: weathGetData has invalid status (6)
+16:12:13.438 bad penguin_weather temperature = 6016.600000.
+16:12:13.438 bad penguin_weather temperature = 6016.600000.
+16:12:13.442 ERROR:: weathGetData has invalid status (6)
+16:12:14.465 bad penguin_weather temperature = 6016.600000.
+16:12:14.465 bad penguin_weather temperature = 6016.600000.
+16:12:14.470 ERROR:: weathGetData has invalid status (6)
+16:12:15.493 bad penguin_weather temperature = 6016.600000.
+16:12:15.493 bad penguin_weather temperature = 6016.600000.
+16:12:15.498 ERROR:: weathGetData has invalid status (6)
+16:12:16.520 bad penguin_weather temperature = 6016.600000.
+16:12:16.521 bad penguin_weather temperature = 6016.600000.
+16:12:16.526 ERROR:: weathGetData has invalid status (6)
+16:12:17.547 bad penguin_weather temperature = 6016.600000.
+16:12:17.547 bad penguin_weather temperature = 6016.600000.
+16:12:17.552 ERROR:: weathGetData has invalid status (6)
+16:12:18.574 bad penguin_weather temperature = 6016.600000.
+16:12:18.574 bad penguin_weather temperature = 6016.600000.
+16:12:18.579 ERROR:: weathGetData has invalid status (6)
+16:12:19.600 bad penguin_weather temperature = 6016.600000.
+16:12:19.600 bad penguin_weather temperature = 6016.600000.
+16:12:19.605 ERROR:: weathGetData has invalid status (6)
+16:12:20.626 bad penguin_weather temperature = 6016.600000.
+16:12:20.626 bad penguin_weather temperature = 6016.600000.
+16:12:20.631 ERROR:: weathGetData has invalid status (6)
+16:12:21.652 bad penguin_weather temperature = 6016.600000.
+16:12:21.653 bad penguin_weather temperature = 6016.600000.
+16:12:21.657 ERROR:: weathGetData has invalid status (6)
+16:12:22.678 bad penguin_weather temperature = 6016.600000.
+16:12:22.678 bad penguin_weather temperature = 6016.600000.
+16:12:22.683 ERROR:: weathGetData has invalid status (6)
+16:12:23.707 bad penguin_weather temperature = 6016.600000.
+16:12:23.707 bad penguin_weather temperature = 6016.600000.
+16:12:23.711 ERROR:: weathGetData has invalid status (6)
+16:12:24.736 bad penguin_weather temperature = 6016.600000.
+16:12:24.736 bad penguin_weather temperature = 6016.600000.
+16:12:24.740 ERROR:: weathGetData has invalid status (6)
+16:12:25.759 bad penguin_weather temperature = 6016.600000.
+16:12:25.759 bad penguin_weather temperature = 60

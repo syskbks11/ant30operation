@@ -1,0 +1,29 @@
+# Device Table Version #
+DeviceVersion	0.1.1
+# Tracking Frequency [GHz] #
+Ftrack_1	461.040000
+Ftrack_2	492.160000
+Lo1	476.000000
+# Intermediate Frequency [GHz] #
+Fif_1	14.960000
+Fif_2	16.160000
+# 2nd Local Frequency [GHz] #
+lo2_1	13.800000
+lo2_2	14.800000
+# Attenuator [dB] #
+# Attenuator Decrement [dB] #
+IfAtt_1	2
+IfAttDecR_1	1
+IfAtt_2	4
+IfAttDecR_2	3
+# Spectrometer Selection  NotUse=0 Use=1 #
+BeUse01	1
+BeUse02	1
+NumOfChannels	1020
+bandwidthSM	1500.000000
+# Mode (Hardware) [MHz]  1000/500/250/125 #
+Mode_H1	1000
+Mode_H2	1000
+# Spectrometer Frequency (Hardware) [GHz] #
+FsaL_H1	1.160000
+FsaL_H2	1.360000

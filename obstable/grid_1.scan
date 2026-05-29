@@ -1,0 +1,46 @@
+# Scan Table Version #
+ScanVersion	0.1.1
+# Scan Flag  Grid-Mapping=3 #
+ScanFlag	3
+# ON-Point Coordinate  (RA,Dec)=1 (L,B)=2 (AZ,EL)=3 #
+OnCoord	3
+# ON-Point Position Angle [+-deg]  +:CCW #
+PosAngle	0.000000
+# ON-Point Grid Spacing [+-sec] #
+OnGridSpX	3600
+OnGridSpY	3600
+# ON-Point Grid Number #
+OnGridNoX	5
+OnGridNoY	5
+# ON-Point Start Corner [+-sec] #
+OnStartX	0
+OnStartY	0
+# OFF-Point Mode  OffsetFromCenter=1 AbsoluteValue=2 #
+OffMode	2
+# OFF-Point Coordinate  (RA,Dec)=1 (L,B)=2 (AZ,EL)=3 #
+OffCoord	3
+# OFF-Point Position [hh/+-dddmmss.s,+-ddmmss.s] #
+OffX1_HorD	170
+OffX1_Min	0
+OffX1_Sec	0.000000
+OffY1_Deg	40
+OffY1_Min	0
+OffY1_Sec	0.000000
+OffX2_HorD	0
+OffX2_Min	0
+OffX2_Sec	0.000000
+OffY2_Deg	0
+OffY2_Min	0
+OffY2_Sec	0.000000
+# ON/OFF-Point Integration Time [sec] #
+OnOffTime	5
+# OFF-Point Selection  OFF1only=1 OFF1&OFF2=2 #
+OffNumber	1
+# OFF-Point Interval #
+OffInterval	30
+# R-Sky Integration Time [sec] #
+RSkyTime	5
+# R-Sky Interval #
+RSkyInterval	30
+# Number of Set #
+SetNumber	1
