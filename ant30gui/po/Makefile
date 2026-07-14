@@ -35,7 +35,7 @@ subdir = po
 
 INSTALL = /usr/bin/install -c
 INSTALL_DATA = ${INSTALL} -m 644
-MKINSTALLDIRS = $(top_srcdir)/./mkinstalldirs
+MKINSTALLDIRS = $(top_srcdir)/.//mkinstalldirs
 
 CC = gcc
 GENCAT = @GENCAT@

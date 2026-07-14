@@ -71,23 +71,23 @@ DIST_SOURCES = $(tkb32clgui_SOURCES)
 ETAGS = etags
 CTAGS = ctags
 DISTFILES = $(DIST_COMMON) $(DIST_SOURCES) $(TEXINFOS) $(EXTRA_DIST)
-ACLOCAL = ${SHELL} /home/user/software/test-20231030/package/tkb32clGUI/missing --run aclocal-1.9
+ACLOCAL = ${SHELL} /home/user/ant30operation/ant30gui/missing --run aclocal-1.9
 AMDEP_FALSE = #
 AMDEP_TRUE = 
-AMTAR = ${SHELL} /home/user/software/test-20231030/package/tkb32clGUI/missing --run tar
-AUTOCONF = ${SHELL} /home/user/software/test-20231030/package/tkb32clGUI/missing --run autoconf
-AUTOHEADER = ${SHELL} /home/user/software/test-20231030/package/tkb32clGUI/missing --run autoheader
-AUTOMAKE = ${SHELL} /home/user/software/test-20231030/package/tkb32clGUI/missing --run automake-1.9
+AMTAR = ${SHELL} /home/user/ant30operation/ant30gui/missing --run tar
+AUTOCONF = ${SHELL} /home/user/ant30operation/ant30gui/missing --run autoconf
+AUTOHEADER = ${SHELL} /home/user/ant30operation/ant30gui/missing --run autoheader
+AUTOMAKE = ${SHELL} /home/user/ant30operation/ant30gui/missing --run automake-1.9
 AWK = mawk
 CATALOGS = 
 CATOBJEXT = .gmo
-CC = gcc -m32
-CCDEPMODE = depmode=gcc3
+CC = gcc
+CCDEPMODE = depmode=none
 CFLAGS = -g -O2 -m32
-CPP = gcc -E -m32
+CPP = @CPP@
 CPPFLAGS = 
-CXX = g++ -m32
-CXXDEPMODE = depmode=gcc3
+CXX = g++
+CXXDEPMODE = depmode=none
 CXXFLAGS = -g -O2 -m32
 CYGPATH_W = echo
 DATADIRNAME = share
@@ -96,12 +96,12 @@ DEPDIR = .deps
 ECHO_C = 
 ECHO_N = -n
 ECHO_T = 
-EGREP = /bin/grep -E
+EGREP = /usr/bin/grep -E
 EXEEXT = 
 GETTEXT_PACKAGE = tkb32clgui
 GMOFILES = 
 GMSGFMT = /usr/bin/msgfmt
-GREP = /bin/grep
+GREP = /usr/bin/grep
 INSTALL_DATA = ${INSTALL} -m 644
 INSTALL_PROGRAM = ${INSTALL}
 INSTALL_SCRIPT = ${INSTALL}
@@ -115,15 +115,15 @@ LTLIBOBJS =
 MAINT = 
 MAINTAINER_MODE_FALSE = #
 MAINTAINER_MODE_TRUE = 
-MAKEINFO = ${SHELL} /home/user/software/test-20231030/package/tkb32clGUI/missing --run makeinfo
-MKINSTALLDIRS = ./mkinstalldirs
+MAKEINFO = ${SHELL} /home/user/ant30operation/ant30gui/missing --run makeinfo
+MKINSTALLDIRS = .//mkinstalldirs
 MSGFMT = /usr/bin/msgfmt
 MSGFMT_OPTS = -c
 OBJEXT = o
 PACKAGE = tkb32clgui
 PACKAGE_BUGREPORT = 
-PACKAGE_CFLAGS = -I/usr/include/gtk-2.0 -I/usr/lib/x86_64-linux-gnu/gtk-2.0/include -I/usr/include/atk-1.0 -I/usr/include/cairo -I/usr/include/pango-1.0 -I/usr/include/glib-2.0 -I/usr/lib/x86_64-linux-gnu/glib-2.0/include -I/usr/include/freetype2 -I/usr/include/libpng12 -I/usr/include/pixman-1  -I/usr/include/harfbuzz -I/usr/include/gdk-pixbuf-2.0 
-PACKAGE_LIBS = -lgtk-x11-2.0 -lgdk-x11-2.0 -latk-1.0 -lgdk_pixbuf-2.0 -lm -lpangocairo-1.0 -lpango-1.0 -lcairo -lgobject-2.0 -lgmodule-2.0 -ldl -lglib-2.0  
+PACKAGE_CFLAGS = -pthread -I/usr/include/gtk-2.0 -I/usr/lib/x86_64-linux-gnu/gtk-2.0/include -I/usr/include/pango-1.0 -I/usr/include/atk-1.0 -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/x86_64-linux-gnu -I/usr/include/pango-1.0 -I/usr/include/harfbuzz -I/usr/include/pango-1.0 -I/usr/include/libmount -I/usr/include/blkid -I/usr/include/fribidi -I/usr/include/cairo -I/usr/include/pixman-1 -I/usr/include/harfbuzz -I/usr/include/glib-2.0 -I/usr/lib/x86_64-linux-gnu/glib-2.0/include -I/usr/include/uuid -I/usr/include/freetype2 -I/usr/include/libpng16
+PACKAGE_LIBS = -lgtk-x11-2.0 -lgdk-x11-2.0 -lpangocairo-1.0 -latk-1.0 -lcairo -lgdk_pixbuf-2.0 -lgio-2.0 -lpangoft2-1.0 -lpango-1.0 -lgobject-2.0 -lglib-2.0 -lharfbuzz -lfontconfig -lfreetype
 PACKAGE_NAME = 
 PACKAGE_STRING = 
 PACKAGE_TARNAME = 
@@ -140,12 +140,12 @@ STRIP =
 USE_NLS = yes
 VERSION = 0.1
 XGETTEXT = /usr/bin/xgettext
-ac_ct_CC = gcc -m32
-ac_ct_CXX = g++ -m32
-am__fastdepCC_FALSE = #
-am__fastdepCC_TRUE = 
-am__fastdepCXX_FALSE = #
-am__fastdepCXX_TRUE = 
+ac_ct_CC = gcc
+ac_ct_CXX = g++
+am__fastdepCC_FALSE = 
+am__fastdepCC_TRUE = #
+am__fastdepCXX_FALSE = 
+am__fastdepCXX_TRUE = #
 am__include = include
 am__leading_dot = .
 am__quote = 
@@ -162,7 +162,7 @@ host_alias =
 htmldir = ${docdir}
 includedir = ${prefix}/include
 infodir = ${datarootdir}/info
-install_sh = /home/user/software/test-20231030/package/tkb32clGUI/install-sh
+install_sh = /home/user/ant30operation/ant30gui/install-sh
 libdir = ${exec_prefix}/lib
 libexecdir = ${exec_prefix}/libexec
 localedir = ${datarootdir}/locale
@@ -182,7 +182,7 @@ INCLUDES = \
 	-DPACKAGE_PREFIX=\""$(prefix)"\" \
 	-DPACKAGE_DATA_DIR=\""$(datadir)"\" \
 	-DPACKAGE_LOCALE_DIR=\""$(prefix)/$(DATADIRNAME)/locale"\" \
-	-I/usr/include/gtk-2.0 -I/usr/lib/x86_64-linux-gnu/gtk-2.0/include -I/usr/include/atk-1.0 -I/usr/include/cairo -I/usr/include/pango-1.0 -I/usr/include/glib-2.0 -I/usr/lib/x86_64-linux-gnu/glib-2.0/include -I/usr/include/freetype2 -I/usr/include/libpng12 -I/usr/include/pixman-1  -I/usr/include/harfbuzz -I/usr/include/gdk-pixbuf-2.0 
+	-pthread -I/usr/include/gtk-2.0 -I/usr/lib/x86_64-linux-gnu/gtk-2.0/include -I/usr/include/pango-1.0 -I/usr/include/atk-1.0 -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/x86_64-linux-gnu -I/usr/include/pango-1.0 -I/usr/include/harfbuzz -I/usr/include/pango-1.0 -I/usr/include/libmount -I/usr/include/blkid -I/usr/include/fribidi -I/usr/include/cairo -I/usr/include/pixman-1 -I/usr/include/harfbuzz -I/usr/include/glib-2.0 -I/usr/lib/x86_64-linux-gnu/glib-2.0/include -I/usr/include/uuid -I/usr/include/freetype2 -I/usr/include/libpng16
 
 tkb32clgui_SOURCES = \
 	main.c \
@@ -194,7 +194,7 @@ tkb32clgui_SOURCES = \
 	import/tkb32clPort.cpp import/tkb32clPort.h \
 	import/errno.cpp import/errno.h
 
-tkb32clgui_LDADD = -lgtk-x11-2.0 -lgdk-x11-2.0 -latk-1.0 -lgdk_pixbuf-2.0 -lm -lpangocairo-1.0 -lpango-1.0 -lcairo -lgobject-2.0 -lgmodule-2.0 -ldl -lglib-2.0   $(INTLLIBS) ../../libtkb/export/libtkb.a
+tkb32clgui_LDADD = -lgtk-x11-2.0 -lgdk-x11-2.0 -lpangocairo-1.0 -latk-1.0 -lcairo -lgdk_pixbuf-2.0 -lgio-2.0 -lpangoft2-1.0 -lpango-1.0 -lgobject-2.0 -lglib-2.0 -lharfbuzz -lfontconfig -lfreetype $(INTLLIBS) ../../libtkb/export/libtkb.a
 all: all-am
 
 .SUFFIXES:
@@ -271,74 +271,74 @@ include ./$(DEPDIR)/tkb32clFunc.Po
 include ./$(DEPDIR)/tkb32clPort.Po
 
 .c.o:
-	if $(COMPILE) -MT $@ -MD -MP -MF "$(DEPDIR)/$*.Tpo" -c -o $@ $<; \
-	then mv -f "$(DEPDIR)/$*.Tpo" "$(DEPDIR)/$*.Po"; else rm -f "$(DEPDIR)/$*.Tpo"; exit 1; fi
-#	source='$<' object='$@' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(COMPILE) -c $<
+#	if $(COMPILE) -MT $@ -MD -MP -MF "$(DEPDIR)/$*.Tpo" -c -o $@ $<; \
+#	then mv -f "$(DEPDIR)/$*.Tpo" "$(DEPDIR)/$*.Po"; else rm -f "$(DEPDIR)/$*.Tpo"; exit 1; fi
+	source='$<' object='$@' libtool=no \
+	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
+	$(COMPILE) -c $<
 
 .c.obj:
-	if $(COMPILE) -MT $@ -MD -MP -MF "$(DEPDIR)/$*.Tpo" -c -o $@ `$(CYGPATH_W) '$<'`; \
-	then mv -f "$(DEPDIR)/$*.Tpo" "$(DEPDIR)/$*.Po"; else rm -f "$(DEPDIR)/$*.Tpo"; exit 1; fi
-#	source='$<' object='$@' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
-#	$(COMPILE) -c `$(CYGPATH_W) '$<'`
+#	if $(COMPILE) -MT $@ -MD -MP -MF "$(DEPDIR)/$*.Tpo" -c -o $@ `$(CYGPATH_W) '$<'`; \
+#	then mv -f "$(DEPDIR)/$*.Tpo" "$(DEPDIR)/$*.Po"; else rm -f "$(DEPDIR)/$*.Tpo"; exit 1; fi
+	source='$<' object='$@' libtool=no \
+	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) \
+	$(COMPILE) -c `$(CYGPATH_W) '$<'`
 
 .cpp.o:
-	if $(CXXCOMPILE) -MT $@ -MD -MP -MF "$(DEPDIR)/$*.Tpo" -c -o $@ $<; \
-	then mv -f "$(DEPDIR)/$*.Tpo" "$(DEPDIR)/$*.Po"; else rm -f "$(DEPDIR)/$*.Tpo"; exit 1; fi
-#	source='$<' object='$@' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) \
-#	$(CXXCOMPILE) -c -o $@ $<
+#	if $(CXXCOMPILE) -MT $@ -MD -MP -MF "$(DEPDIR)/$*.Tpo" -c -o $@ $<; \
+#	then mv -f "$(DEPDIR)/$*.Tpo" "$(DEPDIR)/$*.Po"; else rm -f "$(DEPDIR)/$*.Tpo"; exit 1; fi
+	source='$<' object='$@' libtool=no \
+	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) \
+	$(CXXCOMPILE) -c -o $@ $<
 
 .cpp.obj:
-	if $(CXXCOMPILE) -MT $@ -MD -MP -MF "$(DEPDIR)/$*.Tpo" -c -o $@ `$(CYGPATH_W) '$<'`; \
-	then mv -f "$(DEPDIR)/$*.Tpo" "$(DEPDIR)/$*.Po"; else rm -f "$(DEPDIR)/$*.Tpo"; exit 1; fi
-#	source='$<' object='$@' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) \
-#	$(CXXCOMPILE) -c -o $@ `$(CYGPATH_W) '$<'`
+#	if $(CXXCOMPILE) -MT $@ -MD -MP -MF "$(DEPDIR)/$*.Tpo" -c -o $@ `$(CYGPATH_W) '$<'`; \
+#	then mv -f "$(DEPDIR)/$*.Tpo" "$(DEPDIR)/$*.Po"; else rm -f "$(DEPDIR)/$*.Tpo"; exit 1; fi
+	source='$<' object='$@' libtool=no \
+	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) \
+	$(CXXCOMPILE) -c -o $@ `$(CYGPATH_W) '$<'`
 
 tkb32clFunc.o: import/tkb32clFunc.cpp
-	if $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT tkb32clFunc.o -MD -MP -MF "$(DEPDIR)/tkb32clFunc.Tpo" -c -o tkb32clFunc.o `test -f 'import/tkb32clFunc.cpp' || echo '$(srcdir)/'`import/tkb32clFunc.cpp; \
-	then mv -f "$(DEPDIR)/tkb32clFunc.Tpo" "$(DEPDIR)/tkb32clFunc.Po"; else rm -f "$(DEPDIR)/tkb32clFunc.Tpo"; exit 1; fi
-#	source='import/tkb32clFunc.cpp' object='tkb32clFunc.o' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) \
-#	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o tkb32clFunc.o `test -f 'import/tkb32clFunc.cpp' || echo '$(srcdir)/'`import/tkb32clFunc.cpp
+#	if $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT tkb32clFunc.o -MD -MP -MF "$(DEPDIR)/tkb32clFunc.Tpo" -c -o tkb32clFunc.o `test -f 'import/tkb32clFunc.cpp' || echo '$(srcdir)/'`import/tkb32clFunc.cpp; \
+#	then mv -f "$(DEPDIR)/tkb32clFunc.Tpo" "$(DEPDIR)/tkb32clFunc.Po"; else rm -f "$(DEPDIR)/tkb32clFunc.Tpo"; exit 1; fi
+	source='import/tkb32clFunc.cpp' object='tkb32clFunc.o' libtool=no \
+	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) \
+	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o tkb32clFunc.o `test -f 'import/tkb32clFunc.cpp' || echo '$(srcdir)/'`import/tkb32clFunc.cpp
 
 tkb32clFunc.obj: import/tkb32clFunc.cpp
-	if $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT tkb32clFunc.obj -MD -MP -MF "$(DEPDIR)/tkb32clFunc.Tpo" -c -o tkb32clFunc.obj `if test -f 'import/tkb32clFunc.cpp'; then $(CYGPATH_W) 'import/tkb32clFunc.cpp'; else $(CYGPATH_W) '$(srcdir)/import/tkb32clFunc.cpp'; fi`; \
-	then mv -f "$(DEPDIR)/tkb32clFunc.Tpo" "$(DEPDIR)/tkb32clFunc.Po"; else rm -f "$(DEPDIR)/tkb32clFunc.Tpo"; exit 1; fi
-#	source='import/tkb32clFunc.cpp' object='tkb32clFunc.obj' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) \
-#	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o tkb32clFunc.obj `if test -f 'import/tkb32clFunc.cpp'; then $(CYGPATH_W) 'import/tkb32clFunc.cpp'; else $(CYGPATH_W) '$(srcdir)/import/tkb32clFunc.cpp'; fi`
+#	if $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT tkb32clFunc.obj -MD -MP -MF "$(DEPDIR)/tkb32clFunc.Tpo" -c -o tkb32clFunc.obj `if test -f 'import/tkb32clFunc.cpp'; then $(CYGPATH_W) 'import/tkb32clFunc.cpp'; else $(CYGPATH_W) '$(srcdir)/import/tkb32clFunc.cpp'; fi`; \
+#	then mv -f "$(DEPDIR)/tkb32clFunc.Tpo" "$(DEPDIR)/tkb32clFunc.Po"; else rm -f "$(DEPDIR)/tkb32clFunc.Tpo"; exit 1; fi
+	source='import/tkb32clFunc.cpp' object='tkb32clFunc.obj' libtool=no \
+	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) \
+	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o tkb32clFunc.obj `if test -f 'import/tkb32clFunc.cpp'; then $(CYGPATH_W) 'import/tkb32clFunc.cpp'; else $(CYGPATH_W) '$(srcdir)/import/tkb32clFunc.cpp'; fi`
 
 tkb32clPort.o: import/tkb32clPort.cpp
-	if $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT tkb32clPort.o -MD -MP -MF "$(DEPDIR)/tkb32clPort.Tpo" -c -o tkb32clPort.o `test -f 'import/tkb32clPort.cpp' || echo '$(srcdir)/'`import/tkb32clPort.cpp; \
-	then mv -f "$(DEPDIR)/tkb32clPort.Tpo" "$(DEPDIR)/tkb32clPort.Po"; else rm -f "$(DEPDIR)/tkb32clPort.Tpo"; exit 1; fi
-#	source='import/tkb32clPort.cpp' object='tkb32clPort.o' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) \
-#	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o tkb32clPort.o `test -f 'import/tkb32clPort.cpp' || echo '$(srcdir)/'`import/tkb32clPort.cpp
+#	if $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT tkb32clPort.o -MD -MP -MF "$(DEPDIR)/tkb32clPort.Tpo" -c -o tkb32clPort.o `test -f 'import/tkb32clPort.cpp' || echo '$(srcdir)/'`import/tkb32clPort.cpp; \
+#	then mv -f "$(DEPDIR)/tkb32clPort.Tpo" "$(DEPDIR)/tkb32clPort.Po"; else rm -f "$(DEPDIR)/tkb32clPort.Tpo"; exit 1; fi
+	source='import/tkb32clPort.cpp' object='tkb32clPort.o' libtool=no \
+	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) \
+	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o tkb32clPort.o `test -f 'import/tkb32clPort.cpp' || echo '$(srcdir)/'`import/tkb32clPort.cpp
 
 tkb32clPort.obj: import/tkb32clPort.cpp
-	if $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT tkb32clPort.obj -MD -MP -MF "$(DEPDIR)/tkb32clPort.Tpo" -c -o tkb32clPort.obj `if test -f 'import/tkb32clPort.cpp'; then $(CYGPATH_W) 'import/tkb32clPort.cpp'; else $(CYGPATH_W) '$(srcdir)/import/tkb32clPort.cpp'; fi`; \
-	then mv -f "$(DEPDIR)/tkb32clPort.Tpo" "$(DEPDIR)/tkb32clPort.Po"; else rm -f "$(DEPDIR)/tkb32clPort.Tpo"; exit 1; fi
-#	source='import/tkb32clPort.cpp' object='tkb32clPort.obj' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) \
-#	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o tkb32clPort.obj `if test -f 'import/tkb32clPort.cpp'; then $(CYGPATH_W) 'import/tkb32clPort.cpp'; else $(CYGPATH_W) '$(srcdir)/import/tkb32clPort.cpp'; fi`
+#	if $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT tkb32clPort.obj -MD -MP -MF "$(DEPDIR)/tkb32clPort.Tpo" -c -o tkb32clPort.obj `if test -f 'import/tkb32clPort.cpp'; then $(CYGPATH_W) 'import/tkb32clPort.cpp'; else $(CYGPATH_W) '$(srcdir)/import/tkb32clPort.cpp'; fi`; \
+#	then mv -f "$(DEPDIR)/tkb32clPort.Tpo" "$(DEPDIR)/tkb32clPort.Po"; else rm -f "$(DEPDIR)/tkb32clPort.Tpo"; exit 1; fi
+	source='import/tkb32clPort.cpp' object='tkb32clPort.obj' libtool=no \
+	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) \
+	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o tkb32clPort.obj `if test -f 'import/tkb32clPort.cpp'; then $(CYGPATH_W) 'import/tkb32clPort.cpp'; else $(CYGPATH_W) '$(srcdir)/import/tkb32clPort.cpp'; fi`
 
 errno.o: import/errno.cpp
-	if $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT errno.o -MD -MP -MF "$(DEPDIR)/errno.Tpo" -c -o errno.o `test -f 'import/errno.cpp' || echo '$(srcdir)/'`import/errno.cpp; \
-	then mv -f "$(DEPDIR)/errno.Tpo" "$(DEPDIR)/errno.Po"; else rm -f "$(DEPDIR)/errno.Tpo"; exit 1; fi
-#	source='import/errno.cpp' object='errno.o' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) \
-#	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o errno.o `test -f 'import/errno.cpp' || echo '$(srcdir)/'`import/errno.cpp
+#	if $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT errno.o -MD -MP -MF "$(DEPDIR)/errno.Tpo" -c -o errno.o `test -f 'import/errno.cpp' || echo '$(srcdir)/'`import/errno.cpp; \
+#	then mv -f "$(DEPDIR)/errno.Tpo" "$(DEPDIR)/errno.Po"; else rm -f "$(DEPDIR)/errno.Tpo"; exit 1; fi
+	source='import/errno.cpp' object='errno.o' libtool=no \
+	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) \
+	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o errno.o `test -f 'import/errno.cpp' || echo '$(srcdir)/'`import/errno.cpp
 
 errno.obj: import/errno.cpp
-	if $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT errno.obj -MD -MP -MF "$(DEPDIR)/errno.Tpo" -c -o errno.obj `if test -f 'import/errno.cpp'; then $(CYGPATH_W) 'import/errno.cpp'; else $(CYGPATH_W) '$(srcdir)/import/errno.cpp'; fi`; \
-	then mv -f "$(DEPDIR)/errno.Tpo" "$(DEPDIR)/errno.Po"; else rm -f "$(DEPDIR)/errno.Tpo"; exit 1; fi
-#	source='import/errno.cpp' object='errno.obj' libtool=no \
-#	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) \
-#	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o errno.obj `if test -f 'import/errno.cpp'; then $(CYGPATH_W) 'import/errno.cpp'; else $(CYGPATH_W) '$(srcdir)/import/errno.cpp'; fi`
+#	if $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT errno.obj -MD -MP -MF "$(DEPDIR)/errno.Tpo" -c -o errno.obj `if test -f 'import/errno.cpp'; then $(CYGPATH_W) 'import/errno.cpp'; else $(CYGPATH_W) '$(srcdir)/import/errno.cpp'; fi`; \
+#	then mv -f "$(DEPDIR)/errno.Tpo" "$(DEPDIR)/errno.Po"; else rm -f "$(DEPDIR)/errno.Tpo"; exit 1; fi
+	source='import/errno.cpp' object='errno.obj' libtool=no \
+	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) \
+	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o errno.obj `if test -f 'import/errno.cpp'; then $(CYGPATH_W) 'import/errno.cpp'; else $(CYGPATH_W) '$(srcdir)/import/errno.cpp'; fi`
 uninstall-info-am:
 
 ID: $(HEADERS) $(SOURCES) $(LISP) $(TAGS_FILES)
@@ -507,7 +507,7 @@ uninstall-am: uninstall-binPROGRAMS uninstall-info-am
 	mostlyclean-generic pdf pdf-am ps ps-am tags uninstall \
 	uninstall-am uninstall-binPROGRAMS uninstall-info-am
 
-#tkb32clgui_LDADD = -lgtk-x11-2.0 -lgdk-x11-2.0 -latk-1.0 -lgdk_pixbuf-2.0 -lm -lpangocairo-1.0 -lpango-1.0 -lcairo -lgobject-2.0 -lgmodule-2.0 -ldl -lglib-2.0   $(INTLLIBS) -L/usr/local/FFC/lib -lssl2 -lstd6b ../../libtkb/export/libtkb_ffc.a
+#tkb32clgui_LDADD = -lgtk-x11-2.0 -lgdk-x11-2.0 -lpangocairo-1.0 -latk-1.0 -lcairo -lgdk_pixbuf-2.0 -lgio-2.0 -lpangoft2-1.0 -lpango-1.0 -lgobject-2.0 -lglib-2.0 -lharfbuzz -lfontconfig -lfreetype $(INTLLIBS) -L/usr/local/FFC/lib -lssl2 -lstd6b ../../libtkb/export/libtkb_ffc.a
 # Tell versions [3.59,3.63) of GNU make to not export all variables.
 # Otherwise a system limit (for SysV at least) may be exceeded.
 .NOEXPORT:

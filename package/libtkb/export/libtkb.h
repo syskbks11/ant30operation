@@ -112,8 +112,8 @@ extern "C"{
   int netsvDisconnect(netServerClass_t* _param);
   int netsvDisconnectProcess(netServerClass_t* _param);
   void netsvSetTimeOut(netServerClass_t* _param, const double t);
-  int netsvSelectWrite(netServerClass_t* _param);
-  int netsvSelectRead(netServerClass_t* _param);
+  int netclSelectWrite(netServerClass_t* _param);
+  int netclSelectRead(netServerClass_t* _param);
   int netsvWrite(netServerClass_t* _param, const unsigned char* buf, const size_t bufSize);
   int netsvRead(netServerClass_t* _param, unsigned char* buf, size_t bufSize);
 

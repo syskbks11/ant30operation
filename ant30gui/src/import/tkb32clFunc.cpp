@@ -105,9 +105,9 @@ int tkb32clFuncReqInit(){
   req->reqFlg = 1;//initialize
   ((tReqInit*)&(req->data))->paramSize = pSize;
   
-  printf("PARAM %d \n",strlen(((tReqInit*) &(req->data))->param));
+  //printf("PARAM %d \n",strlen(((tReqInit*) &(req->data))->param));
   strcpy( &((tReqInit*) &(req->data))->param, confGetAllKeyVal());
-  printf("PARAM %d \n",strlen(((tReqInit*) &(req->data))->param));
+  //printf("PARAM %d \n",strlen(((tReqInit*) &(req->data))->param));
   ret = tkb32clPortReq(req);
   if(ret){
     uM1("tkb32clFuncReqInit(); tkb32clPortReq(); error %d", ret);
